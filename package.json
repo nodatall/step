@@ -22,6 +22,6 @@
   "scripts": {
     "webpack": "webpack --colors --progress -w",
     "sass": "node-sass src/crown.scss public/main.css -w",
-    "start": "npm run webpack & npm run sass"
+    "build": "npm run webpack & npm run sass"
   }
 }
