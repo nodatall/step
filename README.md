@@ -1,19 +1,20 @@
-### Welcome Jedi. Take one step at a time. The force will find you.
-
+### Begin. Then, begin again.
 * ###Features
-  * ######To-do
-    * [ ] User is shown a single to-do item at a time
-    * [ ] User can add expected completion time to item
-    * [ ] Items have priority
-    * [ ] User inputs time block and is given the highest priority item fitting that block
-    * [ ] Completion of item provides positive reinforcement message
+  * ######Could-do list:
+    * As a user I can:
+      * view a single could-do with no other UI clutter and no other could-dos visible.
+      * give could-dos priority
+      * give a could-do a expected time to complete
+      * get a positive reinforcement message when completing a could-do
+      * can input a time period and am shown a single could-do with a matching expected completion time
 
   * ######Experience sampling
-    * [ ] Using the [experience sampling method](https://en.wikipedia.org/wiki/Experience_sampling_method) data is collected about the User
+    * Use the [experience sampling method](https://en.wikipedia.org/wiki/Experience_sampling_method) to collect datas
 
   * ######User input data tracking
-    * [ ] Users can set up goals with target number ie. reading code 1000 lines
-    * [ ] User can choose category and inputs amount
-    * [ ] User is rewarded with inspirational method and green/gold colors
-    * [ ] Data is available to track daily progress, weekly/monthly/yearly averages
-    * [ ] Data displayed as graph
+    * As a user I can:
+      * set up goals with target number ie. reading code 1000 lines
+      * can choose category and inputs amount
+      * am rewarded with inspirational method and green/gold colors
+      * have access to data about daily progress, weekly/monthly/yearly averages
+      * see data displayed as a graph

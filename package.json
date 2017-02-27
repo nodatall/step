@@ -21,7 +21,7 @@
   },
   "scripts": {
     "webpack": "webpack --colors --progress -w",
-    "sass": "node-sass src/crown.scss public/main.css -w",
-    "build": "npm run webpack & npm run sass"
+    "sass": "node-sass source/mulaBandha.scss public/main.css -w",
+    "begin": "npm run webpack & npm run sass"
   }
 }

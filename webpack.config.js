@@ -1,5 +1,5 @@
 module.exports = {
-  entry: './source/crown.js',
+  entry: './source/mulaBandha.js',
   output: {
     filename: './public/index.js'
   },

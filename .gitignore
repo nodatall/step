@@ -1,2 +1,5 @@
 node_modules
 yarn.lock
+npm-debug.log
+public/index.js
+public/main.css
