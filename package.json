@@ -8,20 +8,39 @@
   "license": "MIT",
   "dependencies": {
     "babel-core": "^6.22.1",
+    "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.10",
     "babel-plugin-transform-class-properties": "^6.22.0",
     "babel-preset-env": "^1.1.8",
     "babel-preset-react": "^6.22.0",
+    "babel-register": "^6.24.0",
+    "chai": "^3.5.0",
     "dotenv": "^4.0.0",
+    "eslint": "^3.17.1",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.0",
     "express": "^4.14.1",
+    "knex": "^0.12.7",
+    "mocha": "^3.2.0",
     "node-sass": "^4.5.0",
+    "pg-promise": "^5.6.4",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-router": "^3.0.2",
     "webpack": "^2.2.1"
   },
   "scripts": {
     "webpack": "webpack --colors --progress -w",
-    "sass": "node-sass source/mulaBandha.scss public/main.css -w",
-    "begin": "npm run webpack & npm run sass"
+    "sass": "node-sass source/index.scss public/main.css -w",
+    "server": "node source/server.js",
+    "begin": "npm run webpack & npm run sass & npm run server",
+    "mochatest": "NODE_ENV=test mocha --compilers js:babel-register source/dataServices/database/**/**/*.test.js",
+    "test": "NODE_ENV=test npm run migrate && npm run mochatest",
+    "migrate": "node ./node_modules/.bin/knex --knexfile source/dataServices/database/knexfile.js migrate:latest",
+    "migrate:make": "node ./node_modules/.bin/knex --knexfile source/dataServices/database/knexfile.js migrate:make",
+    "migrate:rollback": "node ./node_modules/.bin/knex --knexfile source/dataServices/database/knexfile.js migrate:rollback",
+    "lint": "eslint source/**"
   }
 }
