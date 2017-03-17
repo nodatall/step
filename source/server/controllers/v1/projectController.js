@@ -89,7 +89,7 @@ const handleGetProjectsByUserId = ( request, response ) => {
       if ( result instanceof Error ) {
         throw new Error( result )
       } else {
-        response.json( result )
+        return response.json( result )
       }
     })
     .catch( error => {
