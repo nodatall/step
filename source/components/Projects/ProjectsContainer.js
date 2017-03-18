@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import React, { Component } from 'react'
 import ProjectsPresentation from './ProjectsPresentation'
 import globalState from '../globalState'
@@ -11,19 +9,19 @@ export default class ProjectsContainer extends Component {
     globalState.subscribe(this.updateState)
   }
 
-  updateState = newState => this.setState({newState})
-
-  componentWillUnmout = () => globalState.unsubscribe(this.updateState)
-
   componentWillMount = () => {
-    fetch('http://localhost:3200/user/1/projects', { method: 'GET' })
+    fetch(`http://localhost:3200/user/${this.state.userId}/projects`, { method: 'GET' })
       .then( response => response.json() )
       .then( body => {
         globalState.set({ projects: body })
       })
   }
 
+  componentWillUnmout = () => globalState.unsubscribe(this.updateState)
+
+  updateState = newState => this.setState( newState )
+
   render() {
-    return <ProjectsPresentation />
+    return <ProjectsPresentation projects={ this.state.projects } />
   }
 }

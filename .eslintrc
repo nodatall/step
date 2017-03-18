@@ -14,6 +14,9 @@
   "arrow-parens": "off",
   "comma-dangle": "off",
   "camelcase": "off",
+  "react/prop-types": "off",
+  "jsx-quotes": ["error", "prefer-single"],
+  "react/jsx-curly-spacing": ["error", "always"],
   "react/jsx-filename-extension": "off",
     "valid-jsdoc": ["error", {
       "requireReturn": true,
@@ -21,12 +24,5 @@
       "requireParamDescription": true,
       "requireReturnDescription": true
     }],
-    "require-jsdoc": ["error", {
-        "require": {
-            "FunctionDeclaration": true,
-            "MethodDefinition": true,
-            "ClassDeclaration": true
-        }
-    }]
   }
 }

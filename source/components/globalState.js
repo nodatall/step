@@ -1,4 +1,4 @@
-const stateStorage = {}
+const stateStorage = { userId: 1 }
 
 const globalState = {
 

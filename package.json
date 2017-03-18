@@ -29,6 +29,7 @@
     "knex": "^0.12.7",
     "mocha": "^3.2.0",
     "node-sass": "^4.5.0",
+    "nodemon": "^1.11.0",
     "pg-promise": "^5.6.4",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
@@ -38,7 +39,7 @@
   "scripts": {
     "webpack": "webpack --colors --progress -w",
     "sass": "node-sass source/index.scss public/main.css -w",
-    "server": "babel-node source/server/server.js",
+    "server": "nodemon --exec babel-node source/server/server.js",
     "begin": "npm run server & npm run webpack & npm run sass",
     "mochatest": "NODE_ENV=test mocha --compilers js:babel-register source/**/**/**/**/*.test.js ",
     "test": "NODE_ENV=test npm run migrate && npm run mochatest",

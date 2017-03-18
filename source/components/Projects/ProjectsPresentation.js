@@ -1,7 +1,20 @@
 import React from 'react'
+import Project from '../Project/ProjectPresentation'
 
-const ProjectsComponent = () => (
-  <div>ProjectsComponent</div>
-)
+export default ({ projects }) => {
+  let projectList
 
-export default ProjectsComponent
+  if ( projects ) {
+    projectList = projects.map( project =>
+      <Project key={ project.id } { ...project } />
+    )
+  } else {
+    projectList = <div> Loading . . .</div>
+  }
+
+  return (
+    <div>
+      { projectList }
+    </div>
+  )
+}
