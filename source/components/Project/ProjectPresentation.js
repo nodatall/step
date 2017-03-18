@@ -2,9 +2,9 @@ import React from 'react'
 import TextFieldContainer from '../TextField/TextFieldContainer'
 import IconPresentation from '../Icon/IconPresentation'
 
-export default ({ name, id }) => (
+export default ({ text, id }) => (
   <div className='project-container'>
-    <TextFieldContainer text={ name } id={ id } type='projects' />
+    <TextFieldContainer text={ text } id={ id } type='projects' />
     <IconPresentation type='eye' />
   </div>
 )

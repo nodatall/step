@@ -13,11 +13,11 @@ describe( 'project commands', () => {
     it( 'creates a project with the given id and name', () =>
       newProject(data.fakeProject1)
         .then( project => {
-          expect(project.name).to.equal( 'eating' )
+          expect(project.text).to.equal( 'eating' )
           return project.id
         })
         .then( getProjectById )
-        .then( project => expect( project.name).to.equal( 'eating' ))
+        .then( project => expect( project.text).to.equal( 'eating' ))
     )
 
     it( 'throws an error if given invalid attributes', () =>
@@ -34,7 +34,7 @@ describe( 'project commands', () => {
 
       it( 'should update project with given attributes', () =>
         editProject( 77, data.fakeEdit )
-          .then( project => expect( project.name ).to.equal( 'snoozing' ))
+          .then( project => expect( project.text ).to.equal( 'snoozing' ))
       )
 
       it( 'should throw an error if given an invalid project id', () =>

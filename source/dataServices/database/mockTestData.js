@@ -29,17 +29,17 @@ const mockCouldDoData = {
 const mockProjectData = {
   fakeProject1: {
     id: 77,
-    name: 'eating',
+    text: 'eating',
     user_id: 1,
   },
   fakeProject2: {
     id: 88,
-    name: 'sleeping',
+    text: 'sleeping',
     user_id: 1,
   },
   fakeProject3: {
     id: 99,
-    name: 'dreaming',
+    text: 'dreaming',
     user_id: 2,
   },
   invalidProject: {
@@ -47,7 +47,7 @@ const mockProjectData = {
     existance: 'meaningless',
   },
   fakeEdit: {
-    name: 'snoozing',
+    text: 'snoozing',
   }
 }
 

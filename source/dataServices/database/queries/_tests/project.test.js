@@ -10,7 +10,7 @@ describe( 'project queries', () => {
 
       it( 'returns a project with given id', () =>
         getProjectById( 77 )
-          .then( project => expect( project.name ).to.equal( 'eating' ))
+          .then( project => expect( project.text ).to.equal( 'eating' ))
       )
 
       it( 'should throw an error if no project exists with given id', () =>
@@ -30,7 +30,7 @@ describe( 'project queries', () => {
         getProjectsByUserId( 1 )
           .then( projects => {
             expect( projects.length ).to.equal( 2 )
-            const projectNames = projects.map( project => project.name ).sort()
+            const projectNames = projects.map( project => project.text ).sort()
             expect( projectNames ).to.eql( ['eating', 'sleeping'] )
           })
       )

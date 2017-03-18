@@ -27,15 +27,22 @@ export default class TextFieldContainer extends Component {
     if ( event.key === 'Enter' ) {
       const updatedState = this.state.globalState[type].map( element => {
         if ( element.id === id ) {
-          element.name = this.state.inputValue
-          return element
-        } else {
-          return element
+          return Object.assign(element, { text: this.state.inputValue })
         }
+        return element
       })
 
-      globalState.set({ [type]: updatedState })
-      this.setState({ editing: false })
+      fetch(`http://localhost:3200/project/edit/${id}`, {
+        method: 'POST',
+        headers: new Headers({
+          'Content-Type': 'application/json'
+        }),
+        body: JSON.stringify({ text: this.state.inputValue })
+      })
+      .then( () => {
+        globalState.set({ [type]: updatedState })
+        this.setState({ editing: false })
+      })
     }
   }
 

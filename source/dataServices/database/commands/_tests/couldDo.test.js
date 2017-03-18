@@ -23,7 +23,7 @@ describe( 'couldDo commands', () => {
 
     it( 'throws an error if given invalid attributes', () =>
       newCouldDo( data.invalidCouldDo )
-        .then( error => expect( error.name ).to.equal( 'error' ) )
+        .then( error => expect( error ).to.be.an.instanceof( Error ) )
     )
 
   })

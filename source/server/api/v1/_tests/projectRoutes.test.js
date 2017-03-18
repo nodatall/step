@@ -36,8 +36,8 @@ describe.only( 'couldDo routes', () => {
     it( 'should return created project', () =>
       chai.request( app )
         .post( '/project/new' )
-        .send({ name: 'learn workman-p', user_id: 1, })
-        .then( response => expect( response.body.name ).to.equal( 'learn workman-p' ) )
+        .send({ text: 'learn workman-p', user_id: 1, })
+        .then( response => expect( response.body.text ).to.equal( 'learn workman-p' ) )
     )
 
     it( 'should throw an error if supplied invalid attributes', () =>
@@ -56,8 +56,8 @@ describe.only( 'couldDo routes', () => {
       it( 'should return the edited project', () =>
         chai.request( app )
           .post( '/project/edit/77' )
-          .send({ name: 'juggling' })
-          .then( response => expect( response.body.name ).to.equal( 'juggling' ))
+          .send({ text: 'juggling' })
+          .then( response => expect( response.body.text ).to.equal( 'juggling' ))
       )
 
       it( 'should throw an error if no project with given id is found', () =>
@@ -107,7 +107,7 @@ describe.only( 'couldDo routes', () => {
           .then( response => {
             const projects = response.body
             expect( projects.length ).to.equal( 2 )
-            const projectNames = projects.map( couldDo => couldDo.name ).sort()
+            const projectNames = projects.map( project => project.text ).sort()
             expect( projectNames ).to.eql( ['eating', 'sleeping'] )
           })
       )
