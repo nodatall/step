@@ -1,5 +1,5 @@
 module.exports = {
-  entry: './source/mulaBandha.js',
+  entry: './source/root.js',
   output: {
     filename: './public/index.js'
   },

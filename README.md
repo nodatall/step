@@ -24,7 +24,7 @@ $ yarn migrate
 
 ### Run tests
 ```sh
-yarn test
+$ yarn test
 ```
 
 ### Run the linter
@@ -34,7 +34,7 @@ $ yarn lint
 
 ### Rollback migration
 ```sh
-yarn migrate:rollback
+$ yarn migrate:rollback
 ```
 
 ### To rollback test DB
