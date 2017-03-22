@@ -18,6 +18,7 @@
   "jsx-quotes": ["error", "prefer-single"],
   "react/jsx-curly-spacing": ["error", "always"],
   "react/jsx-wrap-multilines": "off",
+  "jsx-a11y/no-static-element-interactions": "off",
   "react/jsx-filename-extension": "off",
     "valid-jsdoc": ["error", {
       "requireReturn": true,
