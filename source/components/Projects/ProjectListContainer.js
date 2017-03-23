@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 import ProjectListPresentation from './ProjectListPresentation'
 import globalState from '../globalState'
 
@@ -10,10 +11,9 @@ export default class ProjectListContainer extends Component {
   }
 
   componentWillMount = () => {
-    fetch(`http://localhost:3200/user/${this.state.userId}/projects`, { method: 'GET' })
-      .then( response => response.json() )
+    axios.get(`http://localhost:3200/user/${this.state.userId}/projects`)
       .then( body => {
-        globalState.set({ projects: body })
+        globalState.set({ projects: body.data })
       })
   }
 
