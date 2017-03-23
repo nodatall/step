@@ -1,7 +1,7 @@
 import React from 'react'
 import Project from '../Project/ProjectPresentation'
 
-export default ({ projects }) => {
+const ProjectListPresentation = ({ projects }) => {
   let projectList
 
   if ( projects ) {
@@ -18,3 +18,5 @@ export default ({ projects }) => {
     </div>
   )
 }
+
+export default ProjectListPresentation

@@ -1,3 +1,5 @@
 import React from 'react'
 
-export default ({ type }) => <div>{ type }</div>
+const IconPresentation = ({ type }) => <div>{ type }</div>
+
+export default IconPresentation

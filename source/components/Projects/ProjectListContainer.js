@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import ProjectsPresentation from './ProjectsPresentation'
+import ProjectListPresentation from './ProjectListPresentation'
 import globalState from '../globalState'
 
-export default class ProjectsContainer extends Component {
+export default class ProjectListContainer extends Component {
   constructor() {
     super()
     this.state = globalState.get()
@@ -22,6 +22,6 @@ export default class ProjectsContainer extends Component {
   updateState = newState => this.setState( newState )
 
   render() {
-    return <ProjectsPresentation projects={ this.state.projects } />
+    return <ProjectListPresentation projects={ this.state.projects } />
   }
 }
