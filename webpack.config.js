@@ -1,3 +1,5 @@
+const WebpackErrorNotificationPlugin = require('webpack-error-notification')
+
 module.exports = {
   entry: './source/root.js',
   output: {
@@ -15,5 +17,6 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [new WebpackErrorNotificationPlugin()]
 }
