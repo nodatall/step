@@ -15,8 +15,8 @@ app.get('*', ( request, response ) =>
   response.sendFile( path.join( __dirname, '/../../public/index.html' ) )
 )
 
-app.listen( 3200, () =>
-  console.log( chalk.green( '-:: Listening on port 3200 ::-' ) ) // eslint-disable-line no-console
+app.listen( 1337, () =>
+  console.log( chalk.green( '-:: Listening on port 1337 ::-' ) ) // eslint-disable-line no-console
 )
 
 export default app

@@ -33,7 +33,7 @@ export default class TextFieldContainer extends Component {
         return element
       })
 
-      axios.post(`http://localhost:3200/project/edit/${id}`, {
+      axios.post(`http://localhost:1337/project/edit/${id}`, {
         text: this.state.inputValue
       })
       .then( () => {

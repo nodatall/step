@@ -11,7 +11,7 @@ export default class ProjectListContainer extends Component {
   }
 
   componentWillMount = () => {
-    axios.get(`http://localhost:3200/user/${this.state.userId}/projects`)
+    axios.get(`http://localhost:1337/user/${this.state.userId}/projects`)
       .then( body => {
         globalState.set({ projects: body.data })
       })
