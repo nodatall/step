@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 import TextFieldPresentation from './TextFieldPresentation'
 import TextFieldInputPresentation from './TextFieldInputPresentation'
 import globalState from '../globalState'
@@ -32,12 +33,8 @@ export default class TextFieldContainer extends Component {
         return element
       })
 
-      fetch(`http://localhost:3200/project/edit/${id}`, {
-        method: 'POST',
-        headers: new Headers({
-          'Content-Type': 'application/json'
-        }),
-        body: JSON.stringify({ text: this.state.inputValue })
+      axios.post(`http://localhost:3200/project/edit/${id}`, {
+        text: this.state.inputValue
       })
       .then( () => {
         globalState.set({ [type]: updatedState })
