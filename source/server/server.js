@@ -1,22 +1,26 @@
+/* eslint-disable */
+
+import '../../configuration/environment'
 import express from 'express'
 import path from 'path'
 import chalk from 'chalk'
 import bodyParser from 'body-parser'
 import router from './api/v1/routes'
 
-const app = express()
+const server = express()
 
-app.use( express.static( 'public' ))
+server.set( 'port', process.env.PORT || '1337' )
+server.use( express.static( 'public' ))
 
-app.use( bodyParser.json() )
-app.use( router )
+server.use( bodyParser.json() )
+server.use( router )
 
-app.get('*', ( request, response ) =>
+server.get('*', ( request, response ) =>
   response.sendFile( path.join( __dirname, '/../../public/index.html' ) )
 )
 
-app.listen( 1337, () =>
-  console.log( chalk.green( '-:: Listening on port 1337 ::-' ) ) // eslint-disable-line no-console
+server.listen( server.get('port'), () =>
+  console.log( chalk.magenta( '-:: Listening on port 1337 ::-' ) )
 )
 
-export default app
+export default server
