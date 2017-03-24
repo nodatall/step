@@ -1,10 +1,11 @@
 ## Contributing
 
 1. Fork this repository
-2. Claim an issue
+2. Claim an issue on our [Asana project](https://app.asana.com/0/298435091634227/board)
 3. Cut a topic branch
 4. Finish issue
 6. Run the linter
+7. Run tests
 5. Submit a pull request
 
 ## Development Setup
@@ -14,63 +15,88 @@
 $ yarn
 ```
 
-#### Create and Migrate the Database
+###### Allow terminal notifications
+```
+$ brew install terminal-notifier
+```
 
+### Setup Database
+
+###### Install Postgres
+```sh
+$ brew install postgresql
+$ brew tap homebrew/services
+$ brew services start postgresql
+```
+
+###### Create and migrate database
 ```sh
 $ createdb step_test
 $ createdb step_development
 $ yarn migrate
 ```
 
-### Run tests
+### Scripts
+
+###### Run tests
 ```sh
 $ yarn test
 ```
 
-### Run the linter
+###### Run the linter
 ```sh
 $ yarn lint
 ```
 
-### Rollback migration
+###### Rollback migration
 ```sh
 $ yarn migrate:rollback
 ```
 
-### To rollback test DB
+###### To rollback test DB
 ```sh
 $ NODE_ENV=test yarn migrate:rollback
 ```
 
-### Begin. Then, begin again.
-* Features
-  * Could-do list:
-    * As a user I can:
-      * Organize
-        * view a list of all projects
-        * focus on a project
-      * Project
-        * see a list of all project could-dos
-        * transform a could-do into a project
-        * reorder could-dos
-        * focus on current project
-      * Focus
-        * see a single could-do from selected project
-        * click on could-do to complete it
-        * click down arrow to cycle through could-dos
+### Cutting a new branch
+```sh
+$ git remote add upstream https://github.com/nodatall/step
+$ git fetch upstream
+$ git checkout -b my-topic-branch upstream/master
+$ git push -fu origin HEAD
+```
 
-  * Could-do idea pile
-    * give a could-do a expected time to complete
-    * get a positive reinforcement message when completing a could-do
-    * can input a time period and am shown a single could-do with a matching expected completion time
+### Submitting a pull request
+```sh
+$ git fetch upstream
+$ git rebase upstream/master
+$ yarn
+$ yarn test
+$ git push -f origin HEAD
+```
 
-  * Experience sampling
-    * Use the [experience sampling method](https://en.wikipedia.org/wiki/Experience_sampling_method) to collect datas
+### Architecture
+- Node
+- Express
+- Webpack
+- Babel latest
+- Postgres
+- Knex
+- React
+- SCSS
+- Mocha/Chai/Enzyme
 
-  * User input data tracking
-    * As a user I can:
-      * set up goals with target number ie. reading code 1000 lines
-      * can choose category and inputs amount
-      * am rewarded with inspirational method and green/gold colors
-      * have access to data about daily progress, weekly/monthly/yearly averages
-      * see data displayed as a graph
+### Standards
+
+###### Testing
+- All routes and queries should have 100% test coverage
+- All React Components should have 100% test coverage
+
+###### Creating Components
+- Component sets (presentation and container) should have their own folder
+- Components should be broken into presentation and container components
+- Presentation Components should be stateless function Components whenever possible
+- Container Components handle all data manipulation and should contain no JSX
+- Each Component set has its own .scss file
+- Each Component set has it own .test.js file
+- Component file and directory names should be in UpperCamelCase
