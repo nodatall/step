@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import componentErrorHandler from '../componentErrorHandler'
 import ProjectListPresentation from './ProjectListPresentation'
 import globalState from '../globalState'
 
@@ -10,14 +11,15 @@ export default class ProjectListContainer extends Component {
     globalState.subscribe(this.updateState)
   }
 
-  componentWillMount = () => {
+  componentDidMount = () => {
     axios.get(`http://localhost:1337/user/${this.state.userId}/projects`)
       .then( body => {
         globalState.set({ projects: body.data })
       })
+      .catch( error => componentErrorHandler( 'ProjectListContainer', error ) )
   }
 
-  componentWillUnmout = () => globalState.unsubscribe(this.updateState)
+  componentWillUnmount = () => globalState.unsubscribe(this.updateState)
 
   updateState = newState => this.setState( newState )
 
