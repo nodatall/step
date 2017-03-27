@@ -19,7 +19,7 @@ const handleNewCouldDo = ( request, response ) => {
     .catch( error => {
       console.log( chalk.red('There was an error in handleNewCouldDo: ')) // eslint-disable-line no-console
       console.trace(error) // eslint-disable-line no-console
-      response.status( 400 ).send( { Error: error } )
+      response.status( 400 ).json( { Error: error } )
     })
 }
 
@@ -38,7 +38,7 @@ const handleEditCouldDo = ( request, response ) => {
     .catch( error => {
       console.log( chalk.red('There was an error in handleEditCouldDo: ')) // eslint-disable-line no-console
       console.trace(error) // eslint-disable-line no-console
-      response.status( 400 ).send( { Error: error } )
+      response.status( 400 ).json( { Error: error } )
     })
 }
 
@@ -56,7 +56,7 @@ const handleDeleteCouldDo = ( request, response ) => {
     .catch( error => {
       console.log( chalk.red('There was an error in handleDeleteCouldDo: ')) // eslint-disable-line no-console
       console.trace(error) // eslint-disable-line no-console
-      response.status( 400 ).send( { Error: error } )
+      response.status( 400 ).json( { Error: error } )
     })
 }
 
