@@ -46,7 +46,7 @@
     "sass": "node-sass source/index.scss public/main.css -w",
     "server": "nodemon --exec babel-node source/server/server.js",
     "begin": "yarn run server & yarn run webpack & yarn run sass",
-    "mochatest": "mocha --compilers js:babel-register source/**/**/**/**/*.test.js source/**/**/*.test.js ",
+    "mochatest": "mocha --compilers js:babel-register $(find source -name '*test.js')",
     "test": "yarn run migrate && yarn run mochatest",
     "migrate": "node ./node_modules/.bin/knex --knexfile source/dataServices/database/knexfile.js migrate:latest",
     "migrate:make": "node ./node_modules/.bin/knex --knexfile source/dataServices/database/knexfile.js migrate:make",

@@ -4,8 +4,8 @@ const globalState = {
 
   subscribers: [],
 
-  set(stateUpdates) {
-    Object.assign(stateStorage, stateUpdates)
+  set( stateUpdates ) {
+    Object.assign( stateStorage, stateUpdates )
     this.passStateToSubscribers()
   },
 
@@ -13,23 +13,23 @@ const globalState = {
     return stateStorage
   },
 
-  subscribe(subscriber) {
-    this.subscribers.push(subscriber)
+  subscribe( subscriber ) {
+    this.subscribers.push( subscriber )
   },
 
-  unsubscribe(subscriber) {
+  unsubscribe( subscriber ) {
     this.subscribers = this.subscribers
-      .filter(sub => sub !== subscriber)
+      .filter( sub => sub !== subscriber )
   },
 
   passStateToSubscribers() {
-    if (this.scheduledTrigger) {
+    if ( this.scheduledTrigger ) {
       return
     }
     this.scheduledTrigger = setTimeout( () => {
       delete this.scheduledTrigger
-      this.subscribers.forEach(subscriber => {
-        subscriber(stateStorage)
+      this.subscribers.forEach( subscriber => {
+        subscriber( stateStorage )
       })
     })
   }
