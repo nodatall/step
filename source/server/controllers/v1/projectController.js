@@ -24,7 +24,7 @@ const handleGetCouldDosByProjectId = ( request, response ) => {
     .catch( error => {
       console.log( chalk.red('There was an error in handleGetCouldDosByProjectId: ')) // eslint-disable-line no-console
       console.trace(error) // eslint-disable-line no-console
-      response.status( 400 ).send( { Error: error } )
+      response.status( 400 ).json( { Error: error } )
     })
 }
 
@@ -42,7 +42,7 @@ const handleNewProject = ( request, response ) => {
     .catch( error => {
       console.log( chalk.red('There was an error in handleNewProject: ')) // eslint-disable-line no-console
       console.trace(error) // eslint-disable-line no-console
-      response.status( 400 ).send( { Error: error } )
+      response.status( 400 ).json( { Error: error } )
     })
 
 }
@@ -59,7 +59,7 @@ const handleEditProject = ( request, response ) => {
         response.json( result )
       }
     })
-    .catch( error => response.status( 400 ).send( { Error: error } ))
+    .catch( error => response.status( 400 ).json( { Error: error } ))
 }
 
 const handleDeleteProject = ( request, response ) => {
@@ -76,7 +76,7 @@ const handleDeleteProject = ( request, response ) => {
     .catch( error => {
       console.log( chalk.red('There was an error in deleteProject: ')) // eslint-disable-line no-console
       console.trace(error) // eslint-disable-line no-console
-      response.status( 400 ).send( { Error: error } )
+      response.status( 400 ).json( { Error: error } )
     })
 
 }
@@ -95,7 +95,7 @@ const handleGetProjectsByUserId = ( request, response ) => {
     .catch( error => {
       console.log( chalk.red('There was an error in handleGetProjectsByUserId: ')) // eslint-disable-line no-console
       console.trace(error) // eslint-disable-line no-console
-      response.status( 400 ).send( { Error: error } )
+      response.status( 400 ).json( { Error: error } )
     })
 }
 

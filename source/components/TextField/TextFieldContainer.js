@@ -3,6 +3,7 @@ import axios from 'axios'
 import TextFieldPresentation from './TextFieldPresentation'
 import TextFieldInputPresentation from './TextFieldInputPresentation'
 import globalState from '../globalState'
+import componentErrorHandler from '../componentErrorHandler'
 
 export default class TextFieldContainer extends Component {
   constructor(props) {
@@ -40,6 +41,7 @@ export default class TextFieldContainer extends Component {
         globalState.set({ [type]: updatedState })
         this.setState({ editing: false })
       })
+      .catch( error => componentErrorHandler('TextFieldContainer', error ) )
     }
   }
 
