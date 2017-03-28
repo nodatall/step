@@ -40,17 +40,19 @@
     "react-dom": "^15.4.2",
     "react-router": "^3.0.2",
     "webpack": "^2.2.1",
-    "webpack-error-notification": "^0.1.7"
+    "webpack-error-notification": "^0.1.7",
+    "winston": "^2.3.1"
   },
   "scripts": {
     "begin": "yarn run server & yarn run webpack & yarn run sass",
     "server": "nodemon --exec babel-node source/server/server.js",
     "webpack": "webpack --colors --progress -w",
     "sass": "node-sass source/index.scss public/main.css -w",
-    "test": "yarn run migrate && yarn run mochatest && yarn run report",
-    "migrate": "node ./node_modules/.bin/knex --knexfile source/dataServices/database/knexfile.js migrate:latest",
+    "test": "yarn run migrate:test && yarn run mochatest && yarn run report",
     "mochatest": "nyc --reporter=lcov mocha --compilers js:babel-register $(find source -name '*test.js')",
     "report": "nyc report",
+    "migrate": "node ./node_modules/.bin/knex --knexfile source/dataServices/database/knexfile.js migrate:latest",
+    "migrate:test": "NODE_ENV=test node ./node_modules/.bin/knex --knexfile source/dataServices/database/knexfile.js migrate:latest",
     "migrate:make": "node ./node_modules/.bin/knex --knexfile source/dataServices/database/knexfile.js migrate:make",
     "migrate:rollback": "node ./node_modules/.bin/knex --knexfile source/dataServices/database/knexfile.js migrate:rollback",
     "lint": "eslint source/**"
