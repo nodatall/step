@@ -1,9 +1,10 @@
 import { expect, chai } from '../../../../../configuration/testSetup'
 import server from '../../../server'
+import { mockProjectData } from '../../../../testUtilities/mockDatabaseTestData'
 import {
   withThreeCouldDos,
   withThreeProjects
-} from '../../../../dataServices/database/testsHelper'
+} from '../../../../testUtilities/testsHelper'
 
 describe( 'couldDo routes', () => {
 
@@ -36,14 +37,14 @@ describe( 'couldDo routes', () => {
     it( 'should return created project', () =>
       chai.request( server )
         .post( '/project/new' )
-        .send({ text: 'learn workman-p', user_id: 1, })
-        .then( response => expect( response.body.text ).to.equal( 'learn workman-p' ) )
+        .send( mockProjectData.fakeProject3 )
+        .then( response => expect( response.body.text ).to.equal( 'dreaming' ) )
     )
 
     it( 'should throw an error if supplied invalid attributes', () =>
       chai.request( server )
         .post( '/project/new' )
-        .send({ backpain: 'not rad', user_id: 'ten thousand' })
+        .send( mockProjectData.fakeProject3 )
         .catch( error => expect( error ).to.be.an.instanceof( Error ))
     )
 
@@ -56,21 +57,21 @@ describe( 'couldDo routes', () => {
       it( 'should return the edited project', () =>
         chai.request( server )
           .post( '/project/edit/77' )
-          .send({ text: 'juggling' })
-          .then( response => expect( response.body.text ).to.equal( 'juggling' ))
+          .send( mockProjectData.fakeEdit )
+          .then( response => expect( response.body.text ).to.equal( 'snoozing' ))
       )
 
       it( 'should throw an error if no project with given id is found', () =>
         chai.request( server )
           .post( '/project/edit/777777' )
-          .send({ text: 'stretching' })
+          .send( mockProjectData.fakeEdit )
           .catch( error => expect( error ).to.be.an.instanceof( Error ))
       )
 
       it( 'should throw an error if given invalid attributes', () =>
         chai.request( server )
           .post( '/project/edit/77' )
-          .send({ backpain: 'not rad', user_id: 'ten thousand' })
+          .send( mockProjectData.invalidProject )
           .catch( error => expect( error ).to.be.an.instanceof( Error ))
       )
 

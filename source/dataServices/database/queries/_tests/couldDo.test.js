@@ -1,6 +1,6 @@
 import { expect } from '../../../../../configuration/testSetup'
 import { getCouldDoById, getCouldDosByProjectId } from '../couldDo'
-import { withThreeCouldDos } from '../../testsHelper'
+import { withThreeCouldDos } from '../../../../testUtilities/testsHelper'
 
 describe( 'couldDo queries', () => {
 

@@ -1,6 +1,6 @@
 import { expect } from '../../../../../configuration/testSetup'
 import { getProjectById, getProjectsByUserId } from '../project'
-import { withThreeProjects } from '../../testsHelper'
+import { withThreeProjects } from '../../../../testUtilities/testsHelper'
 
 describe( 'project queries', () => {
 
