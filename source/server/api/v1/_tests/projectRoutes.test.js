@@ -44,7 +44,7 @@ describe( 'couldDo routes', () => {
     it( 'should throw an error if supplied invalid attributes', () =>
       chai.request( server )
         .post( '/project/new' )
-        .send( mockProjectData.fakeProject3 )
+        .send( mockProjectData.invalidProject )
         .catch( error => expect( error ).to.be.an.instanceof( Error ))
     )
 
