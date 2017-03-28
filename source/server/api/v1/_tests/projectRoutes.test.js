@@ -7,13 +7,13 @@ import {
 
 describe( 'couldDo routes', () => {
 
-  context( '/project/:id/could-dos', () => {
+  context( '/project/:id/could-do', () => {
 
     withThreeCouldDos( () => {
 
       it( 'should get all could-dos for a project id', () =>
         chai.request( server )
-          .get( '/project/1/could-dos' )
+          .get( '/project/1/could-do' )
           .then( response => {
             const couldDos = response.body
             expect( couldDos.length ).to.equal( 2 )
@@ -24,7 +24,7 @@ describe( 'couldDo routes', () => {
 
       it( 'should throw an error if no project with given id is found', () =>
         chai.request( server )
-          .post( '/project/198/could-dos' )
+          .get( '/project/198/could-do' )
           .catch( error => expect( error ).to.be.an.instanceof( Error ))
       )
 

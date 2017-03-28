@@ -1,64 +1,28 @@
-import chalk from 'chalk'
 import {
   newCouldDo,
   editCouldDo,
   deleteCouldDo
 } from '../../../dataServices/database/commands/couldDo'
+import { handleResult, handleError } from '../../serverErrorHandler'
 
-const handleNewCouldDo = ( request, response ) => {
-  const attributes = request.body
-
-  return newCouldDo( attributes )
-    .then( result => {
-      if ( result instanceof Error ) {
-        throw new Error( result )
-      } else {
-        response.json( result )
-      }
-    })
-    .catch( error => {
-      console.log( chalk.red('There was an error in handleNewCouldDo: ')) // eslint-disable-line no-console
-      console.trace(error) // eslint-disable-line no-console
-      response.status( 400 ).json( { Error: error } )
-    })
-}
+const handleNewCouldDo = ( request, response ) =>
+  newCouldDo( request.body )
+    .then( result => handleResult( result, response ) )
+    .catch( error => handleError( error, response, 'handleNewCouldDo' ) )
 
 const handleEditCouldDo = ( request, response ) => {
   const attributes = request.body
   const couldDoId = request.params.id
 
   return editCouldDo( couldDoId, attributes )
-    .then( result => {
-      if ( result instanceof Error ) {
-        throw new Error( result )
-      } else {
-        response.json( result )
-      }
-    })
-    .catch( error => {
-      console.log( chalk.red('There was an error in handleEditCouldDo: ')) // eslint-disable-line no-console
-      console.trace(error) // eslint-disable-line no-console
-      response.status( 400 ).json( { Error: error } )
-    })
+    .then( result => handleResult( result, response ) )
+    .catch( error => handleError( error, response, 'editCouldDo' ) )
 }
 
-const handleDeleteCouldDo = ( request, response ) => {
-  const couldDoId = request.params.id
-
-  return deleteCouldDo( couldDoId )
-    .then( result => {
-      if ( result instanceof Error ) {
-        throw new Error( result )
-      } else {
-        response.json( result )
-      }
-    })
-    .catch( error => {
-      console.log( chalk.red('There was an error in handleDeleteCouldDo: ')) // eslint-disable-line no-console
-      console.trace(error) // eslint-disable-line no-console
-      response.status( 400 ).json( { Error: error } )
-    })
-}
+const handleDeleteCouldDo = ( request, response ) =>
+  deleteCouldDo( request.params.id )
+    .then( result => handleResult( result, response ) )
+    .catch( error => handleError( error, response, 'handleDeleteCouldDo' ) )
 
 export {
   handleNewCouldDo,
