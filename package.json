@@ -48,7 +48,7 @@
     "server": "nodemon --exec babel-node source/server/server.js",
     "webpack": "webpack --colors --progress -w",
     "sass": "node-sass source/index.scss public/main.css -w",
-    "test": "yarn run migrate:test && yarn run mochatest && yarn run report",
+    "test": "yarn run migrate:test && yarn run mochatest",
     "mochatest": "nyc --reporter=lcov mocha --compilers js:babel-register $(find source -name '*test.js')",
     "report": "nyc report",
     "migrate": "node ./node_modules/.bin/knex --knexfile source/dataServices/database/knexfile.js migrate:latest",
