@@ -33,6 +33,7 @@
     "mocha": "^3.2.0",
     "node-sass": "^4.5.0",
     "nodemon": "^1.11.0",
+    "nyc": "^10.2.0",
     "pg-promise": "^5.6.4",
     "react": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",
@@ -42,13 +43,14 @@
     "webpack-error-notification": "^0.1.7"
   },
   "scripts": {
+    "begin": "yarn run server & yarn run webpack & yarn run sass",
+    "server": "nodemon --exec babel-node source/server/server.js",
     "webpack": "webpack --colors --progress -w",
     "sass": "node-sass source/index.scss public/main.css -w",
-    "server": "nodemon --exec babel-node source/server/server.js",
-    "begin": "yarn run server & yarn run webpack & yarn run sass",
-    "mochatest": "mocha --compilers js:babel-register $(find source -name '*test.js')",
-    "test": "yarn run migrate && yarn run mochatest",
+    "test": "yarn run migrate && yarn run mochatest && yarn run report",
     "migrate": "node ./node_modules/.bin/knex --knexfile source/dataServices/database/knexfile.js migrate:latest",
+    "mochatest": "nyc --reporter=lcov mocha --compilers js:babel-register $(find source -name '*test.js')",
+    "report": "nyc report",
     "migrate:make": "node ./node_modules/.bin/knex --knexfile source/dataServices/database/knexfile.js migrate:make",
     "migrate:rollback": "node ./node_modules/.bin/knex --knexfile source/dataServices/database/knexfile.js migrate:rollback",
     "lint": "eslint source/**"

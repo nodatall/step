@@ -4,3 +4,5 @@ npm-debug.log
 public/index.js
 public/main.css
 .env
+.nyc_output
+coverage
