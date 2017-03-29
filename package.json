@@ -55,6 +55,7 @@
     "migrate:test": "NODE_ENV=test node ./node_modules/.bin/knex --knexfile source/dataServices/database/knexfile.js migrate:latest",
     "migrate:make": "node ./node_modules/.bin/knex --knexfile source/dataServices/database/knexfile.js migrate:make",
     "migrate:rollback": "node ./node_modules/.bin/knex --knexfile source/dataServices/database/knexfile.js migrate:rollback",
-    "lint": "eslint source/**"
+    "lint": "eslint source/**",
+    "db:setup": "source databaseSetup.sh"
   }
 }

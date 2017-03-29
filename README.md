@@ -22,18 +22,8 @@ $ brew install terminal-notifier
 
 ### Setup Database
 
-###### Install Postgres
-```sh
-$ brew install postgresql
-$ brew tap homebrew/services
-$ brew services start postgresql
 ```
-
-###### Create and migrate database
-```sh
-$ createdb step_test
-$ createdb step_development
-$ yarn migrate
+$ yarn db:setup
 ```
 
 ### Scripts
