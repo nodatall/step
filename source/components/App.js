@@ -1,6 +1,6 @@
 import React from 'react'
 import { Router, Route, browserHistory } from 'react-router'
-import ProjectListContainer from './Projects/ProjectListContainer'
+import ProjectListContainer from './Projects'
 
 const App = () => (
   <Router history={ browserHistory }>

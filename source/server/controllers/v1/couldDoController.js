@@ -2,7 +2,7 @@ import {
   newCouldDo,
   editCouldDo,
   deleteCouldDo
-} from '../../../dataServices/database/commands/couldDo'
+} from '../../../dataServices/database/commands'
 import { handleResult, handleError } from '../../serverErrorHandler'
 
 const handleNewCouldDo = ( request, response ) =>

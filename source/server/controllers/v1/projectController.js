@@ -1,12 +1,12 @@
 import {
-  getCouldDosByProjectId
-} from '../../../dataServices/database/queries/couldDo'
+  getCouldDosByProjectId,
+  getProjectsByUserId
+} from '../../../dataServices/database/queries'
 import {
   newProject,
   editProject,
   deleteProject
-} from '../../../dataServices/database/commands/project'
-import { getProjectsByUserId } from '../../../dataServices/database/queries/project'
+} from '../../../dataServices/database/commands'
 import { handleResult, handleError } from '../../serverErrorHandler'
 
 const handleGetCouldDosByProjectId = ( request, response ) =>

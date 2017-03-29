@@ -2,15 +2,13 @@ import express from 'express'
 import {
   handleNewCouldDo,
   handleEditCouldDo,
-  handleDeleteCouldDo
-} from '../../controllers/v1/couldDoController'
-import {
+  handleDeleteCouldDo,
   handleGetCouldDosByProjectId,
   handleNewProject,
   handleEditProject,
   handleDeleteProject,
   handleGetProjectsByUserId
- } from '../../controllers/v1/projectController'
+} from '../../controllers/v1'
 
 const router = express()
 
