@@ -1,6 +1,6 @@
 import { expect } from '../../../../../configuration/testSetup'
 import { newCouldDo, editCouldDo, deleteCouldDo } from '../couldDo'
-import { getCouldDoById } from '../../queries/couldDo'
+import { getCouldDoById } from '../../queries'
 import { mockCouldDoData } from '../../../../testUtilities/mockDatabaseTestData'
 import { withThreeCouldDos } from '../../../../testUtilities/testsHelper'
 

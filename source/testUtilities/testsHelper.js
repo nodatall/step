@@ -1,5 +1,4 @@
-import { newCouldDo } from '../dataServices/database/commands/couldDo'
-import { newProject } from '../dataServices/database/commands/project'
+import { newCouldDo, newProject } from '../dataServices/database/commands'
 import { mockCouldDoData, mockProjectData } from './mockDatabaseTestData'
 
 const withThreeCouldDos = callback => {
