@@ -1,5 +1,5 @@
 node_modules
-yarn.lock
+yarn-error.log
 npm-debug.log
 public/index.js
 public/main.css
