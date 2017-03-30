@@ -6,7 +6,7 @@ import {
   withThreeProjects
 } from '../../../../testUtilities/testsHelper'
 
-describe( 'couldDo routes', () => {
+describe( 'project routes', () => {
 
   context( '/project/:id/could-do', () => {
 

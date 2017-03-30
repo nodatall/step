@@ -9,6 +9,7 @@ import {
   handleDeleteProject,
   handleGetProjectsByUserId
 } from '../../controllers/v1'
+import handleSendApp from '../../controllers/v1/appController'
 
 const router = express()
 
@@ -21,6 +22,8 @@ router.post( '/project/new', handleNewProject )
 router.post( '/project/edit/:id', handleEditProject )
 router.post( '/project/delete/:id', handleDeleteProject )
 
-router.get( '/user/:id/projects', handleGetProjectsByUserId)
+router.get( '/user/:id/projects', handleGetProjectsByUserId )
+
+router.get( '/', handleSendApp )
 
 export default router

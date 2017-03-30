@@ -2,7 +2,6 @@
 
 import '../../configuration/environment'
 import express from 'express'
-import path from 'path'
 import chalk from 'chalk'
 import bodyParser from 'body-parser'
 import router from './api/v1/routes'
@@ -15,12 +14,8 @@ server.use( express.static( 'public' ))
 server.use( bodyParser.json() )
 server.use( router )
 
-server.get('*', ( request, response ) =>
-  response.sendFile( path.join( __dirname, '/../../public/index.html' ) )
-)
-
 server.listen( server.get('port'), () =>
-  console.log( chalk.magenta( '-:: Listening on port 1337 ::-' ) )
+  console.log( chalk.magenta( '\n -:: Server listening on port 1337 ::-' ) )
 )
 
 export default server

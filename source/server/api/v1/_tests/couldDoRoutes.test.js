@@ -1,8 +1,7 @@
-/* eslint-disable */
 import { expect, chai } from '../../../../../configuration/testSetup'
-import server from '../../../server'
 import { mockCouldDoData } from '../../../../testUtilities/mockDatabaseTestData'
 import { withThreeCouldDos } from '../../../../testUtilities/testsHelper'
+import server from '../../../server'
 
 describe( 'couldDo routes', () => {
 

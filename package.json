@@ -53,7 +53,7 @@
     "webpack": "webpack --colors --progress -w",
     "sass": "node-sass source/index.scss public/main.css -w",
     "test": "yarn run migrate:test && yarn run mochatest",
-    "mochatest": "nyc --reporter=lcov mocha --compilers js:babel-register $(find source -name '*test.js') --require jsdom-global/register",
+    "mochatest": "nyc --cache --reporter=lcov mocha --compilers js:babel-register $(find source -name '*test.js') --require jsdom-global/register",
     "report": "nyc report",
     "report:web": "open coverage/lcov-report/index.html",
     "migrate": "node ./node_modules/.bin/knex --knexfile source/dataServices/database/knexfile.js migrate:latest",
@@ -61,6 +61,13 @@
     "migrate:make": "node ./node_modules/.bin/knex --knexfile source/dataServices/database/knexfile.js migrate:make",
     "migrate:rollback": "node ./node_modules/.bin/knex --knexfile source/dataServices/database/knexfile.js migrate:rollback",
     "lint": "eslint source/**",
-    "db:setup": "source databaseSetup.sh"
+    "db:setup": "source scripts/databaseSetup.sh"
+  },
+  "nyc": {
+    "exclude": [
+      "source/dataServices/database/queries/index.js",
+      "source/dataServices/database/commands/index.js",
+      "source/server/controllers/v1/index.js"
+    ]
   }
 }
