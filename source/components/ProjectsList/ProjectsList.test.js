@@ -4,7 +4,6 @@ import moxios from 'moxios'
 import { shallow, mount } from 'enzyme'
 import { expect } from '../../../configuration/testSetup'
 import ProjectListContainer from './ProjectListContainer'
-import componentErrorHandler from '../componentErrorHandler'
 import globalState from '../globalState'
 
 describe( '<ProjectListContainer />', () => {
@@ -25,7 +24,7 @@ describe( '<ProjectListContainer />', () => {
     })
 
     it( 'calls componentDidMount', () => {
-      expect(ProjectListContainer.prototype.componentDidMount.calledOnce).to.equal(true)
+      expect( ProjectListContainer.prototype.componentDidMount.calledOnce ).to.equal( true )
     })
 
     it( 'it makes http request and sets state to response', done =>
@@ -35,7 +34,7 @@ describe( '<ProjectListContainer />', () => {
           status: 200,
           response: fakeData
         }).then( () => {
-          expect(wrapper.state().projects).to.eql(fakeData)
+          expect( wrapper.state().projects ).to.eql( fakeData )
           done()
         }).catch(done)
       })
@@ -64,21 +63,21 @@ describe( '<ProjectListContainer />', () => {
           status: 400,
           response: 'fakeError'
         }).then( () => {
-          expect(errorStub.calledTwice).to.equal(true)
+          expect( errorStub.calledTwice ).to.equal( true )
           errorStub.restore()
           done()
-        }).catch(done)
+        }).catch( done )
       })
     )
 
     it( 'checks if the component will unmount', () => {
       wrapper.unmount()
-      expect(unmountSpy.calledOnce).to.equal(true)
+      expect( unmountSpy.calledOnce ).to.equal( true )
     })
   })
 
   it( 'renders the child component', () =>
-      expect(shallow( <ProjectListContainer /> ).find('ProjectListPresentation').length).to.equal(1)
+      expect(shallow( <ProjectListContainer /> ).find( 'ProjectListPresentation' ).length).to.equal( 1 )
     )
 
 })

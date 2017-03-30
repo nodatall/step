@@ -20,6 +20,8 @@
   "react/jsx-wrap-multilines": "off",
   "jsx-a11y/no-static-element-interactions": "off",
   "react/jsx-filename-extension": "off",
+  "one-var-declaration-per-line": "off",
+  "one-var": "off",
     "valid-jsdoc": ["error", {
       "requireReturn": true,
       "requireReturnType": true,

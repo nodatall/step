@@ -8,14 +8,12 @@ export default class ProjectListContainer extends Component {
   constructor() {
     super()
     this.state = globalState.get()
-    globalState.subscribe(this.updateState)
+    globalState.subscribe( this.updateState )
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:1337/user/${this.state.userId}/projects`)
-      .then( body => {
-        globalState.set({ projects: body.data })
-      })
+    axios.get( `http://localhost:1337/user/${this.state.userId}/projects` )
+      .then( body => globalState.set({ projects: body.data }) )
       .catch( error => componentErrorHandler( 'ProjectListContainer', error ) )
   }
 
