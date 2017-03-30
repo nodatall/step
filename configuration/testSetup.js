@@ -8,12 +8,12 @@ process.env.NODE_ENV = 'test'
 chai.use( chaiHttp )
 
 beforeEach( () => {
+  knex.truncateAllTables()
   global.document = jsdom('')
   global.window = document.defaultView
   global.navigator = {
     userAgent: 'node.js'
   }
-  knex.truncateAllTables()
 })
 
 export { knex, chai, expect }

@@ -11,7 +11,7 @@ export default class ProjectListContainer extends Component {
     globalState.subscribe(this.updateState)
   }
 
-  componentDidMount = () => {
+  componentDidMount() {
     axios.get(`http://localhost:1337/user/${this.state.userId}/projects`)
       .then( body => {
         globalState.set({ projects: body.data })
@@ -19,7 +19,7 @@ export default class ProjectListContainer extends Component {
       .catch( error => componentErrorHandler( 'ProjectListContainer', error ) )
   }
 
-  componentWillUnmount = () => globalState.unsubscribe(this.updateState)
+  componentWillUnmount() { globalState.unsubscribe(this.updateState) }
 
   updateState = newState => this.setState( newState )
 
