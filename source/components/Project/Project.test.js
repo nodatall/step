@@ -12,5 +12,4 @@ describe( '<ProjectPresentation />', () => {
   it( 'renders the second child component', () =>
     expect( shallow( <ProjectPresentation /> ).find( 'IconPresentation' ).length ).to.equal( 1 )
   )
-
 })
