@@ -9,7 +9,7 @@ const googlePassportStrategy = new GoogleStrategy({
   callbackURL: 'http://localhost:1337/google/auth/callback',
   passReqToCallback: true
 },
-  ( request, accessToken, refreshToken, profile, done ) => {
+  ( request, accessToken, refreshToken, profile, done ) =>
     getUserByOAuthID( profile.id )
       .then( user => {
         if ( !user.length ) {

@@ -1,9 +1,9 @@
 import React from 'react'
+import sinon from 'sinon'
+import moxios from 'moxios'
 import { shallow, mount } from 'enzyme'
 import { expect } from '../../../configuration/testSetup'
 import TextFieldContainer from './TextFieldContainer'
-import moxios from 'moxios'
-import sinon from 'sinon'
 
 describe('<TextFieldContainer />', () => {
 
@@ -18,7 +18,7 @@ describe('<TextFieldContainer />', () => {
 
   it( 'calls editInput function', () => {
     const spy = sinon.spy(TextFieldContainer.prototype, 'editInput')
-    let wrapper = mount( <TextFieldContainer /> )
+    const wrapper = mount( <TextFieldContainer /> )
 
     wrapper.find('TextFieldPresentation').simulate('click')
     const cows = wrapper.find('TextFieldInputPresentation')

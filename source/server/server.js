@@ -5,12 +5,12 @@ import chalk from 'chalk'
 import bodyParser from 'body-parser'
 import router from './api/v1/routes'
 import passport from 'passport'
-import morgan from 'morgan'
+import logger from 'morgan'
 import googlePassportStrategy from './oauth'
 
 const server = express()
 
-server.use( morgan('dev') )
+if (process.env.NODE_ENV !== 'test') server.use( logger( 'dev' ) )
 
 server.set( 'port', process.env.PORT || '1337' )
 server.use( express.static( 'public' ))
