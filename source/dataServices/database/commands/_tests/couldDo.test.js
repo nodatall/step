@@ -12,13 +12,13 @@ describe( 'couldDo commands', () => {
 
     it( 'returns created could-do', () =>
       newCouldDo( data.fakeCouldDo1 )
-        .then( couldDo => {
-          expect( couldDo ).to.be.an( 'object' )
-          expect( couldDo.text ).to.equal( 'eat breakfast' )
-          return couldDo.id
-        })
-        .then( getCouldDoById )
-        .then( couldDo => expect( couldDo.text ).to.equal( 'eat breakfast' ))
+      .then( couldDo => {
+        expect( couldDo ).to.be.an( 'object' )
+        expect( couldDo.text ).to.equal( 'eat breakfast' )
+        return couldDo.id
+      })
+      .then( getCouldDoById )
+      .then( couldDo => expect( couldDo.text ).to.equal( 'eat breakfast' ))
     )
 
     it( 'throws an error if given invalid attributes', () =>

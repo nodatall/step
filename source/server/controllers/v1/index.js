@@ -13,3 +13,11 @@ export {
   handleGetProjectsByUserId
 }
 from './projectController'
+
+export { default as handleSendApp } from './appController.js'
+
+export {
+  getOAuthPermissionCode,
+  handleSuccessfulAuthentication,
+  handleLogOut
+} from './passportController'

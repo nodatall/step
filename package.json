@@ -37,6 +37,8 @@
     "node-sass": "^4.5.0",
     "nodemon": "^1.11.0",
     "nyc": "^10.2.0",
+    "passport": "^0.3.2",
+    "passport-google-oauth2": "^0.1.6",
     "pg-promise": "^5.6.4",
     "react": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",
