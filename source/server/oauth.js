@@ -4,9 +4,9 @@ import { createRecord } from '../dataServices/database/commands/utilities'
 import '../../configuration/environment'
 
 const googlePassportStrategy = new GoogleStrategy({
-  clientID: process.env.GOOGLE_CONSUMER_KEY,
+  clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
-  callbackURL: 'http://127.0.0.1:1337/google/auth/callback',
+  callbackURL: 'http://localhost:1337/google/auth/callback',
   passReqToCallback: true
 },
   ( request, accessToken, refreshToken, profile, done ) => {

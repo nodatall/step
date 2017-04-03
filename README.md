@@ -20,6 +20,29 @@ $ yarn
 $ brew install terminal-notifier
 ```
 
+###### Set up Google OAuth in .env file  
+1.  Go to [Google API Manager](https://console.cloud.google.com/apis/library?project=tactile-atlas-163521)
+2. Navigate to Library from menu on left side column
+3. Under Social APIs, choose Google+ API
+4. Create new (or use existing) project
+5. At the top of the page, click enable to enable the API for your selected project
+6. Navigate to 'Credentials' from left side menu
+7. Select OAuth client ID from 'create credentials' dropdown
+8. Ensure Email address is correct and click Save button
+9. On the create Credentials dropdown menu select OAuth client ID
+10. Select web application and supply the redirect URI with: http://localhost:1337/google/auth/callback
+11. Click Create button twice
+12. Copy client ID and client secret
+13. Create .env file:
+```
+$ touch .env
+```
+14. Store client ID and client secret in .env:
+```
+GOOGLE_CLIENT_ID=[user's client ID]
+CLIENT_SECRET=[user's client secret]
+```
+
 ### Setup Database
 
 ```
