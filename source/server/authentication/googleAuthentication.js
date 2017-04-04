@@ -20,7 +20,6 @@ const googlePassportStrategy = new GoogleStrategy({
             created_at: new Date(),
             refreshToken
           }
-
           createRecord( 'users', attributes )
             .then( newUser => done( null, newUser ) )
 
