@@ -1,5 +1,5 @@
-import { newCouldDo, newProject } from '../dataServices/database/commands'
-import { mockCouldDoData, mockProjectData } from './mockDatabaseTestData'
+import { newCouldDo, newProject, newUser } from '../dataServices/database/commands'
+import { mockCouldDoData, mockProjectData, mockUserData } from './mockDatabaseTestData'
 
 const withThreeCouldDos = callback => {
   context( 'when there are three couldDos in the database', () => {
@@ -27,4 +27,17 @@ const withThreeProjects = callback => {
   })
 }
 
-export { withThreeCouldDos, withThreeProjects }
+const withThreeUsers = callback => {
+  context( 'when there are three users in the database', () => {
+    beforeEach( () =>
+      Promise.all([
+        newUser(mockUserData.fakeUser1),
+        newUser(mockUserData.fakeUser2),
+        newUser(mockUserData.fakeUser3)
+      ])
+    )
+    callback()
+  })
+}
+
+export { withThreeCouldDos, withThreeProjects, withThreeUsers }

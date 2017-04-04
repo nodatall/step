@@ -1,6 +1,6 @@
 import GoogleStrategy from 'passport-google-oauth2'
 import { getUserByOAuthID } from '../../dataServices/database/queries'
-import { createRecord } from '../../dataServices/database/commands'
+import { newUser } from '../../dataServices/database/commands'
 import '../../../configuration/environment'
 
 const googlePassportStrategy = new GoogleStrategy({
@@ -20,8 +20,9 @@ const googlePassportStrategy = new GoogleStrategy({
             created_at: new Date(),
             refreshToken
           }
-          createRecord( 'users', attributes )
-            .then( newUser => done( null, newUser ) )
+
+          newUser( attributes )
+            .then( newAuthorizedUser => done( null, newAuthorizedUser ) )
 
         } else {
           done( null, user[0] )
