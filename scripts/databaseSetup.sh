@@ -17,5 +17,5 @@ dropdb step_test ; createdb step_test
 dropdb step_development ; createdb step_development
 echo "Running knex to build database..."
 yarn migrate
-
+yarn db:seed
 echo "Done."
