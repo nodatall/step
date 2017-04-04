@@ -13,6 +13,8 @@ export default class TextFieldContainer extends Component {
       inputValue: this.props.text,
       globalState: globalState.get()
     }
+    this.toggleEditable = this.toggleEditable.bind( this )
+    this.editInput = this.editInput.bind( this )
   }
 
   toggleEditable() {
@@ -50,10 +52,10 @@ export default class TextFieldContainer extends Component {
     const TextField = this.state.editing ?
       <TextFieldInputPresentation
         value={ this.state.inputValue }
-        onChange={ this.editInput.bind(this) }
+        onChange={ this.editInput }
         onKeyUp={ this.handleKeyPress }
       /> :
-      <TextFieldPresentation text={ text } onClick={ this.toggleEditable.bind(this) } />
+      <TextFieldPresentation text={ text } onClick={ this.toggleEditable } />
 
     return <div>{ TextField }</div>
   }

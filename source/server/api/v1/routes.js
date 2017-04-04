@@ -1,11 +1,6 @@
 import express from 'express'
 import passport from 'passport'
 import {
-  getOAuthPermissionCode,
-  handleSuccessfulAuthentication,
-  handleLogOut
-} from '../../controllers/v1/passportController'
-import {
   handleNewCouldDo,
   handleEditCouldDo,
   handleDeleteCouldDo,
@@ -13,9 +8,12 @@ import {
   handleNewProject,
   handleEditProject,
   handleDeleteProject,
-  handleGetProjectsByUserId
+  handleGetProjectsByUserId,
+  handleSendApp,
+  getOAuthPermissionCode,
+  handleSuccessfulAuthentication,
+  handleLogOut
 } from '../../controllers/v1'
-import handleSendApp from '../../controllers/v1/appController'
 
 const router = express()
 

@@ -1,7 +1,7 @@
 import GoogleStrategy from 'passport-google-oauth2'
-import { getUserByOAuthID } from '../dataServices/database/queries'
-import { createRecord } from '../dataServices/database/commands'
-import '../../configuration/environment'
+import { getUserByOAuthID } from '../../dataServices/database/queries'
+import { createRecord } from '../../dataServices/database/commands'
+import '../../../configuration/environment'
 
 const googlePassportStrategy = new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
