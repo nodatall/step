@@ -6,7 +6,7 @@ import bodyParser from 'body-parser'
 import router from './api/v1/routes'
 import passport from 'passport'
 import logger from 'morgan'
-import googlePassportStrategy from './oauth'
+import googlePassportStrategy from './authentication/googleAuthentication'
 
 const server = express()
 

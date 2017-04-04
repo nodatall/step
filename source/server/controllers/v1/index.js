@@ -17,7 +17,7 @@ from './projectController'
 export { default as handleSendApp } from './appController.js'
 
 export {
-  getOAuthPermissionCode,
+  getGoogleOAuthPermissionCode,
   handleSuccessfulAuthentication,
   handleLogOut
-} from './passportController'
+} from './authorizationController'
