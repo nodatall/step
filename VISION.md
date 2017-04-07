@@ -1,5 +1,20 @@
-### Begin. Then, begin again.
-* Features
+### Vision
+- Increase motivation and productivity through simplicity and reduced anxiety
+
+- Simulate working on a large-scale team
+
+###### Provide code that is easy for future developers to contribute to:
+- Readable code
+- Names that create a story so code is self-explanatory
+- Reusable/Modular code
+- Well-organized code
+- TDD/BDD
+  - Encourages planning separate from execution
+  - Helps consider user experience
+  - Make sure code you write does what you expect it to do
+  - Go slow now to move faster later
+
+###### Features
   * Could-do list:
     * As a user I can:
       * Organize

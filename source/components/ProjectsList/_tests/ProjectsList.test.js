@@ -2,13 +2,16 @@ import React from 'react'
 import sinon from 'sinon'
 import moxios from 'moxios'
 import { shallow, mount } from 'enzyme'
-import { expect } from '../../../configuration/testSetup'
-import ProjectListContainer from './ProjectListContainer'
-import globalState from '../globalState'
+import { expect } from '../../../../configuration/testSetup'
+import ProjectListContainer from '../ProjectListContainer'
 
 describe( '<ProjectListContainer />', () => {
 
-  context( 'successful componentDidMount and check updateState', () => {
+  it( 'renders the child component', () =>
+      expect(shallow( <ProjectListContainer /> ).find( 'RowList' ).length).to.equal( 1 )
+  )
+
+  context( 'handles data from HTTP request on componentDidMount', () => {
     let wrapper, mountSpy
     const fakeData = [{ id: 1, text: 'cows' }]
 
@@ -27,7 +30,7 @@ describe( '<ProjectListContainer />', () => {
       expect( ProjectListContainer.prototype.componentDidMount.calledOnce ).to.equal( true )
     })
 
-    it( 'it makes http request and sets state to response', done =>
+    it( 'sets state using data from HTTP response', done =>
       moxios.wait( () => {
         const request = moxios.requests.mostRecent()
         request.respondWith({
@@ -41,19 +44,18 @@ describe( '<ProjectListContainer />', () => {
     )
   })
 
-  context( 'failed componentDidMount and successful componentWillUnmount', () => {
-    let wrapper, errorStub, unmountSpy
+  context( 'handles error returned from HTTP request on componentDidMount', () => {
+    let errorStub
 
     before( () => {
       moxios.install()
-      errorStub = sinon.stub( console, 'log' ).callsFake( () => '')
-      unmountSpy = sinon.spy( globalState, 'unsubscribe' )
-      wrapper = mount( <ProjectListContainer /> )
+      errorStub = sinon.stub( console, 'error' ).callsFake( () => null )
+      mount( <ProjectListContainer /> )
     })
 
     after( () => {
+      errorStub.restore()
       moxios.uninstall()
-      unmountSpy.restore()
     })
 
     it( 'it catches and responds with an error', done =>
@@ -64,20 +66,11 @@ describe( '<ProjectListContainer />', () => {
           response: 'fakeError'
         }).then( () => {
           expect( errorStub.calledTwice ).to.equal( true )
-          errorStub.restore()
           done()
         }).catch( done )
       })
     )
 
-    it( 'checks if the component will unmount', () => {
-      wrapper.unmount()
-      expect( unmountSpy.calledOnce ).to.equal( true )
-    })
   })
-
-  it( 'renders the child component', () =>
-      expect(shallow( <ProjectListContainer /> ).find( 'ProjectListPresentation' ).length).to.equal( 1 )
-    )
 
 })

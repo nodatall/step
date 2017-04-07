@@ -1,4 +1,4 @@
-const stateStorage = { userId: 1 }
+const stateStorage = { userId: 1, currentProjectId: 2, couldDos: {}, projects: [] }
 
 const globalState = {
 

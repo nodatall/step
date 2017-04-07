@@ -1,28 +1,18 @@
-import React, { Component } from 'react'
+import React from 'react'
 import axios from 'axios'
-import componentErrorHandler from '../componentErrorHandler'
-import ProjectListPresentation from './ProjectListPresentation'
-import globalState from '../globalState'
+import componentErrorHandler from '../utilities/componentErrorHandler'
+import GlobalStateComponent from '../utilities/GlobalStateComponent'
+import RowList from '../reusable/Row/RowList'
+import globalState from '../utilities/globalState'
 
-export default class ProjectListContainer extends Component {
-  constructor() {
-    super()
-    this.state = globalState.get()
-    globalState.subscribe( this.updateState )
-  }
-
+export default class ProjectListContainer extends GlobalStateComponent {
   componentDidMount() {
     axios.get( `http://localhost:1337/user/${this.state.userId}/projects` )
       .then( body => globalState.set({ projects: body.data }) )
-
-      .catch( error => componentErrorHandler( 'ProjectListContainer', error ) )
+      .catch( componentErrorHandler( 'ProjectListContainer' ) )
   }
 
-  componentWillUnmount() { globalState.unsubscribe(this.updateState) }
-
-  updateState = newState => this.setState( newState )
-
   render() {
-    return <ProjectListPresentation projects={ this.state.projects } />
+    return <RowList items={ this.state.projects } type='project' />
   }
 }
