@@ -19,8 +19,11 @@ const handleLogOut = ( request, response ) => {
   response.redirect( '/' )
 }
 
+const handleGoogleAuthentication = passport.authenticate( 'google', { failureRedirect: '/' } )
+
 export {
   getGoogleOAuthPermissionCode,
   handleSuccessfulAuthentication,
-  handleLogOut
+  handleLogOut,
+  handleGoogleAuthentication
 }

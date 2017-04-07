@@ -1,5 +1,4 @@
 import express from 'express'
-import passport from 'passport'
 import {
   handleNewCouldDo,
   handleEditCouldDo,
@@ -12,7 +11,8 @@ import {
   handleSendApp,
   getGoogleOAuthPermissionCode,
   handleSuccessfulAuthentication,
-  handleLogOut
+  handleLogOut,
+  handleGoogleAuthentication
 } from '../../controllers/v1'
 
 const router = express()
@@ -29,11 +29,8 @@ router.post( '/project/delete/:id', handleDeleteProject )
 router.get( '/user/:id/projects', handleGetProjectsByUserId )
 router.get( '/user/:id/logout', handleLogOut )
 
-router.get( '/login', getGoogleOAuthPermissionCode )
-router.get( '/google/auth/callback',
-  passport.authenticate( 'google', { failureRedirect: '/' } ),
-  handleSuccessfulAuthentication
-)
+router.get( '/auth/google', getGoogleOAuthPermissionCode )
+router.get( '/google/auth/callback', handleGoogleAuthentication, handleSuccessfulAuthentication )
 
 router.get( '/', handleSendApp )
 

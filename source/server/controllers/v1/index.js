@@ -19,5 +19,6 @@ export { default as handleSendApp } from './appController.js'
 export {
   getGoogleOAuthPermissionCode,
   handleSuccessfulAuthentication,
-  handleLogOut
+  handleLogOut,
+  handleGoogleAuthentication
 } from './authorizationController'

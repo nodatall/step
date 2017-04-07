@@ -7,7 +7,7 @@ describe( 'authentication', () => {
 
     it( 'response should redirect', () =>
       chai.request( server )
-        .get( '/login' )
+        .get( '/auth/google' )
         .redirects( 0 )
         .then( Promise.reject )
         .catch( ({ response }) => {

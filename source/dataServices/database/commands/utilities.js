@@ -1,7 +1,7 @@
 import knex from '../knex'
 
 const firstRecord = records => {
-  if ( records.length === 0 ) {
+  if ( !records.length ) {
     throw new Error('No record returned by firstRecord')
   } else {
     return records[0]
@@ -9,7 +9,10 @@ const firstRecord = records => {
 }
 
 const createRecord = ( table, attributes ) =>
-  knex.table( table ).insert( attributes ).returning('*')
+  knex
+    .table( table )
+    .insert( attributes )
+    .returning('*')
     .then(firstRecord)
     .catch( error => error )
 
@@ -28,7 +31,7 @@ const deleteRecord = ( table, id ) =>
     .where( 'id', id )
     .del()
     .then( deleteCount => {
-      if ( deleteCount === 0 ) {
+      if ( !deleteCount ) {
         throw new Error( `deleteRecord: no record exists with id ${id}` )
       } else {
         return deleteCount

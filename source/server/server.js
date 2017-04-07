@@ -1,12 +1,12 @@
 /* eslint-disable */
 import '../../configuration/environment'
+import './authentication'
 import express from 'express'
 import chalk from 'chalk'
 import bodyParser from 'body-parser'
 import router from './api/v1/routes'
 import passport from 'passport'
 import logger from 'morgan'
-import googlePassportStrategy from './authentication/googleAuthentication'
 
 const server = express()
 
@@ -15,11 +15,7 @@ if (process.env.NODE_ENV !== 'test') server.use( logger( 'dev' ) )
 server.set( 'port', process.env.PORT || '1337' )
 server.use( express.static( 'public' ))
 server.use( bodyParser.json() )
-
-passport.use( googlePassportStrategy )
 server.use( passport.initialize() )
-passport.serializeUser( ( user, done ) => done( null, user ) )
-passport.deserializeUser( ( obj, done ) => done( null, obj ) )
 
 server.use( router )
 
