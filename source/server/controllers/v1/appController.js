@@ -1,6 +1,8 @@
 import path from 'path'
 
-const handleSendApp = ( request, response ) =>
-  response.sendFile( path.join( __dirname, '/../../public/index.html' ) )
+const handleSendApp = ( request, response ) => {
+  const publicPath = path.resolve( __dirname, '../../../../public' )
+  response.sendFile( ( `${publicPath}/index.html` ) )
+}
 
 export default handleSendApp

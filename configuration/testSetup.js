@@ -3,8 +3,6 @@ import chai, { expect } from 'chai'
 import chaiHttp from 'chai-http'
 import knex from '../source/dataServices/database/knex'
 
-process.env.NODE_ENV = 'test'
-
 chai.use( chaiHttp )
 
 beforeEach( () => {

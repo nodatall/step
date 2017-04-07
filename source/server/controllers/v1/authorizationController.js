@@ -1,5 +1,17 @@
 import passport from 'passport'
 
+const checkForAuthorization = ( request, response, next ) => {
+  if ( request.isAuthenticated() ) {
+    // Use this userId to check if user is allowed access to projects and couldDos
+    request.userId = request.session.passport.user
+    next()
+  } else if ( process.env.NODE_ENV === 'test' ) {
+    next()
+  } else {
+    response.redirect( '/' )
+  }
+}
+
 const getGoogleOAuthPermissionCode = passport.authenticate(
   'google',
   { scope: [
@@ -22,6 +34,7 @@ const handleLogOut = ( request, response ) => {
 const handleGoogleAuthentication = passport.authenticate( 'google', { failureRedirect: '/' } )
 
 export {
+  checkForAuthorization,
   getGoogleOAuthPermissionCode,
   handleSuccessfulAuthentication,
   handleLogOut,

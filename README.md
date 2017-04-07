@@ -16,11 +16,11 @@ $ yarn
 ```
 
 ###### Allow terminal notifications
-```
+```sh
 $ brew install terminal-notifier
 ```
 
-###### Set up Google OAuth in .env file  
+### Set up authentication with Google OAuth
 1.  Go to [Google API Manager](https://console.cloud.google.com/apis/library?project=tactile-atlas-163521)
 2. Navigate to Library from menu on left side column
 3. Under Social APIs, choose Google+ API
@@ -34,18 +34,21 @@ $ brew install terminal-notifier
 11. Click Create button twice
 12. Copy client ID and client secret
 13. Create .env file:
-```
+
+```sh
 $ touch .env
 ```
-14. Store client ID and client secret in .env:
+14. Store client ID, client secret, and session secret in .env:
+
 ```
 GOOGLE_CLIENT_ID=[user's client ID]
 CLIENT_SECRET=[user's client secret]
+SESSION_SECRET=[random string you make up]
 ```
 
 ### Setup Database
 
-```
+```sh
 $ yarn db:setup
 ```
 
@@ -69,6 +72,11 @@ $ yarn migrate:rollback
 ###### To rollback test DB
 ```sh
 $ NODE_ENV=test yarn migrate:rollback
+```
+
+###### To open coverage report in browser
+```sh
+$ yarn report:web
 ```
 
 ### Cutting a new branch

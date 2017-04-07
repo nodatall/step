@@ -14,9 +14,10 @@ export {
 }
 from './projectController'
 
-export { default as handleSendApp } from './appController.js'
+export { default as handleSendApp } from './appController'
 
 export {
+  checkForAuthorization,
   getGoogleOAuthPermissionCode,
   handleSuccessfulAuthentication,
   handleLogOut,
