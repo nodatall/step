@@ -1,6 +1,6 @@
 import Knex from 'knex'
+import '../../../configuration/environment'
 
-require('../../../configuration/environment')
 const configuration = require('./knexfile')[process.env.NODE_ENV]
 
 const knex = Knex(configuration)
@@ -13,4 +13,4 @@ knex.truncateAllTables = () =>
     knex('user_projects').truncate()
   ])
 
-export default knex
+module.exports = knex
