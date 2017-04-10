@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import globalState from './globalState'
+import globalState from '../../utilities/globalState'
 
 export default class GlobalStateComponent extends Component {
   constructor() {

@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import globalState from '../utilities/globalState'
-import GlobalStateComponent from '../utilities/GlobalStateComponent'
+import GlobalStateComponent from '../reusable/ParentClasses/GlobalStateComponent'
 import Project from './Project'
 import componentErrorHandler from '../utilities/componentErrorHandler'
 

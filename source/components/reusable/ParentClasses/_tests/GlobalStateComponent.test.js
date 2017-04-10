@@ -1,8 +1,8 @@
 import React from 'react'
 import sinon from 'sinon'
 import { mount } from 'enzyme'
-import { expect } from '../../../../configuration/testSetup'
-import globalState from '../../utilities/globalState'
+import { expect } from '../../../../../configuration/testSetup'
+import globalState from '../../../utilities/globalState'
 import GlobalStateComponent from '../GlobalStateComponent'
 
 describe( 'component utilities', () => {
