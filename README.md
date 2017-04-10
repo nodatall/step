@@ -21,10 +21,11 @@ $ brew install terminal-notifier
 ```
 
 ### Set up authentication with Google OAuth
-1.  Go to [Google API Manager](https://console.cloud.google.com/apis/library?project=tactile-atlas-163521)
+1. Go to [Google API Manager](https://console.cloud.google.com/apis/library)
+2. Select the dropdown next to the Google Cloud Platform title
+4. Create new (or use existing) project
 2. Navigate to Library from menu on left side column
 3. Under Social APIs, choose Google+ API
-4. Create new (or use existing) project
 5. At the top of the page, click enable to enable the API for your selected project
 6. Navigate to 'Credentials' from left side menu
 7. Select OAuth client ID from 'create credentials' dropdown
