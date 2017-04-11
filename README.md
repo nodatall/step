@@ -23,18 +23,20 @@ $ brew install terminal-notifier
 ### Set up authentication with Google OAuth
 1. Go to [Google API Manager](https://console.cloud.google.com/apis/library)
 2. Select the dropdown next to the Google Cloud Platform title
-4. Create new (or use existing) project
-2. Navigate to Library from menu on left side column
-3. Under Social APIs, choose Google+ API
-5. At the top of the page, click enable to enable the API for your selected project
-6. Navigate to 'Credentials' from left side menu
-7. Select OAuth client ID from 'create credentials' dropdown
-8. Ensure Email address is correct and click Save button
-9. On the create Credentials dropdown menu select OAuth client ID
-10. Select web application and supply the redirect URI with: http://localhost:1337/google/auth/callback
-11. Click Create button twice
-12. Copy client ID and client secret
-13. Create .env file:
+3. Create new (or use existing) project
+4. Click API Manager
+5. Navigate to Library from menu on left side column
+6. Under Social APIs, choose Google+ API
+7. At the top of the page, click enable to enable the API for your selected project
+8. Navigate to 'Credentials' from left side menu
+9. Select OAuth client ID from 'create credentials' dropdown
+10. Ensure Email address is correct and click Save button
+11. On the create Credentials dropdown menu select OAuth client ID
+12. Create consent screen
+13. Select web application and supply the redirect URI with: http://localhost:1337/google/auth/callback
+14. Click Create button
+15. Copy client ID and client secret
+16. Create .env file:
 
 ```sh
 $ touch .env
