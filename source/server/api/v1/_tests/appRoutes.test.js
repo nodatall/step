@@ -1,3 +1,5 @@
+import fs from 'fs'
+import path from 'path'
 import { expect, chai } from '../../../../../configuration/testSetup'
 import server from '../../../server'
 
@@ -10,11 +12,12 @@ describe( 'app routes', () => {
       chai.request( server )
         .get( '/' )
         .then( response => {
+          const pathToHTML = path.join( __dirname, '/../../../../../public/index.html' )
           const responseHTML = response.text
-          const expectedHTML = '<!DOCTYPE html>\n<html>\n  <head>\n    <link rel="stylesheet" type="text/css" href="main.css" />\n  </head>\n  <body>\n    <div id="anchor"></div>\n    <script src="index.js"></script>\n  </body>\n</html>\n'
-          expect(responseHTML).to.equal(expectedHTML)
+          const expectedHTML = fs.readFileSync( pathToHTML, 'utf8' )
+          expect( responseHTML ).to.equal( expectedHTML )
         })
-
+        .catch( error => console.error( 'error in appRoutes.test.js: ', error )) //eslint-disable-line
     })
 
   })
