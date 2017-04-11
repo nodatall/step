@@ -66,7 +66,8 @@
     "migrate:rollback": "node ./node_modules/.bin/knex --knexfile source/dataServices/database/knexfile.js migrate:rollback",
     "lint": "eslint source/**",
     "db:seed": "NODE_ENV=development node ./node_modules/.bin/knex --knexfile source/dataServices/database/knexfile.js seed:run",
-    "db:setup": "source scripts/databaseSetup.sh"
+    "db:setup": "source scripts/databaseSetup.sh",
+    "db:rebuild": "dropdb step_test && createdb step_test && dropdb step_development && createdb step_development && yarn migrate && yarn db:seed"
   },
   "nyc": {
     "exclude": [
