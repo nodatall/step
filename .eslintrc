@@ -29,5 +29,6 @@
       "requireParamDescription": true,
       "requireReturnDescription": true
     }],
+  "linebreak-style": "off",
   }
 }

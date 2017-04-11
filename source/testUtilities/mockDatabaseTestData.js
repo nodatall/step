@@ -55,36 +55,36 @@ const mockUserData = {
   fakeUser1: {
     id: 77,
     email: 'john@hallman.com',
-    oauthID: 123456789,
+    oauth_ID: 123456789,
     created_at: '2017-04-03 15:46:05.965-07',
     updated_at: null,
-    displayName: 'John',
-    refreshToken: 'a1b2c3d4e5',
+    display_name: 'John',
+    refresh_token: 'a1b2c3d4e5',
   },
   fakeUser2: {
     id: 88,
     email: 'steve@weber.com',
-    oauthID: 987654321,
+    oauth_ID: 987654321,
     created_at: '2017-04-04 15:46:05.965-07',
     updated_at: null,
-    displayName: 'Steve',
-    refreshToken: 'a1b2c3d4e5f6g7h8',
+    display_name: 'Steve',
+    refresh_token: 'a1b2c3d4e5f6g7h8',
   },
   fakeUser3: {
     id: 99,
     email: 'sylvan@nodatall.com',
-    oauthID: 999999999,
+    oauth_ID: 999999999,
     created_at: '2017-04-01 15:46:05.965-07',
     updated_at: null,
-    displayName: 'Sylvan',
-    refreshToken: 'a111111111b',
+    display_name: 'Sylvan',
+    refresh_token: 'a111111111b',
   },
   invalidUser: {
     home_address: 'Oakland',
     name: 'Jennifer'
   },
   fakeEdit: {
-    displayName: 'Batman'
+    display_name: 'Batman'
   }
 }
 

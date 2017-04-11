@@ -11,7 +11,7 @@ describe( 'user queries', () => {
       it( 'should return the user with given id', () =>
         getUserById( 88 )
           .then( user => {
-            expect( user.displayName ).to.equal( 'Steve' )
+            expect( user.display_name ).to.equal( 'Steve' )
             expect( user.email ).to.equal( 'steve@weber.com' )
           })
       )

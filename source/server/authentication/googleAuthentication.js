@@ -19,12 +19,12 @@ const handleUser = ( attributes, done ) => user => {
   }
 }
 
-const handleResponse = ( request, accessToken, refreshToken, profile, done ) => {
-  const { id: oauthID, email, name: { givenName: displayName } } = profile
+const handleResponse = ( request, accessToken, refresh_token, profile, done ) => {
+  const { id: oauth_ID, email, name: { givenName: display_name } } = profile
   const created_at = new Date()
-  const attributes = { oauthID, email, displayName, created_at, refreshToken }
+  const attributes = { oauth_ID, email, display_name, created_at, refresh_token }
 
-  return getUserByOAuthID( oauthID )
+  return getUserByOAuthID( oauth_ID )
     .then( handleUser( attributes, done ) )
 }
 

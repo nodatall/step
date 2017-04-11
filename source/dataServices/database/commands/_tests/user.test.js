@@ -14,7 +14,7 @@ describe( 'user commands', () => {
       newUser( data.fakeUser1 )
         .then( user => {
           expect( user.email ).to.equal( 'john@hallman.com' )
-          expect( user.displayName ).to.equal( 'John' )
+          expect( user.display_name ).to.equal( 'John' )
           expect( user.created_at ).to.be.instanceof( Date )
         })
     )
@@ -34,7 +34,7 @@ describe( 'user commands', () => {
       it( 'should update a user with given attributes', () =>
         editUser( 99, data.fakeEdit )
           .then( editedUser =>
-            expect( editedUser.displayName ).to.equal( 'Batman' ) )
+            expect( editedUser.display_name ).to.equal( 'Batman' ) )
       )
 
       it( 'should throw an error if given an invalid user id', () =>

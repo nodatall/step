@@ -1,12 +1,12 @@
 import knex from '../knex'
 
-const getUserByOAuthID = oauthID =>
+const getUserByOAuthID = oauth_ID =>
   knex
     .table( 'users' )
-    .where( 'oauthID', oauthID )
+    .where( 'oauth_ID', oauth_ID )
     .then( user => {
       if ( !user ) {
-        throw new Error( `getUserByOAuthID: no record of user with oauthid ${oauthID}.` )
+        throw new Error( `getUserByOAuthID: no record of user with oauthid ${oauth_ID}.` )
       } else {
         return user
       }
