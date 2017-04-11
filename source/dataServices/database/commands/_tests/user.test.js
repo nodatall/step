@@ -10,7 +10,7 @@ describe( 'user commands', () => {
 
   context( 'newUser()', () => {
 
-    it( 'creates a user with the given email, displayName, oauthID, and refreshToken', () =>
+    it( 'creates a user with the given email, display_name, oauth_ID, and refresh_token', () =>
       newUser( data.fakeUser1 )
         .then( user => {
           expect( user.email ).to.equal( 'john@hallman.com' )

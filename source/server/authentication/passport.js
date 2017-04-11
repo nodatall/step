@@ -1,5 +1,5 @@
 import passport from 'passport'
-import googlePassportStrategy from './googleAuthentication'
+import { googlePassportStrategy } from './googleAuthentication'
 import { getUserById } from '../../dataServices/database/queries'
 
 passport.use( googlePassportStrategy )

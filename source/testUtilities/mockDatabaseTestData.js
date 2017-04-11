@@ -85,6 +85,12 @@ const mockUserData = {
   },
   fakeEdit: {
     display_name: 'Batman'
+  },
+  fakeGoogleProfile: {
+    oauth_ID: '1234',
+    email: 'cows@mom.com',
+    display_name: 'Dialate',
+    refresh_token: '123565'
   }
 }
 

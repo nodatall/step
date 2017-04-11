@@ -12,7 +12,7 @@ const options = {
 
 const handleUser = ( attributes, done ) => user => {
   if ( !user.length ) {
-    newUser( attributes )
+    return newUser( attributes )
       .then( newAuthorizedUser => done( null, newAuthorizedUser ) )
   } else {
     done( null, user[0] )
@@ -30,4 +30,4 @@ const handleResponse = ( request, accessToken, refresh_token, profile, done ) =>
 
 const googlePassportStrategy = new GoogleStrategy( options, handleResponse )
 
-export default googlePassportStrategy
+export { handleUser, googlePassportStrategy }
