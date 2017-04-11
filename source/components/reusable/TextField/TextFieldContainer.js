@@ -26,18 +26,23 @@ export default class TextFieldContainer extends Component {
     this.setState({ inputValue: event.target.value })
   }
 
-  handleKeyPress(event) {
-    const { id } = this.props
+  determineUpdateTarget() {
     let { type } = this.props
-    let stateTarget = this.state.globalState[`${type}s`]
+    let stateLocation = this.state.globalState[`${type}s`]
 
     if ( type === 'couldDo' ) {
-      stateTarget = stateTarget[this.state.globalState.currentProjectId]
+      stateLocation = stateLocation[this.state.globalState.currentProjectId]
       type = 'could-do'
     }
 
+    return { stateLocation, type }
+  }
+
+  handleKeyPress(event) {
+    const { id } = this.props
+    const { stateLocation, type } = this.determineUpdateTarget()
     if ( event.key === 'Enter' ) {
-      const updatedState = stateTarget.map( element => {
+      const updatedState = stateLocation.map( element => {
         if ( element.id === id ) {
           return Object.assign(element, { text: this.state.inputValue })
         }
@@ -48,7 +53,7 @@ export default class TextFieldContainer extends Component {
         text: this.state.inputValue
       })
       .then( () => {
-        globalState.set({ [stateTarget]: updatedState })
+        globalState.set({ [stateLocation]: updatedState })
         this.setState({ editing: false })
       })
       .catch( componentErrorHandler('TextFieldContainer' ) )
