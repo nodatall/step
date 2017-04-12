@@ -49,7 +49,7 @@ export default class TextFieldContainer extends Component {
         return element
       })
 
-      axios.post(`http://localhost:1337/${type}/edit/${id}`, {
+      axios.post( `${__HOST__}/${type}/edit/${id}`, { //eslint-disable-line
         text: this.state.inputValue
       })
       .then( () => {

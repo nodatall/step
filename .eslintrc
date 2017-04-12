@@ -32,5 +32,6 @@
       "requireReturnDescription": true
     }],
   "linebreak-style": "off",
+  "no-underscore-dangle": "off",
   }
 }

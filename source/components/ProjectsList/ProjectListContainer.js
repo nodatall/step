@@ -7,7 +7,7 @@ import globalState from '../utilities/globalState'
 
 export default class ProjectListContainer extends GlobalStateComponent {
   componentDidMount() {
-    axios.get( `http://localhost:1337/user/${this.state.userId}/projects` )
+    axios.get( `${__HOST__}/user/${this.state.userId}/projects` ) //eslint-disable-line
       .then( body => globalState.set({ projects: body.data }) )
       .catch( componentErrorHandler( 'ProjectListContainer' ) )
   }

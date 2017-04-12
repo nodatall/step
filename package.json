@@ -52,9 +52,12 @@
     "winston": "^2.3.1"
   },
   "scripts": {
-    "begin": "yarn run server & yarn run webpack & yarn run sass",
+    "begin": "yarn run server & yarn run build & yarn run sass",
     "server": "nodemon --exec babel-node source/server/server.js",
-    "webpack": "webpack --colors --progress -w",
+    "build": "webpack --colors --progress -w",
+    "build:dev": "NODE_ENV=development yarn run build",
+    "build:production": "NODE_ENV=production yarn run build",
+    "build:test": "NODE_ENV=test yarn run build",
     "sass": "node-sass source/index.scss public/main.css -w",
     "test": "yarn run migrate:test && yarn run mochatest",
     "mochatest": "nyc --cache --reporter=lcov mocha --compilers js:babel-register $(find source -name '*test.js') --require jsdom-global/register",
