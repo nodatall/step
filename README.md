@@ -108,7 +108,7 @@ $ git push -f origin HEAD
 - Knex
 - React
 - SCSS
-- Mocha/Chai/Enzyme
+- Mocha/Chai/Enzyme/Sinon
 
 ### Standards
 
@@ -116,8 +116,8 @@ $ git push -f origin HEAD
 [Step's Invision](https://invis.io/QEAU5DRH6#/225562505_Login_Desktop)
 
 ###### Testing
-- All routes and queries should have 100% test coverage
-- All React Components should have 100% test coverage
+- Find love for TDD in your heart and write tests before writing code
+- Aim for 100% test coverage of everything
 
 ###### Creating Components
 - Component sets (presentation and container) should have their own folder
@@ -125,5 +125,5 @@ $ git push -f origin HEAD
 - Presentation Components should be stateless function Components whenever possible
 - Container Components handle all data manipulation and should contain no JSX
 - Each Component set has its own .scss file
-- Each Component set has it own .test.js file
+- Each Component set has it own \_tests file
 - Component file and directory names should be in UpperCamelCase
