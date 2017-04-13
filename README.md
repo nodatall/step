@@ -34,7 +34,7 @@ $ brew install terminal-notifier
 11. On the create Credentials dropdown menu select OAuth client ID
 12. Create consent screen
 13. Select web application and supply the redirect URI with: http://localhost:1337/google/auth/callback
-14. Click Create button
+14. Click Create button twice
 15. Copy client ID and client secret
 16. Create .env file:
 
