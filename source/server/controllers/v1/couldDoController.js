@@ -3,26 +3,34 @@ import {
   editCouldDo,
   deleteCouldDo
 } from '../../../dataServices/database/commands'
-import { handleResult, handleError } from '../../serverErrorHandler'
 
-const handleNewCouldDo = ( request, response ) =>
+const handleNewCouldDo = ( request, response, next ) =>
   newCouldDo( request.body )
-    .then( result => handleResult( result, response ) )
-    .catch( error => handleError( error, response, 'handleNewCouldDo' ) )
+    .then( result => response.json( result ) )
+    .catch( error => {
+      error.enqueue( `handleNewCouldDo: problem sending ${JSON.stringify( request.body )} to /could-do/new` )
+      return next( error )
+    })
 
-const handleEditCouldDo = ( request, response ) => {
+const handleEditCouldDo = ( request, response, next ) => {
   const attributes = request.body
   const couldDoId = request.params.id
 
   return editCouldDo( couldDoId, attributes )
-    .then( result => handleResult( result, response ) )
-    .catch( error => handleError( error, response, 'editCouldDo' ) )
+    .then( result => response.json( result ) )
+    .catch( error => {
+      error.enqueue( `editCouldDo: problem updating /could-do/edit/${couldDoId} with ${JSON.stringify( attributes )}` )
+      return next( error )
+    })
 }
 
-const handleDeleteCouldDo = ( request, response ) =>
+const handleDeleteCouldDo = ( request, response, next ) =>
   deleteCouldDo( request.params.id )
-    .then( result => handleResult( result, response ) )
-    .catch( error => handleError( error, response, 'handleDeleteCouldDo' ) )
+    .then( result => response.json( result ) )
+    .catch( error => {
+      error.enqueue( `handleDeleteCouldDo: problem deleting /could-do/delete/${request.params.id}` )
+      return next( error )
+    })
 
 export {
   handleNewCouldDo,

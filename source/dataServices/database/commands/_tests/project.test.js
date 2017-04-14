@@ -11,19 +11,20 @@ describe( 'project commands', () => {
   context( 'newProject()', () => {
 
     it( 'creates a project with the given id and name', () =>
-      newProject(data.fakeProject1)
+      newProject( data.fakeProject1 )
         .then( project => {
-          expect(project.text).to.equal( 'eating' )
+          expect( project.text ).to.equal( 'eating' )
           return project.id
         })
         .then( getProjectById )
-        .then( project => expect( project.text).to.equal( 'eating' ))
+        .then( project => expect( project.text ).to.equal( 'eating' ) )
     )
 
     it( 'throws an error if given invalid attributes', () =>
-      newProject(data.invalidProject).then( error =>
-        expect(error).to.be.an.instanceof( Error )
-      )
+      newProject( data.invalidProject )
+        .catch( error =>
+          expect( error.back().includes( 'createRecord:' ) ).to.equal( true )
+        )
     )
 
   })
@@ -34,15 +35,18 @@ describe( 'project commands', () => {
 
       it( 'should update project with given attributes', () =>
         editProject( 77, data.fakeEdit )
-          .then( project => expect( project.text ).to.equal( 'snoozing' ))
+          .then( project => expect( project.text ).to.equal( 'snoozing' ) )
       )
 
       it( 'should throw an error if given an invalid project id', () =>
         editProject( 49683, data.fakeEdit )
-          .then( error => expect( error ).to.be.an.instanceof( Error ) )
+          .catch( error =>
+            expect( error.back().includes( 'updateRecord:' ) ).to.equal( true )
+          )
       )
 
     })
+
   })
 
   context( 'deleteProject()', () => {
@@ -52,13 +56,17 @@ describe( 'project commands', () => {
       it( 'should delete a project with the given id', () =>
         deleteProject( 77 )
           .then( deleteCount => expect( deleteCount ).to.equal( 1 ) )
-          .then( () => getProjectById( 77 ))
-          .then( error => expect( error ).to.be.an.instanceof( Error ))
+          .then( () => getProjectById( 77 ) )
+          .catch( error =>
+            expect( error.back().includes( 'getRecordById:' ) ).to.equal( true )
+          )
       )
 
       it( 'should throw an error if no project exists with given id', () =>
         deleteProject( 94035 )
-          .then( error => expect( error ).to.be.an.instanceof( Error ))
+          .catch( error =>
+            expect( error.back().includes( 'deleteRecord' ) ).to.equal( true )
+          )
       )
 
     })

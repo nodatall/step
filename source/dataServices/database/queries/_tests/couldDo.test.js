@@ -9,14 +9,14 @@ describe( 'couldDo queries', () => {
     withThreeCouldDos( () => {
 
       it( 'returns could-do matching given id', () =>
-        getCouldDoById(998).then( couldDo =>
-          expect(couldDo.id).to.equal(998)
+        getCouldDoById( 998 ).then( couldDo =>
+          expect( couldDo.id ).to.equal( 998 )
         )
       )
 
       it( 'throws an error if id is invalid', () =>
-        getCouldDoById(18555).then( error =>
-          expect(error).to.be.an.instanceof(Error)
+        getCouldDoById( 18555 ).catch( error =>
+          expect( error.back().includes( 'getRecordById:' ) ).to.equal( true )
         )
       )
 
@@ -29,16 +29,16 @@ describe( 'couldDo queries', () => {
     withThreeCouldDos( () => {
 
       it( 'returns an array of all could-dos for supplied project id', () =>
-        getCouldDosByProjectId(1).then( couldDos => {
-          expect( couldDos.length ).to.equal(2)
+        getCouldDosByProjectId( 1 ).then( couldDos => {
+          expect( couldDos.length ).to.equal( 2 )
           const couldDoIds = couldDos.map( couldDo => couldDo.id ).sort()
           expect( couldDoIds ).to.eql( [977, 998] )
         })
       )
 
       it( 'throws an error if given an invalid project id', () =>
-        getCouldDosByProjectId(8).then( error =>
-          expect( error ).to.be.an.instanceof( Error )
+        getCouldDosByProjectId( 8 ).catch( error =>
+          expect( error.back().includes( 'findAllWhere:' ) ).to.equal( true )
         )
       )
 

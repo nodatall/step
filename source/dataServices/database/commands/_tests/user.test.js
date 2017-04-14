@@ -21,8 +21,8 @@ describe( 'user commands', () => {
 
     it( 'throws an error if given invalid attributes', () =>
       newUser( data.invalidUser )
-        .then( error =>
-          expect( error ).to.be.instanceof( Error )
+        .catch( error =>
+          expect( error.back().includes( 'createRecord:' ) ).to.equal( true )
         )
     )
   })
@@ -39,7 +39,8 @@ describe( 'user commands', () => {
 
       it( 'should throw an error if given an invalid user id', () =>
         editUser( 2, data.fakeEdit )
-          .then( error => expect( error ).to.be.instanceof( Error )
+          .catch( error =>
+            expect( error.back().includes( 'updateRecord:' ) ).to.equal( true )
           )
       )
     })
@@ -53,12 +54,14 @@ describe( 'user commands', () => {
         deleteUser( 88 )
           .then( deleteCount => expect( deleteCount ).to.equal( 1 ) )
           .then( () => getUserById( 88 ) )
-          .then( error => expect( error ).to.be.instanceof( Error ) )
+          .catch( error => expect( error.back().includes( 'getRecordById:' ) ).to.equal( true ) )
       )
 
       it( 'should throw an error if no user exists with given id', () =>
         deleteUser( 999 )
-          .then( error => expect( error ).to.be.instanceof( Error ) )
+          .catch( error =>
+            expect( error.back().includes( 'deleteRecord:' ) ).to.equal( true )
+          )
       )
     })
   })

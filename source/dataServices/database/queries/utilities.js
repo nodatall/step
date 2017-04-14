@@ -1,44 +1,30 @@
 import knex from '../knex'
+import QueueError from '../../../errorHandling/QueueError'
 
-const getUserByOAuthID = oauth_ID =>
-  knex
-    .table( 'users' )
-    .where( 'oauth_ID', oauth_ID )
-    .then( user => {
-      if ( !user ) {
-        throw new Error( `getUserByOAuthID: no record of user with oauthid ${oauth_ID}.` )
-      } else {
-        return user
-      }
-    })
-    .catch( error => error )
-
-const getRecordById = ( table, id ) =>
+const getRecordById = ( table, column, data ) =>
   knex
     .table( table )
-    .where( 'id', id )
-    .first('*')
+    .where( column, data )
+    .first( '*' )
     .then( record => {
       if ( !record ) {
-        throw new Error( `getRecordById: no record in table: ${table} with id ${id}` )
+        throw new QueueError( `getRecordById: no record in table ${table} with ${column} ${data}` )
       } else {
         return record
       }
     })
-    .catch( error => error )
 
 const findAllWhere = ( table, column, data ) =>
   knex
     .table( table )
     .where( column, data )
-    .returning('*')
+    .returning( '*' )
     .then( records => {
       if ( !records.length ) {
-        throw new Error( `findAllWhere: no records in table: ${table}, column: ${column}, matching ${data}` )
+        throw new QueueError( `findAllWhere: no records in table ${table} with ${column} matching ${data}` )
       } else {
         return records
       }
     })
-    .catch( error => error )
 
-export { getRecordById, findAllWhere, getUserByOAuthID }
+export { getRecordById, findAllWhere }

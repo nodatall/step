@@ -18,7 +18,9 @@ describe( 'couldDo routes', () => {
       chai.request( server )
         .post( '/could-do/new' )
         .send( mockCouldDoData.invalidCouldDo )
-        .catch( error => expect( error ).to.be.an.instanceof( Error ))
+        .catch( error => {
+          expect( error ).to.be.an.instanceof( Error )
+        })
     )
 
   })

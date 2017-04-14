@@ -10,12 +10,14 @@ describe( 'project queries', () => {
 
       it( 'returns a project with given id', () =>
         getProjectById( 77 )
-          .then( project => expect( project.text ).to.equal( 'eating' ))
+          .then( project => expect( project.text ).to.equal( 'eating' ) )
       )
 
       it( 'should throw an error if no project exists with given id', () =>
         getProjectById( 49350 )
-          .then( error => expect( error ).to.be.an.instanceof( Error ))
+          .catch( error =>
+            expect( error.back().includes( 'getRecordById:' ) ).to.equal( true )
+          )
       )
 
     })
@@ -37,7 +39,9 @@ describe( 'project queries', () => {
 
       it( 'throws an error if no projects associated with given user id', () =>
         getProjectsByUserId( 945 )
-          .then( error => expect( error ).to.be.an.instanceof( Error ))
+          .catch( error =>
+            expect( error.back().includes( 'findAllWhere:' ) ).to.equal( true )
+          )
       )
     })
 

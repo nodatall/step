@@ -10,24 +10,19 @@ const options = {
   passReqToCallback: true
 }
 
-const handleUser = ( attributes, done ) => user => {
-  if ( !user.length ) {
-    return newUser( attributes )
-      .then( newAuthorizedUser => done( null, newAuthorizedUser ) )
-  } else {
-    done( null, user[0] )
-  }
-}
-
 const handleResponse = ( request, accessToken, refresh_token, profile, done ) => {
   const { id: oauth_ID, email, name: { givenName: display_name } } = profile
   const created_at = new Date()
   const attributes = { oauth_ID, email, display_name, created_at, refresh_token }
 
   return getUserByOAuthID( oauth_ID )
-    .then( handleUser( attributes, done ) )
+    .then( user => done( null, user[0] ) )
+    .catch( _ =>
+      newUser( attributes )
+        .then( newAuthorizedUser => done( null, newAuthorizedUser ) )
+    )
 }
 
 const googlePassportStrategy = new GoogleStrategy( options, handleResponse )
 
-export { handleUser, googlePassportStrategy }
+export { handleResponse, googlePassportStrategy }

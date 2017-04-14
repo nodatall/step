@@ -91,6 +91,16 @@ const mockUserData = {
     email: 'cows@mom.com',
     display_name: 'Dialate',
     refresh_token: '123565'
+  },
+  googleResponse: {
+    request: {},
+    accesToken: 123,
+    refresh_token: 1234,
+    profile: {
+      id: 1,
+      email: 'earth@universe.org',
+      name: { givenName: 'emptiness' }
+    }
   }
 }
 
