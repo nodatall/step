@@ -4,6 +4,7 @@ import componentErrorHandler from '../utilities/componentErrorHandler'
 import GlobalStateComponent from '../reusable/ParentClasses/GlobalStateComponent'
 import RowList from '../reusable/Row/RowList'
 import globalState from '../utilities/globalState'
+import FooterContainer from '../reusable/Footer/FooterContainer'
 
 export default class ProjectListContainer extends GlobalStateComponent {
   componentDidMount() {
@@ -13,6 +14,11 @@ export default class ProjectListContainer extends GlobalStateComponent {
   }
 
   render() {
-    return <RowList items={ this.state.projects } type='project' />
+    return (
+      <div className='project-list-container'>
+        <RowList items={ this.state.projects } type='project' />
+        <FooterContainer type='project' />
+      </div>
+    )
   }
 }
