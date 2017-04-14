@@ -7,6 +7,6 @@ export default class LoginContainer extends Component {
   }
 
   render() {
-    return <Login redirect={ LoginContainer.redirect } path={ 'http://localhost:1337/auth/google' } />
+    return <Login redirect={ LoginContainer.redirect } path={ `http://localhost:1337/auth/google` } />
   }
 }

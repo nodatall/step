@@ -1,5 +1,5 @@
-const WebpackErrorNotificationPlugin = require('webpack-error-notification')
-const webpack = require('webpack')
+const WebpackErrorNotificationPlugin = require( 'webpack-error-notification' )
+const webpack = require( 'webpack' )
 
 const determineHost = () => {
   switch ( process.env.NODE_ENV ) {

@@ -61,7 +61,7 @@
     "build:test": "NODE_ENV=test yarn run build",
     "sass": "node-sass source/index.scss public/main.css -w",
     "test": "yarn run migrate:test && yarn run mochatest",
-    "mochatest": "nyc --cache --reporter=lcov mocha --compilers js:babel-register $(find source -name '*test.js') --require jsdom-global/register",
+    "mochatest": "nyc --cache --reporter=lcov mocha --compilers js:babel-register $(find source -name '*test.js') --require jsdom-global/register --require babel-polyfill",
     "report": "nyc report",
     "report:web": "open coverage/lcov-report/index.html",
     "migrate": "node ./node_modules/.bin/knex --knexfile source/dataServices/database/knexfile.js migrate:latest",

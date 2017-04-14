@@ -51,7 +51,7 @@ describe( ' <ProjectContainer />', () => {
 
   })
 
-  context( 'handles error returned from HTTP request on componentDidMount', () => {
+  xcontext( 'handles error returned from HTTP request on componentDidMount', () => {
     let errorStub
 
     before( () => {
@@ -77,7 +77,5 @@ describe( ' <ProjectContainer />', () => {
         }).catch( done )
       })
     )
-
   })
-
 })

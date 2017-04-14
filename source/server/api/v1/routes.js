@@ -13,7 +13,8 @@ import {
   getGoogleOAuthPermissionCode,
   handleSuccessfulAuthentication,
   handleLogOut,
-  handleGoogleAuthentication
+  handleGoogleAuthentication,
+  handleGetSession
 } from '../../controllers/v1'
 
 const router = express()
@@ -33,6 +34,9 @@ router.get( '/user/:id/logout', checkForAuthorization, handleLogOut )
 router.get( '/auth/google', getGoogleOAuthPermissionCode )
 router.get( '/google/auth/callback', handleGoogleAuthentication, handleSuccessfulAuthentication )
 
+router.get('/session', checkForAuthorization, handleGetSession )
+
 router.get( '/*', handleSendApp )
+
 
 export default router

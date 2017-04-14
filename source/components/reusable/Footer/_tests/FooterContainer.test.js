@@ -47,7 +47,7 @@ describe( '<FooterContainer />', () => {
 
         expect( request.url ).to.equal( `${__HOST__}/project/new` ) //eslint-disable-line
         expect( data.text ).to.equal( 'make garden' )
-        expect( data.user_id ).to.equal( 1 )
+        expect( data.user_id ).to.equal( 9000 )
         done()
       })
     })
@@ -76,7 +76,7 @@ describe( '<FooterContainer />', () => {
 
         expect( request.url ).to.equal( `${__HOST__}/could-do/new` ) // eslint-disable-line
         expect( data.text ).to.equal( 'plant rose in garden' )
-        expect( data.user_id ).to.equal( 1 )
+        expect( data.user_id ).to.equal( 9000 )
         done()
       })
 

@@ -120,7 +120,5 @@ describe( 'project routes', () => {
       )
 
     })
-
   })
-
 })

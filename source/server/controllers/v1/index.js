@@ -21,5 +21,6 @@ export {
   getGoogleOAuthPermissionCode,
   handleSuccessfulAuthentication,
   handleLogOut,
-  handleGoogleAuthentication
+  handleGoogleAuthentication,
+  handleGetSession
 } from './authorizationController'
