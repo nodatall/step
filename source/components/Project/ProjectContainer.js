@@ -8,8 +8,6 @@ import componentErrorHandler from '../utilities/componentErrorHandler'
 export default class ProjectContainer extends GlobalStateComponent {
   constructor() {
     super()
-    this.state = globalState.get()
-    globalState.subscribe( this.updateState )
     this.projectId = this.state.currentProjectId
   }
 

@@ -1,5 +1,5 @@
 import React from 'react'
-Import Icon from '../Icon/Icon'
+import Icon from '../Icon/Icon'
 
 const Footer = ({ type, onChange, value, onSubmit }) => {
   let text = null
