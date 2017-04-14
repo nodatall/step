@@ -14,7 +14,7 @@ beforeEach( () => {
   global.navigator = {
     userAgent: 'node.js'
   }
-  global.__HOST__ = true
+  global.__HOST__ = 'http://localhost:1337'
 })
 
 export { knex, chai, expect }
