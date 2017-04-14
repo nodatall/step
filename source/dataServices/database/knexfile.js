@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require( 'path' )
 
 const defaultConfiguration = env => {
   const connectionString = (
@@ -21,7 +21,7 @@ const defaultConfiguration = env => {
 }
 
 module.exports = {
-  test: defaultConfiguration('test'),
-  development: defaultConfiguration('development'),
-  production: defaultConfiguration('production'),
+  test: defaultConfiguration( 'test' ),
+  development: defaultConfiguration( 'development' ),
+  production: defaultConfiguration( 'production' ),
 }

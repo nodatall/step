@@ -26,7 +26,7 @@ describe( 'project routes', () => {
       it( 'should throw an error if no project with given id is found', () =>
         chai.request( server )
           .get( '/project/198/could-do' )
-          .catch( error => expect( error ).to.be.an.instanceof( Error ))
+          .catch( error => expect( error ).to.be.an.instanceof( Error ) )
       )
 
     })
@@ -45,7 +45,7 @@ describe( 'project routes', () => {
       chai.request( server )
         .post( '/project/new' )
         .send( mockProjectData.invalidProject )
-        .catch( error => expect( error ).to.be.an.instanceof( Error ))
+        .catch( error => expect( error ).to.be.an.instanceof( Error ) )
     )
 
   })
@@ -58,21 +58,21 @@ describe( 'project routes', () => {
         chai.request( server )
           .post( '/project/edit/77' )
           .send( mockProjectData.fakeEdit )
-          .then( response => expect( response.body.text ).to.equal( 'snoozing' ))
+          .then( response => expect( response.body.text ).to.equal( 'snoozing' ) )
       )
 
       it( 'should throw an error if no project with given id is found', () =>
         chai.request( server )
           .post( '/project/edit/777777' )
           .send( mockProjectData.fakeEdit )
-          .catch( error => expect( error ).to.be.an.instanceof( Error ))
+          .catch( error => expect( error ).to.be.an.instanceof( Error ) )
       )
 
       it( 'should throw an error if given invalid attributes', () =>
         chai.request( server )
           .post( '/project/edit/77' )
           .send( mockProjectData.invalidProject )
-          .catch( error => expect( error ).to.be.an.instanceof( Error ))
+          .catch( error => expect( error ).to.be.an.instanceof( Error ) )
       )
 
     })
@@ -85,13 +85,13 @@ describe( 'project routes', () => {
       it( 'should return 1 after deleting one item', () =>
         chai.request( server )
           .post( '/project/delete/77' )
-          .then( response => expect( response.body ).to.equal( 1 ))
+          .then( response => expect( response.body ).to.equal( 1 ) )
       )
 
       it( 'should throw an error if no project with given id is found', () =>
         chai.request( server )
           .post( '/project/delete/777777' )
-          .catch( error => expect( error ).to.be.an.instanceof( Error ))
+          .catch( error => expect( error ).to.be.an.instanceof( Error ) )
       )
 
     })
@@ -116,7 +116,7 @@ describe( 'project routes', () => {
       it( 'should throw an error if no projects for given user id are found', () =>
         chai.request( server )
           .get( '/user/111234/projects' )
-          .catch( error => expect( error ).to.be.an.instanceof( Error ))
+          .catch( error => expect( error ).to.be.an.instanceof( Error ) )
       )
 
     })

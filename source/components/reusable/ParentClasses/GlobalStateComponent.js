@@ -8,7 +8,7 @@ export default class GlobalStateComponent extends Component {
     globalState.subscribe( this.updateState )
   }
 
-  componentWillUnmount() { globalState.unsubscribe(this.updateState) }
+  componentWillUnmount() { globalState.unsubscribe(this.updateState) } // eslint-disable-line
 
   updateState = newState => this.setState( newState )
 

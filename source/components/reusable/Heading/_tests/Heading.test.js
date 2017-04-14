@@ -6,7 +6,7 @@ import Heading from '../Heading'
 describe( '<Heading>', () => {
 
   it( 'renders a div with class \'heading-container\' ', () =>
-    expect( shallow( <Heading />).find( '.heading-container' ).length).to.equal( 1 )
+    expect( shallow( <Heading /> ).find( '.heading-container' ).length ).to.equal( 1 )
   )
 
   it( 'renders an h1 with text', () => {
@@ -31,7 +31,7 @@ describe( '<Heading>', () => {
     const wrapper = mount( <Heading type='project' /> )
 
     it( 'renders an Icon when passed type \'project\'', () => {
-      expect( wrapper.find( 'Icon' ).length).to.equal( 1 )
+      expect( wrapper.find( 'Icon' ).length ).to.equal( 1 )
     })
 
   })

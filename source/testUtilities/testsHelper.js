@@ -4,11 +4,11 @@ import { mockCouldDoData, mockProjectData, mockUserData } from './mockDatabaseTe
 const withThreeCouldDos = callback => {
   context( 'when there are three couldDos in the database', () => {
     beforeEach( () =>
-      Promise.all([
-        newCouldDo(mockCouldDoData.fakeCouldDo1),
-        newCouldDo(mockCouldDoData.fakeCouldDo2),
-        newCouldDo(mockCouldDoData.fakeCouldDo3)
-      ])
+      Promise.all( [
+        newCouldDo( mockCouldDoData.fakeCouldDo1 ),
+        newCouldDo( mockCouldDoData.fakeCouldDo2 ),
+        newCouldDo( mockCouldDoData.fakeCouldDo3 )
+      ] )
     )
     callback()
   })
@@ -17,11 +17,11 @@ const withThreeCouldDos = callback => {
 const withThreeProjects = callback => {
   context( 'when there are three projects in the database', () => {
     beforeEach( () =>
-      Promise.all([
-        newProject(mockProjectData.fakeProject1),
-        newProject(mockProjectData.fakeProject2),
-        newProject(mockProjectData.fakeProject3)
-      ])
+      Promise.all( [
+        newProject( mockProjectData.fakeProject1 ),
+        newProject( mockProjectData.fakeProject2 ),
+        newProject( mockProjectData.fakeProject3 )
+      ] )
     )
     callback()
   })
@@ -30,11 +30,11 @@ const withThreeProjects = callback => {
 const withThreeUsers = callback => {
   context( 'when there are three users in the database', () => {
     beforeEach( () =>
-      Promise.all([
-        newUser(mockUserData.fakeUser1),
-        newUser(mockUserData.fakeUser2),
-        newUser(mockUserData.fakeUser3)
-      ])
+      Promise.all( [
+        newUser( mockUserData.fakeUser1 ),
+        newUser( mockUserData.fakeUser2 ),
+        newUser( mockUserData.fakeUser3 )
+      ] )
     )
     callback()
   })

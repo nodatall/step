@@ -9,7 +9,7 @@ import globalState from '../../utilities/globalState'
 describe( ' <ProjectContainer />', () => {
 
   it( 'renders the child component', () =>
-    expect( shallow( <ProjectContainer /> ).find( 'Project' ).length).to.equal( 1 )
+    expect( shallow( <ProjectContainer /> ).find( 'Project' ).length ).to.equal( 1 )
   )
 
   context( 'handles data from HTTP request on componentDidMount', () => {
@@ -43,7 +43,7 @@ describe( ' <ProjectContainer />', () => {
           status: 200,
           response: fakeData
         }).then( () => {
-          expect( wrapper.state().couldDos[1] ).to.equal( fakeData )
+          expect( wrapper.state().couldDos[1] ).to.equal( fakeData ) // eslint-disable-line
           done()
         }).catch( done )
       })

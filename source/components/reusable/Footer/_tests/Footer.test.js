@@ -6,11 +6,11 @@ import Footer from '../Footer'
 describe( '<Footer>', () => {
 
   it( 'renders a div with class \'footer-container\' ', () =>
-    expect( shallow( <Footer />).find( '.footer-container' ).length).to.equal( 1 )
+    expect( shallow( <Footer /> ).find( '.footer-container' ).length ).to.equal( 1 )
   )
 
   it( 'renders a button', () =>
-    expect( shallow( <Footer />).find( 'button' ).length).to.equal( 1 )
+    expect( shallow( <Footer /> ).find( 'button' ).length ).to.equal( 1 )
   )
 
   context( 'when type is \'couldDo\'', () => {

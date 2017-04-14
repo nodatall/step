@@ -6,8 +6,8 @@ import globalState from '../../utilities/globalState'
 import componentErrorHandler from '../../utilities/componentErrorHandler'
 
 export default class TextFieldContainer extends Component {
-  constructor(props) {
-    super(props)
+  constructor( props ) {
+    super( props )
     this.state = {
       editing: false,
       inputValue: this.props.text,
@@ -22,7 +22,7 @@ export default class TextFieldContainer extends Component {
     this.setState({ editing: !this.state.editing })
   }
 
-  editInput(event) {
+  editInput( event ) {
     this.setState({ inputValue: event.target.value })
   }
 
@@ -38,13 +38,13 @@ export default class TextFieldContainer extends Component {
     return { stateLocation, type }
   }
 
-  handleKeyPress(event) {
+  handleKeyPress( event ) {
     const { id } = this.props
     const { stateLocation, type } = this.determineUpdateTarget()
     if ( event.key === 'Enter' ) {
       const updatedState = stateLocation.map( element => {
         if ( element.id === id ) {
-          return Object.assign(element, { text: this.state.inputValue })
+          return Object.assign( element, { text: this.state.inputValue } ) //eslint-disable-line
         }
         return element
       })
@@ -56,7 +56,7 @@ export default class TextFieldContainer extends Component {
         globalState.set({ [stateLocation]: updatedState })
         this.setState({ editing: false })
       })
-      .catch( componentErrorHandler('TextFieldContainer' ) )
+      .catch( componentErrorHandler( 'TextFieldContainer' ) )
     }
   }
 

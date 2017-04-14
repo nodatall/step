@@ -8,7 +8,7 @@ import ProjectListContainer from '../ProjectListContainer'
 describe( '<ProjectListContainer />', () => {
 
   it( 'renders the child component', () =>
-      expect(shallow( <ProjectListContainer /> ).find( 'RowList' ).length).to.equal( 1 )
+      expect( shallow( <ProjectListContainer /> ).find( 'RowList' ).length ).to.equal( 1 )
   )
 
   context( 'handles data from HTTP request on componentDidMount', () => {
@@ -39,7 +39,7 @@ describe( '<ProjectListContainer />', () => {
         }).then( () => {
           expect( wrapper.state().projects ).to.eql( fakeData )
           done()
-        }).catch(done)
+        }).catch( done )
       })
     )
   })

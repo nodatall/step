@@ -7,16 +7,16 @@ import FooterContainer from '../FooterContainer'
 
 describe( '<FooterContainer />', () => {
 
-  context('handles tests for rendering components and accepting inputs', () => {
+  context( 'handles tests for rendering components and accepting inputs', () => {
     const wrapper = mount( <FooterContainer type='project' /> )
     const input = wrapper.find( 'input' )
 
     it( 'renders the child component', () =>
-      expect(shallow( <FooterContainer /> ).find( 'Footer' ).length).to.equal( 1 )
+      expect( shallow( <FooterContainer /> ).find( 'Footer' ).length ).to.equal( 1 )
     )
 
     it( 'checks that the input element is being read', () => {
-      input.simulate('change', { target: { value: 'make garden' } })
+      input.simulate( 'change', { target: { value: 'make garden' } })
       expect( input.props().value ).to.equal( 'make garden' )
     })
 
@@ -45,7 +45,7 @@ describe( '<FooterContainer />', () => {
         const request = moxios.requests.mostRecent()
         const data = JSON.parse( request.config.data )
 
-        expect( request.url ).to.equal( `${__HOST__}/project/new` )
+        expect( request.url ).to.equal( `${__HOST__}/project/new` ) //eslint-disable-line
         expect( data.text ).to.equal( 'make garden' )
         expect( data.user_id ).to.equal( 1 )
         done()
@@ -74,7 +74,7 @@ describe( '<FooterContainer />', () => {
         const request = moxios.requests.mostRecent()
         const data = JSON.parse( request.config.data )
 
-        expect( request.url ).to.equal( `${__HOST__}/could-do/new` )
+        expect( request.url ).to.equal( `${__HOST__}/could-do/new` ) // eslint-disable-line
         expect( data.text ).to.equal( 'plant rose in garden' )
         expect( data.user_id ).to.equal( 1 )
         done()

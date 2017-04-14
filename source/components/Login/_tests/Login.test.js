@@ -27,7 +27,7 @@ describe( '<LoginContainer />', () => {
     wrapper.find( '.login-button' ).simulate( 'click' )
 
     expect( spy.called ).to.equal( true )
-    expect( spy.calledWith( 'http://localhost:1337/auth/google' )).to.equal( true )
+    expect( spy.calledWith( 'http://localhost:1337/auth/google' ) ).to.equal( true )
     spy.restore()
   })
 

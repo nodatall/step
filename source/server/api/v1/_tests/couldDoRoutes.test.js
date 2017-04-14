@@ -33,21 +33,21 @@ describe( 'couldDo routes', () => {
         chai.request( server )
           .post( '/could-do/edit/998' )
           .send( mockCouldDoData.fakeEdit )
-          .then( response => expect( response.body.text ).to.equal( 'eat lunch' ))
+          .then( response => expect( response.body.text ).to.equal( 'eat lunch' ) )
       )
 
       it( 'should throw an error if no couldDo with given id is found', () =>
         chai.request( server )
           .post( '/could-do/edit/12345' )
           .send( mockCouldDoData.fakeEdit )
-          .catch( error => expect( error ).to.be.an.instanceof( Error ))
+          .catch( error => expect( error ).to.be.an.instanceof( Error ) )
       )
 
       it( 'should throw an error if given invalid attributes', () =>
         chai.request( server )
           .post( '/could-do/edit/998' )
           .send( mockCouldDoData.invalidCouldDo )
-          .catch( error => expect( error ).to.be.an.instanceof( Error ))
+          .catch( error => expect( error ).to.be.an.instanceof( Error ) )
       )
 
     })
@@ -60,13 +60,13 @@ describe( 'couldDo routes', () => {
       it( 'should return 1 after deleting one item', () =>
         chai.request( server )
           .post( '/could-do/delete/998' )
-          .then( response => expect( response.body ).to.equal( 1 ))
+          .then( response => expect( response.body ).to.equal( 1 ) )
       )
 
       it( 'should throw an error if no couldDo with given id is found', () =>
         chai.request( server )
           .post( '/could-do/delete/12345' )
-          .catch( error => expect( error ).to.be.an.instanceof( Error ))
+          .catch( error => expect( error ).to.be.an.instanceof( Error ) )
       )
 
     })

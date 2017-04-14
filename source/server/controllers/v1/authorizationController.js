@@ -31,7 +31,7 @@ const handleLogOut = ( request, response ) => {
   response.redirect( '/' )
 }
 
-const handleGoogleAuthentication = passport.authenticate( 'google', { failureRedirect: '/' } )
+const handleGoogleAuthentication = passport.authenticate( 'google', { failureRedirect: '/' } ) // eslint-disable-line
 
 export {
   checkForAuthorization,

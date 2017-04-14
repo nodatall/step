@@ -8,21 +8,23 @@ import '../../configuration/environment'
 import './authentication/passport'
 import router from './api/v1/routes'
 import expressSessionOptions from './authentication/sessions'
+import { handleServerErrors } from '../errorHandling/serverErrorHandlers'
 
 const server = express()
 
 if ( process.env.NODE_ENV !== 'test' ) server.use( logger( 'dev' ) )
 
 server.set( 'port', process.env.PORT || '1337' )
-server.use( express.static( 'public' ))
+server.use( express.static( 'public' ) )
 server.use( bodyParser.json() )
 server.use( session( expressSessionOptions ) )
 server.use( passport.initialize() )
 server.use( passport.session() )
 
 server.use( router )
+server.use( handleServerErrors )
 
-server.listen( server.get('port'), () =>
+server.listen( server.get( 'port' ), () =>
   console.log( chalk.magenta( '\n -:: Server listening on port 1337 ::-' ) ) //eslint-disable-line
 )
 

@@ -10,7 +10,7 @@ const FooterContainerError = componentErrorHandler( 'FooterContainer' )
 export default class FooterContainer extends GlobalStateComponent {
   constructor( props ) {
     super( props )
-    Object.assign( this.state, { value: '' } )
+    Object.assign( this.state, { value: '' } ) // eslint-disable-line
     this.onChange = this.onChange.bind( this )
     this.onSubmit = this.onSubmit.bind( this )
   }
@@ -36,7 +36,7 @@ export default class FooterContainer extends GlobalStateComponent {
     let newItem = { text, user_id }
 
     if ( type === 'could-do' ) {
-      newItem = Object.assign( newItem, { project_id } )
+      newItem = Object.assign( newItem, { project_id } ) // eslint-disable-line
     }
 
     return newItem

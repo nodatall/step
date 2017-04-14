@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Login from './Login'
 
 export default class LoginContainer extends Component {
-  static redirect(path) {
+  static redirect( path ) {
     location.href = path
   }
 

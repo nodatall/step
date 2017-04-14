@@ -8,7 +8,9 @@
     "mocha": true
   },
   "rules": {
-  "space-in-parens": "off",
+  "space-in-parens": ["error", "always", {
+    "exceptions": ["{}"]
+  }],
   "padded-blocks": "off",
   "semi": ["error", "never"],
   "arrow-parens": "off",
@@ -24,6 +26,7 @@
   "one-var-declaration-per-line": "off",
   "consistent-return": "off",
   "no-else-return": "off",
+  "space-before-function-paren": "off",
   "one-var": "off",
     "valid-jsdoc": ["error", {
       "requireReturn": true,

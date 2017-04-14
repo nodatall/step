@@ -12,7 +12,7 @@ describe( '<Project />', () => {
 
   it( 'should render div with class \'project-container\'', () =>
     expect( shallow( <Project project={ fakeProject } /> )
-      .find( '.project-container' ).length).to.equal( 1 )
+      .find( '.project-container' ).length ).to.equal( 1 )
   )
 
   context( 'renders nested children', () => {
