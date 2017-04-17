@@ -6,7 +6,7 @@ const determineHost = () => {
     case 'production':
       return "'http://localhost:1337'"
     case 'test':
-      return "'http://localhost:1337'"
+      return "'http://localhost:7357'"
     case 'development':
       return "'http://localhost:1337'"
     default:
