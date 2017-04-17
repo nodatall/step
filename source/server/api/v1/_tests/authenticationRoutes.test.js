@@ -24,7 +24,7 @@ describe( 'authentication', () => {
       chai.request( server )
         .get( '/session' )
         .then( response => {
-          expect(response.body.userId).to.be.eql(9000)
+          expect( response.body.userId ).to.be.eql( 9000 )
         })
     )
 

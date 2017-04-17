@@ -1,13 +1,13 @@
 import React from 'react'
 import { mount } from 'enzyme'
 import sinon from 'sinon'
-import { expect } from '../../../../configuration/testSetup'
+import { expect, testSetup } from '../../../../configuration/testSetup'
 import LoginContainer from '../LoginContainer'
 
 describe( '<LoginContainer />', () => {
 
+  testSetup()
   const spy = sinon.spy( LoginContainer, 'redirect' )
-
   const wrapper = mount( <LoginContainer /> )
 
   it( 'should render a <Heading />', () =>
@@ -27,7 +27,7 @@ describe( '<LoginContainer />', () => {
     wrapper.find( '.login-button' ).simulate( 'click' )
 
     expect( spy.called ).to.equal( true )
-    expect( spy.calledWith( 'http://localhost:1337/auth/google' ) ).to.equal( true )
+    expect( spy.calledWith( `${__HOST__}/auth/google` ) ).to.equal( true ) // eslint-disable-line
     spy.restore()
   })
 

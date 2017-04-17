@@ -8,7 +8,7 @@ describe( '<TextFieldContainer />', () => {
   let warnStub
 
   beforeEach( () => {
-    warnStub = sinon.stub( console, 'error' ).callsFake( () => null )
+    warnStub = sinon.stub( console, 'warn' ).callsFake( () => null )
   })
 
   afterEach( () => {

@@ -25,8 +25,10 @@
   "react/jsx-closing-bracket-location": "off",
   "one-var-declaration-per-line": "off",
   "consistent-return": "off",
+  "no-restricted-syntax": "off",
   "no-else-return": "off",
   "space-before-function-paren": "off",
+  "guard-for-in": "off",
   "one-var": "off",
     "valid-jsdoc": ["error", {
       "requireReturn": true,

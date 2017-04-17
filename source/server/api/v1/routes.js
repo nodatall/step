@@ -34,7 +34,7 @@ router.get( '/user/:id/logout', checkForAuthorization, handleLogOut )
 router.get( '/auth/google', getGoogleOAuthPermissionCode )
 router.get( '/google/auth/callback', handleGoogleAuthentication, handleSuccessfulAuthentication )
 
-router.get('/session', checkForAuthorization, handleGetSession )
+router.get( '/session', checkForAuthorization, handleGetSession )
 
 router.get( '/*', handleSendApp )
 

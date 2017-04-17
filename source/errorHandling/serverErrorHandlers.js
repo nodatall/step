@@ -28,4 +28,13 @@ const handleDatabaseError = ( error, message ) => {
   }
 }
 
-export { handleServerErrors, handleDatabaseError }
+const handleControllerError = ( error, message ) => {
+  if ( !error.enqueue ) {
+    return new QueueError( message )
+  } else {
+    error.enqueue( message )
+    return error
+  }
+}
+
+export { handleServerErrors, handleDatabaseError, handleControllerError }

@@ -2,7 +2,6 @@ import passport from 'passport'
 
 const checkForAuthorization = ( request, response, next ) => {
   if ( request.isAuthenticated() ) {
-    // Use this userId to check if user is allowed access to projects and couldDos
     request.userId = request.session.passport.user
     next()
   } else if ( process.env.NODE_ENV === 'test' ) {

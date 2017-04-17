@@ -14,9 +14,9 @@ export default class App extends GlobalStateComponent {
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:1337/session`)
+    axios.get( `${__HOST__}/session` ) // eslint-disable-line
       .then( response => {
-        if (response.data.userId) {
+        if ( response.data.userId ) {
           globalState.set({
             userId: response.data.userId,
             currentProjectId: 2,
@@ -24,25 +24,16 @@ export default class App extends GlobalStateComponent {
             projects: []
           })
         } else {
-          browserHistory.push('/login')
+          browserHistory.push( '/login' )
         }
-      } )
+      })
       .catch( componentErrorHandler( 'App' ) )
   }
 
   render() {
-
-    const renderHome = () => {
-      if ( !Object.keys( this.state ).length ) {
-        return <div> Loading . . . </div>
-      } else {
-        return <ProjectListContainer />
-      }
-    }
-
     return (
-      <Router history={ browserHistory }>
-        <Route path='/' component={ () => renderHome() } />
+      <Router history={ browserHistory } >
+        <Route path='/' component={ ProjectListContainer } />
         <Route path='/login' component={ LoginContainer } />
       </Router>
     )

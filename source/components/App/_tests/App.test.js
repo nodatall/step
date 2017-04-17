@@ -2,7 +2,7 @@ import React from 'react'
 import sinon from 'sinon'
 import moxios from 'moxios'
 import { mount } from 'enzyme'
-import { expect } from '../../../../configuration/testSetup'
+import { expect, testSetup } from '../../../../configuration/testSetup'
 import App from '../App'
 
 describe( '<App />', () => {
@@ -12,19 +12,20 @@ describe( '<App />', () => {
     const fakeData = { userId: 9000 }
 
     before( () => {
+      testSetup()
       moxios.install()
-      mountSpy = sinon.spy(App.prototype, 'componentDidMount')
+      mountSpy = sinon.spy( App.prototype, 'componentDidMount' )
       wrapper = mount( <App /> )
-    } )
+    })
 
     after( () => {
       moxios.uninstall()
       mountSpy.restore()
-    } )
+    })
 
     it( 'calls componentDidMount ', () => {
-      expect( App.prototype.componentDidMount.calledOnce ).to.equal(true)
-    } )
+      expect( App.prototype.componentDidMount.calledOnce ).to.equal( true )
+    })
 
     it( 'sets intial state using data from HTTP response', done =>
       moxios.wait( () => {
@@ -33,9 +34,9 @@ describe( '<App />', () => {
           status: 200,
           response: fakeData
         }).then( () => {
-          expect( wrapper.state().userId ).to.eql(9000)
+          expect( wrapper.state().userId ).to.eql( 9000 )
           done()
-        }).catch(done)
+        }).catch( done )
       })
     )
   })
@@ -44,8 +45,9 @@ describe( '<App />', () => {
     let errorStub
 
     before( () => {
+      testSetup()
       moxios.install()
-      errorStub = sinon.stub( console, 'error' ).callsFake( () => null)
+      errorStub = sinon.stub( console, 'warn' ).callsFake( () => null )
       mount( <App /> )
     })
 
@@ -54,14 +56,14 @@ describe( '<App />', () => {
       moxios.uninstall()
     })
 
-    it('it catches and responds with an error', done =>
+    it( 'it catches and responds with an error', done =>
       moxios.wait( () => {
         const request = moxios.requests.mostRecent()
         request.respondWith({
           status: 400,
           response: 'fakeError'
         }).then( () => {
-          expect( errorStub.calledThrice ).to.equal( true )
+          expect( errorStub.calledTwice ).to.equal( true )
           done()
         }).catch( done )
       })

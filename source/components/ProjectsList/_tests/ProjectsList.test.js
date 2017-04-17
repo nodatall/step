@@ -49,7 +49,7 @@ describe( '<ProjectListContainer />', () => {
 
     before( () => {
       moxios.install()
-      errorStub = sinon.stub( console, 'error' ).callsFake( () => null )
+      errorStub = sinon.stub( console, 'warn' ).callsFake( () => null )
       mount( <ProjectListContainer /> )
     })
 

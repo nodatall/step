@@ -7,22 +7,21 @@ import {
   editProject,
   deleteProject
 } from '../../../dataServices/database/commands'
+import { handleControllerError } from '../../../errorHandling/serverErrorHandlers'
 
 const handleGetCouldDosByProjectId = ( request, response, next ) =>
   getCouldDosByProjectId( request.params.id )
     .then( result => response.json( result ) )
-    .catch( error => {
-      error.enqueue( `handleGetCouldDosByProjectId: problem getting /project/${request.params.id}/could-do` )
-      return next( error )
-    })
+    .catch( error =>
+      next( handleControllerError( error, `handleGetCouldDosByProjectId: problem getting /project/${request.params.id}/could-do` ) )
+    )
 
 const handleNewProject = ( request, response, next ) =>
   newProject( request.body )
     .then( result => response.json( result ) )
-    .catch( error => {
-      error.enqueue( `handleNewProject: problem sending ${JSON.stringify( request.body )} to /project/new` )
-      return next( error )
-    })
+    .catch( error =>
+      next( handleControllerError( error, `handleNewProject: problem sending ${JSON.stringify( request.body )} to /project/new` ) )
+    )
 
 const handleEditProject = ( request, response, next ) => {
   const attributes = request.body
@@ -30,27 +29,24 @@ const handleEditProject = ( request, response, next ) => {
 
   return editProject( projectId, attributes )
     .then( result => response.json( result ) )
-    .catch( error => {
-      error.enqueue( `editCouldDo: problem updating /project/edit/${projectId} with ${JSON.stringify( attributes )}` )
-      return next( error )
-    })
+    .catch( error =>
+      next( handleControllerError( error, `editCouldDo: problem updating /project/edit/${projectId} with ${JSON.stringify( attributes )}` ) )
+    )
 }
 
 const handleDeleteProject = ( request, response, next ) =>
   deleteProject( request.params.id )
     .then( result => response.json( result ) )
-    .catch( error => {
-      error.enqueue( `handleDeleteProject: problem deleting /project/delete/${request.params.id}` )
-      return next( error )
-    })
+    .catch( error =>
+      next( handleControllerError( error, `handleDeleteProject: problem deleting /project/delete/${request.params.id}` ) )
+    )
 
 const handleGetProjectsByUserId = ( request, response, next ) =>
   getProjectsByUserId( request.params.id )
     .then( result => response.json( result ) )
-    .catch( error => {
-      error.enqueue( `handleGetProjectsByUserId: problem getting /user/${request.params.id}/projects` )
-      return next( error )
-    })
+    .catch( error =>
+      next( handleControllerError( error, `handleGetProjectsByUserId: problem getting /user/${request.params.id}/projects` ) )
+    )
 
 export {
   handleGetCouldDosByProjectId,

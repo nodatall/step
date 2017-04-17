@@ -13,6 +13,12 @@ const globalState = {
     return stateStorage
   },
 
+  reset() {
+    for ( const property in stateStorage ) {
+      delete stateStorage[property]
+    }
+  },
+
   subscribe( subscriber ) {
     this.subscribers.push( subscriber )
   },
