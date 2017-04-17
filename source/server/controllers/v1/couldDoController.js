@@ -1,3 +1,4 @@
+import { handleControllerError } from 'sym/source/errorHandling/serverErrorHandlers'
 import {
   newCouldDo,
   editCouldDo,
@@ -7,10 +8,9 @@ import {
 const handleNewCouldDo = ( request, response, next ) =>
   newCouldDo( request.body )
     .then( result => response.json( result ) )
-    .catch( error => {
-      error.enqueue( `handleNewCouldDo: problem sending ${JSON.stringify( request.body )} to /could-do/new` )
-      return next( error )
-    })
+    .catch( error =>
+      next( handleControllerError( error, `handleNewCouldDo: problem sending ${JSON.stringify( request.body )} to /could-do/new` ) )
+    )
 
 const handleEditCouldDo = ( request, response, next ) => {
   const attributes = request.body
@@ -18,19 +18,17 @@ const handleEditCouldDo = ( request, response, next ) => {
 
   return editCouldDo( couldDoId, attributes )
     .then( result => response.json( result ) )
-    .catch( error => {
-      error.enqueue( `editCouldDo: problem updating /could-do/edit/${couldDoId} with ${JSON.stringify( attributes )}` )
-      return next( error )
-    })
+    .catch( error =>
+      next( handleControllerError( error, `editCouldDo: problem updating /could-do/edit/${couldDoId} with ${JSON.stringify( attributes )}` ) )
+    )
 }
 
 const handleDeleteCouldDo = ( request, response, next ) =>
   deleteCouldDo( request.params.id )
     .then( result => response.json( result ) )
-    .catch( error => {
-      error.enqueue( `handleDeleteCouldDo: problem deleting /could-do/delete/${request.params.id}` )
-      return next( error )
-    })
+    .catch( error =>
+      next( handleControllerError( error, `handleDeleteCouldDo: problem deleting /could-do/delete/${request.params.id}` ) )
+    )
 
 export {
   handleNewCouldDo,

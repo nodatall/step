@@ -1,3 +1,4 @@
+import { handleControllerError } from 'sym/source/errorHandling/serverErrorHandlers'
 import {
   getCouldDosByProjectId,
   getProjectsByUserId
@@ -7,7 +8,6 @@ import {
   editProject,
   deleteProject
 } from '../../../dataServices/database/commands'
-import { handleControllerError } from '../../../errorHandling/serverErrorHandlers'
 
 const handleGetCouldDosByProjectId = ( request, response, next ) =>
   getCouldDosByProjectId( request.params.id )
