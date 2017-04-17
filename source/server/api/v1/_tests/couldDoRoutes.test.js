@@ -1,6 +1,6 @@
-import { expect, chai } from '../../../../../configuration/testSetup'
-import { mockCouldDoData } from '../../../../testUtilities/mockDatabaseTestData'
-import { withThreeCouldDos } from '../../../../testUtilities/testsHelper'
+import { expect, chai } from 'sym/configuration/testSetup'
+import { withThreeCouldDos } from 'sym/source/testUtilities/testsHelper'
+import { mockCouldDoData } from 'sym/source/testUtilities/mockDatabaseTestData'
 import server from '../../../server'
 
 describe( 'couldDo routes', () => {

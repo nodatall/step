@@ -37,6 +37,7 @@
       "requireReturnDescription": true
     }],
   "linebreak-style": "off",
+  "import/no-extraneous-dependencies": "off",
   "no-underscore-dangle": "off",
   "no-unused-vars": ["error", {
     "argsIgnorePattern": "^_"

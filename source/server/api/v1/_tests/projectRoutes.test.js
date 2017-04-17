@@ -1,6 +1,6 @@
-import { expect, chai } from '../../../../../configuration/testSetup'
+import { expect, chai } from 'sym/configuration/testSetup'
+import { mockProjectData } from 'sym/source/testUtilities/mockDatabaseTestData'
 import server from '../../../server'
-import { mockProjectData } from '../../../../testUtilities/mockDatabaseTestData'
 import {
   withThreeCouldDos,
   withThreeProjects

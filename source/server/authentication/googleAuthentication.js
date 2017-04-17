@@ -1,7 +1,7 @@
+import 'sym/configuration/environment'
 import GoogleStrategy from 'passport-google-oauth2'
 import { getUserByOAuthID } from '../../dataServices/database/queries'
 import { newUser } from '../../dataServices/database/commands'
-import '../../../configuration/environment'
 
 if ( !process.env.GOOGLE_CLIENT_ID || !process.env.CLIENT_SECRET ) {
   throw new Error( 'Make sure you have GOOGLE_CLIENT_ID and CLIENT_SECRET in your .env file' )
