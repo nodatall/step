@@ -1,4 +1,4 @@
-import { expect, chai } from '../../../../../configuration/testSetup'
+import { expect, chai } from 'sym/configuration/testSetup'
 import server from '../../../server'
 
 describe( 'authentication', () => {
