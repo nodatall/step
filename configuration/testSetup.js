@@ -4,6 +4,7 @@ import chaiHttp from 'chai-http'
 import globalState from '../source/components/utilities/globalState'
 
 process.env.NODE_ENV = 'test'
+process.env.PORT = 7357
 const knex = require( '../source/dataServices/database/knex' )
 
 chai.use( chaiHttp )
