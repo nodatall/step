@@ -20,7 +20,7 @@ const handleResponse = ( request, accessToken, refresh_token, profile, done ) =>
   const attributes = { oauth_ID, email, display_name, created_at, refresh_token }
 
   return getUserByOAuthID( oauth_ID )
-    .then( user => done( null, user[0] ) )
+    .then( user => done( null, user ) )
     .catch( _ =>
       newUser( attributes )
         .then( newAuthorizedUser => done( null, newAuthorizedUser ) )

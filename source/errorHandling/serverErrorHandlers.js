@@ -37,4 +37,14 @@ const handleControllerError = ( error, message ) => {
   }
 }
 
-export { handleServerErrors, handleDatabaseError, handleControllerError }
+const handleAuthenticationError = error => {
+  logger.error( chalk.yellow( error.createMessage() ) )
+  logger.warn( error.stack )
+}
+
+export {
+  handleServerErrors,
+  handleDatabaseError,
+  handleControllerError,
+  handleAuthenticationError
+}
