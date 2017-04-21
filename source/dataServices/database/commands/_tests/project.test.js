@@ -1,8 +1,8 @@
-import { expect } from '../../../../../configuration/testSetup'
+import { expect } from 'sym/configuration/testSetup'
+import { mockProjectData } from 'sym/source/testUtilities/mockDatabaseData'
+import { withThreeProjects } from 'sym/source/testUtilities/testsHelper'
 import { newProject, editProject, deleteProject } from '../project'
 import { getProjectById } from '../../queries'
-import { mockProjectData } from '../../../../testUtilities/mockDatabaseTestData'
-import { withThreeProjects } from '../../../../testUtilities/testsHelper'
 
 const data = mockProjectData
 
@@ -34,14 +34,14 @@ describe( 'project commands', () => {
     withThreeProjects( () => {
 
       it( 'should update project with given attributes', () =>
-        editProject( 77, data.fakeEdit )
+        editProject( 77, 1, data.fakeEdit )
           .then( project => expect( project.text ).to.equal( 'snoozing' ) )
       )
 
       it( 'should throw an error if given an invalid project id', () =>
-        editProject( 49683, data.fakeEdit )
+        editProject( 49683, 1, data.fakeEdit )
           .catch( error =>
-            expect( error.back().includes( 'updateRecord:' ) ).to.equal( true )
+            expect( error.back().includes( 'updateRecordWithUserID:' ) ).to.equal( true )
           )
       )
 
@@ -54,18 +54,18 @@ describe( 'project commands', () => {
     withThreeProjects( () => {
 
       it( 'should delete a project with the given id', () =>
-        deleteProject( 77 )
+        deleteProject( 77, 1 )
           .then( deleteCount => expect( deleteCount ).to.equal( 1 ) )
-          .then( () => getProjectById( 77 ) )
+          .then( () => getProjectById( 77, 1 ) )
           .catch( error =>
             expect( error.back().includes( 'getRecordById:' ) ).to.equal( true )
           )
       )
 
       it( 'should throw an error if no project exists with given id', () =>
-        deleteProject( 94035 )
+        deleteProject( 94035, 1 )
           .catch( error =>
-            expect( error.back().includes( 'deleteRecord' ) ).to.equal( true )
+            expect( error.back().includes( 'deleteRecordWithUserID' ) ).to.equal( true )
           )
       )
 

@@ -21,10 +21,22 @@ const createRecord = ( table, attributes ) =>
       return handleDatabaseError( error, errorMessage )
     })
 
+const updateRecordWithUserID = ( table, id, user_id, attributes ) =>
+  knex
+    .table( table )
+    .where({ id, user_id })
+    .update( attributes )
+    .returning( '*' )
+    .then( firstRecord )
+    .catch( error => {
+      const errorMessage = `updateRecordWithUserID: unable to updateRecordWithUserID with id ${id} and user_id ${user_id} in table ${table} with ${JSON.stringify( attributes )}`
+      return handleDatabaseError( error, errorMessage )
+    })
+
 const updateRecord = ( table, id, attributes ) =>
   knex
     .table( table )
-    .where( 'id', id )
+    .where({ id })
     .update( attributes )
     .returning( '*' )
     .then( firstRecord )
@@ -33,17 +45,35 @@ const updateRecord = ( table, id, attributes ) =>
       return handleDatabaseError( error, errorMessage )
     })
 
-const deleteRecord = ( table, id ) =>
-  knex
+const deleteRecordWithUserID = ( table, id, user_id ) => {
+  const errorMessage = `deleteRecordWithUserID: no record exists with id ${id} and user_id ${user_id}`
+  return knex
     .table( table )
-    .where( 'id', id )
+    .where({ id, user_id })
     .del()
     .then( deleteCount => {
       if ( !deleteCount ) {
-        throw new QueueError( `deleteRecord: no record exists with id ${id}` )
+        throw new QueueError( errorMessage )
       } else {
         return deleteCount
       }
     })
+    .catch( error => handleDatabaseError( error, errorMessage ) )
+}
 
-export { createRecord, updateRecord, deleteRecord }
+const deleteRecord = ( table, id ) => {
+  const errorMessage = `deleteRecord: no record exists with id ${id}`
+  return knex
+    .table( table )
+    .where({ id })
+    .del()
+    .then( deleteCount => {
+      if ( !deleteCount ) {
+        throw new QueueError( errorMessage )
+      } else {
+        return deleteCount
+      }
+    })
+    .catch( error => handleDatabaseError( error, errorMessage ) )
+}
+export { createRecord, updateRecordWithUserID, updateRecord, deleteRecordWithUserID, deleteRecord }
