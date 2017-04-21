@@ -2,12 +2,14 @@ import React from 'react'
 import Row from '../Row/Row'
 
 const RowList = ({ items, type }) => {
-  let itemList
+  let itemList = []
 
   if ( items ) {
-    itemList = items.map( item =>
-      <Row key={ item.id } fieldType={ type } { ...item } />
-    )
+    for ( const key in items ) {
+      itemList.push(
+        <Row key={ key } fieldType={ type } { ...items[key] } />
+      )
+    }
   } else {
     itemList = <div className='loading'> Loading . . . </div>
   }

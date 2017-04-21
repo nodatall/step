@@ -1,43 +1,45 @@
 import React from 'react'
 import sinon from 'sinon'
-import { shallow, mount } from 'enzyme'
+import { mount } from 'enzyme'
 import { expect } from '../../../../../configuration/testSetup'
 import TextFieldContainer from '../TextFieldContainer'
 
-describe( '<TextFieldContainer />', () => {
-  let warnStub
+describe( '<TextField />', () => {
+  let wrapper, editInputSpy
 
   beforeEach( () => {
-    warnStub = sinon.stub( console, 'warn' ).callsFake( () => null )
+    editInputSpy = sinon.spy( TextFieldContainer.prototype, 'editInput' )
+    wrapper = mount( <TextFieldContainer id={ 1 } projectId={ 1 } type='project' text='cows' /> )
   })
 
   afterEach( () => {
-    warnStub.restore()
+    editInputSpy.restore()
+    wrapper.unmount()
   })
-
-  it( 'calls toggleEditable on click', () => {
-    const spy = sinon.spy( TextFieldContainer.prototype, 'toggleEditable' )
-    const wrapper = mount( <TextFieldContainer /> )
-
-    wrapper.find( 'TextField' ).simulate( 'click' )
-    expect( spy.calledOnce ).to.equal( true )
-    spy.restore()
-  })
-
 
   it( 'calls editInput function', () => {
-    const spy = sinon.spy( TextFieldContainer.prototype, 'editInput' )
-    const wrapper = mount( <TextFieldContainer /> )
-
     wrapper.find( 'TextField' ).simulate( 'click' )
-    const textChange = wrapper.find( 'TextFieldInput' )
-    textChange.simulate( 'change' )
-    expect( spy.calledOnce ).to.equal( true )
-    spy.restore()
+    wrapper.find( 'input' ).simulate( 'change' )
+    expect( editInputSpy.calledOnce ).to.equal( true )
   })
 
-  it( 'renders the child component', () =>
-    expect( shallow( <TextFieldContainer /> ).find( 'TextField' ).length ).to.equal( 1 )
-  )
+  context( 'when editing is true', () => {
+
+    it( 'render a .text-field-input', () => {
+      wrapper.find( 'TextField' ).simulate( 'click' )
+      expect( wrapper.find( '.text-field-input' ).length ).to.equal( 1 )
+      expect( wrapper.find( '.text-field-text' ).length ).to.equal( 0 )
+    })
+
+  })
+
+  context( 'when editing is false', () => {
+
+    it( 'render a .text-field-text', () => {
+      expect( wrapper.find( '.text-field-input' ).length ).to.equal( 0 )
+      expect( wrapper.find( '.text-field-text' ).length ).to.equal( 1 )
+    })
+
+  })
 
 })

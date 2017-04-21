@@ -1,17 +1,27 @@
 import React from 'react'
 import sinon from 'sinon'
 import moxios from 'moxios'
+import globalState from 'sym/source/components/utilities/globalState'
 import { shallow, mount } from 'enzyme'
-import { expect } from '../../../../../configuration/testSetup'
+import { expect } from 'sym/configuration/testSetup'
+import { mockGlobalState } from 'sym/source/testUtilities/mockComponentData'
+import { mockProjectData, mockCouldDoData } from 'sym/source/testUtilities/mockDatabaseData'
 import FooterContainer from '../FooterContainer'
 
 describe( '<FooterContainer />', () => {
+  let wrapper
+
+  afterEach( () => wrapper.unmount() )
 
   context( 'handles tests for rendering components and accepting inputs', () => {
-    const wrapper = mount( <FooterContainer type='project' /> )
-    const input = wrapper.find( 'input' )
+    let input
 
-    it( 'renders the child component', () =>
+    beforeEach( () => {
+      wrapper = mount( <FooterContainer type='project' /> )
+      input = wrapper.find( 'input' )
+    })
+
+    it( 'renders <Footer />', () =>
       expect( shallow( <FooterContainer /> ).find( 'Footer' ).length ).to.equal( 1 )
     )
 
@@ -22,18 +32,25 @@ describe( '<FooterContainer />', () => {
 
   })
 
-  context( 'handles tests for projects', () => {
-    let wrapper, input, button
+  context( 'when adding a new project', () => {
+    let input, button, onSubmitSpy, generateItemSpy, addProjectSpy
 
-    before( () => {
+    beforeEach( () => {
       moxios.install()
+      addProjectSpy = sinon.spy( globalState, 'addProject' )
+      onSubmitSpy = sinon.spy( FooterContainer.prototype, 'onSubmit' )
+      generateItemSpy = sinon.spy( FooterContainer.prototype, 'generateNewItem' )
+      globalState.set( mockGlobalState )
       wrapper = mount( <FooterContainer type='project' /> )
       input = wrapper.find( 'input' )
       button = wrapper.find( 'button' )
     })
 
-    after( () => {
+    afterEach( () => {
       moxios.uninstall()
+      onSubmitSpy.restore()
+      generateItemSpy.restore()
+      addProjectSpy.restore()
     })
 
 
@@ -50,19 +67,52 @@ describe( '<FooterContainer />', () => {
         done()
       })
     })
+
+    it( 'calls onSubmit when button is clicked', () => {
+      button.simulate( 'click' )
+      expect( onSubmitSpy.calledOnce ).to.equal( true )
+    })
+
+    it( 'calls onSubmit when button is clicked', () => {
+      button.simulate( 'click' )
+      expect( generateItemSpy.calledOnce ).to.equal( true )
+    })
+
+    it( 'generateNewItem method returns an object with correct properties ', () => {
+      input.simulate( 'change', { target: { value: 'baby cows' } })
+      expect( wrapper.instance().generateNewItem().text ).to.eql( 'baby cows' )
+    })
+
+    it( 'calls addProject as part of onSubmit', done => {
+      button.simulate( 'click' )
+
+      moxios.wait( () => {
+        const request = moxios.requests.mostRecent()
+        request.respondWith({
+          status: 200,
+          response: mockProjectData.fakeProject1
+        }).then( () => {
+          expect( addProjectSpy.calledOnce ).to.equal( true )
+          done()
+        }).catch( done )
+      })
+    })
   })
 
-  context( 'handles tests for couldDos', () => {
-    let wrapper, input, button
+  context( 'when adding a new could-do', () => {
+    let input, button, addCouldDosSpy
 
-    before( () => {
+    beforeEach( () => {
       moxios.install()
-      wrapper = mount( <FooterContainer type='could-do' /> )
+      addCouldDosSpy = sinon.spy( globalState, 'addCouldDo' )
+      globalState.set( mockGlobalState )
+      wrapper = mount( <FooterContainer type='could-do' currentProjectId={ 1 } /> )
       input = wrapper.find( 'input' )
       button = wrapper.find( 'button' )
     })
 
-    after( () => {
+    afterEach( () => {
+      addCouldDosSpy.restore()
       moxios.uninstall()
     })
 
@@ -77,13 +127,32 @@ describe( '<FooterContainer />', () => {
         expect( data.text ).to.equal( 'plant rose in garden' )
         done()
       })
+    })
 
+    it( 'generateNewItem method returns an object with correct properties ', () => {
+      input.simulate( 'change', { target: { value: 'baby cows' } })
+      expect( wrapper.instance().generateNewItem() ).to.eql({ text: 'baby cows', project_id: 1 })
+    })
+
+    it( 'calls addCouldDos part of onSubmit', done => {
+      button.simulate( 'click' )
+
+      moxios.wait( () => {
+        const request = moxios.requests.mostRecent()
+        request.respondWith({
+          status: 200,
+          response: mockCouldDoData.fakeCouldDo1
+        }).then( () => {
+          expect( addCouldDosSpy.calledOnce ).to.equal( true )
+          done()
+        }).catch( done )
+      })
     })
 
   })
 
   context( 'handles errors when database isn\'t updated', () => {
-    let errorStub, wrapper, button
+    let errorStub, button
 
     before( () => {
       moxios.install()
@@ -110,6 +179,7 @@ describe( '<FooterContainer />', () => {
         }).catch( done )
       })
     })
+
 
   })
 
