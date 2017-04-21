@@ -23,4 +23,4 @@ export {
   handleLogOut,
   handleGoogleAuthentication,
   handleGetSession
-} from './authorizationController'
+} from './authenticationController'

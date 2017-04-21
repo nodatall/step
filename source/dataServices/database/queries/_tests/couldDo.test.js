@@ -29,7 +29,7 @@ describe( 'couldDo queries', () => {
     withThreeCouldDos( () => {
 
       it( 'returns an array of all could-dos for supplied project id', () =>
-        getCouldDosByProjectId( 1 ).then( couldDos => {
+        getCouldDosByProjectId( 1, 1 ).then( couldDos => {
           expect( couldDos.length ).to.equal( 2 )
           const couldDoIds = couldDos.map( couldDo => couldDo.id ).sort()
           expect( couldDoIds ).to.eql( [977, 998] )
@@ -37,7 +37,7 @@ describe( 'couldDo queries', () => {
       )
 
       it( 'throws an error if given an invalid project id', () =>
-        getCouldDosByProjectId( 8 ).catch( error =>
+        getCouldDosByProjectId( 8, 1 ).catch( error =>
           expect( error.back().includes( 'findAllWhere:' ) ).to.equal( true )
         )
       )

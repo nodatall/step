@@ -1,8 +1,8 @@
-import { expect } from '../../../../../configuration/testSetup'
+import { expect } from 'sym/configuration/testSetup'
+import { mockCouldDoData } from 'sym/source/testUtilities/mockDatabaseData'
+import { withThreeCouldDos } from 'sym/source/testUtilities/testsHelper'
 import { newCouldDo, editCouldDo, deleteCouldDo } from '../couldDo'
 import { getCouldDoById } from '../../queries'
-import { mockCouldDoData } from '../../../../testUtilities/mockDatabaseTestData'
-import { withThreeCouldDos } from '../../../../testUtilities/testsHelper'
 
 const data = mockCouldDoData
 
@@ -35,14 +35,14 @@ describe( 'couldDo commands', () => {
     withThreeCouldDos( () => {
 
       it( 'should update couldDo with given attributes', () =>
-        editCouldDo( 998, data.fakeEdit )
+        editCouldDo( 998, 1, data.fakeEdit )
           .then( editedCouldDo => expect( editedCouldDo.text ).to.equal( 'eat lunch' ) )
       )
 
       it( 'throws an error if given an invalid id', () =>
-        editCouldDo( 99, data.fakeEdit )
+        editCouldDo( 99, 1, data.fakeEdit )
           .catch( error =>
-            expect( error.back().includes( 'updateRecord:' ) ).to.equal( true )
+            expect( error.back().includes( 'updateRecordWithUserID:' ) ).to.equal( true )
           )
       )
 
@@ -53,7 +53,7 @@ describe( 'couldDo commands', () => {
     withThreeCouldDos( () => {
 
       it( 'should delete a couldDo with the given id', () =>
-        deleteCouldDo( 998 )
+        deleteCouldDo( 998, 1 )
           .then( deleteConfirmaion => expect( deleteConfirmaion ).to.equal( 1 ) )
           .then( () => getCouldDoById( 998 ) )
           .catch( error =>
@@ -64,7 +64,7 @@ describe( 'couldDo commands', () => {
       it( 'throws an error if given an invalid id', () =>
         deleteCouldDo( 917489 )
           .catch( error =>
-            expect( error.back().includes( 'deleteRecord:' ) ).to.equal( true )
+            expect( error.back().includes( 'deleteRecordWithUserID:' ) ).to.equal( true )
           )
       )
 

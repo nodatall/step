@@ -1,5 +1,15 @@
 import React from 'react'
 
-const TextField = ({ text, onClick }) => <div onClick={ onClick } >{ text }</div>
+const TextField = ({ value, onChange, onKeyUp, editing }) => {
+  const inputOrText = editing ?
+    <input
+      className='text-field-input'
+      onChange={ onChange }
+      value={ value }
+      onKeyUp={ onKeyUp } /> :
+    <div className='text-field-text'>{ value }</div>
+
+  return inputOrText
+}
 
 export default TextField

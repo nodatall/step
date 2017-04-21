@@ -16,7 +16,13 @@ describe( '<Project />', () => {
   )
 
   context( 'renders nested children', () => {
-    const wrapper = mount( <Project couldDos={ fakeCouldDos } project={ fakeProject } /> )
+    let wrapper
+
+    beforeEach( () => {
+      wrapper = mount( <Project couldDos={ fakeCouldDos } project={ fakeProject } /> )
+    })
+
+    afterEach( () => wrapper.unmount() )
 
     it( 'should render a <Heading />', () =>
       expect( wrapper.find( 'Heading' ).length ).to.equal( 1 )

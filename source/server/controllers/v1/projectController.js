@@ -10,24 +10,26 @@ import {
 } from '../../../dataServices/database/commands'
 
 const handleGetCouldDosByProjectId = ( request, response, next ) =>
-  getCouldDosByProjectId( request.params.id )
+   getCouldDosByProjectId( request.params.id, request.userId )
     .then( result => response.json( result ) )
     .catch( error =>
       next( handleControllerError( error, `handleGetCouldDosByProjectId: problem getting /project/${request.params.id}/could-do` ) )
     )
 
-const handleNewProject = ( request, response, next ) =>
-  newProject( request.body )
+const handleNewProject = ( request, response, next ) => {
+  request.body.user_id = request.userId
+
+  return newProject( request.body )
     .then( result => response.json( result ) )
     .catch( error =>
       next( handleControllerError( error, `handleNewProject: problem sending ${JSON.stringify( request.body )} to /project/new` ) )
     )
+}
 
 const handleEditProject = ( request, response, next ) => {
-  const attributes = request.body
-  const projectId = request.params.id
+  const { body: attributes, params: { id: projectId }, userId } = request
 
-  return editProject( projectId, attributes )
+  return editProject( projectId, userId, attributes )
     .then( result => response.json( result ) )
     .catch( error =>
       next( handleControllerError( error, `editCouldDo: problem updating /project/edit/${projectId} with ${JSON.stringify( attributes )}` ) )
@@ -35,7 +37,7 @@ const handleEditProject = ( request, response, next ) => {
 }
 
 const handleDeleteProject = ( request, response, next ) =>
-  deleteProject( request.params.id )
+  deleteProject( request.params.id, request.userId )
     .then( result => response.json( result ) )
     .catch( error =>
       next( handleControllerError( error, `handleDeleteProject: problem deleting /project/delete/${request.params.id}` ) )

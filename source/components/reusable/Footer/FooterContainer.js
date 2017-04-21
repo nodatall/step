@@ -1,66 +1,57 @@
-import React from 'react'
+import React, { Component } from 'react'
 import axios from 'axios'
 import Footer from './Footer'
 import globalState from '../../utilities/globalState'
-import GlobalStateComponent from '../ParentClasses/GlobalStateComponent'
 import componentErrorHandler from '../../utilities/componentErrorHandler'
 
 const FooterContainerError = componentErrorHandler( 'FooterContainer' )
 
-export default class FooterContainer extends GlobalStateComponent {
+export default class FooterContainer extends Component {
   constructor( props ) {
     super( props )
-    Object.assign( this.state, { value: '' } ) // eslint-disable-line
+    this.state = { inputValue: '' }
+
     this.onChange = this.onChange.bind( this )
     this.onSubmit = this.onSubmit.bind( this )
   }
 
-  onChange( event ) {
-    this.setState({ value: event.target.value })
+  onChange( event ) { this.setState({ inputValue: event.target.value }) }
+
+  onSubmit() {
+    const { type } = this.props
+    const newItem = this.generateNewItem()
+    axios.post( `${__HOST__}/${type}/new`, newItem ) //eslint-disable-line
+    .then( response => {
+      switch ( type ) {
+        case 'could-do':
+          globalState.addCouldDo( response.data )
+          break
+        case 'project':
+          globalState.addProject( response.data )
+          break
+        default:
+      }
+    })
+    .catch( error => FooterContainerError( error ) )
   }
 
-  determineTargets() {
-    let { type } = this.props
-    let stateLocation = this.state[`${type}s`]
-
-    if ( type === 'couldDo' ) {
-      stateLocation = stateLocation[this.statecurrentProjectId]
-      type = 'could-do'
-    }
-
-    return { stateLocation, type }
-  }
-
-  generateNewItem( type ) {
-    const { value: text, userId: user_id, currentProjectId: project_id } = this.state
-    let newItem = { text, user_id }
+  generateNewItem() {
+    const { type, currentProjectId: project_id } = this.props
+    const { inputValue: text, } = this.state
+    let newItem = { text }
 
     if ( type === 'could-do' ) {
       newItem = Object.assign( newItem, { project_id } ) // eslint-disable-line
     }
-
     return newItem
   }
 
-  onSubmit() {
-    const { type: target } = this.props
-    const { type, stateLocation } = this.determineTargets()
-    const newItem = this.generateNewItem( type )
-
-    axios.post( `${__HOST__}/${type}/new`, newItem ) //eslint-disable-line
-      .then( response => {
-        newItem.id = response.data.id
-        stateLocation.push( newItem )
-        globalState.set({ [`${target}s`]: this.state[`${target}s`] })
-      })
-      .catch( error => FooterContainerError( error ) )
-  }
 
   render() {
     return <Footer
       type={ this.props.type }
       onSubmit={ this.onSubmit }
-      value={ this.state.value }
+      value={ this.state.inputValue }
       onChange={ this.onChange }
     />
   }

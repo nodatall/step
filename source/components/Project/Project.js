@@ -6,8 +6,8 @@ import FooterContainer from '../reusable/Footer/FooterContainer'
 const Project = ({ couldDos, project }) => (
   <div className='project-container' >
     <Heading type='project' text={ project.text } />
-    <RowList type='couldDo' items={ couldDos } />
-    <FooterContainer type='couldDo' />
+    <RowList type='could-do' items={ couldDos } />
+    <FooterContainer type='could-do' />
   </div>
 )
 

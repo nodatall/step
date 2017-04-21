@@ -1,14 +1,21 @@
 import React from 'react'
 import { mount } from 'enzyme'
 import sinon from 'sinon'
-import { expect, testSetup } from '../../../../configuration/testSetup'
+import { expect } from 'sym/configuration/testSetup'
 import LoginContainer from '../LoginContainer'
 
 describe( '<LoginContainer />', () => {
+  let wrapper, redirectSpy
 
-  testSetup()
-  const spy = sinon.spy( LoginContainer, 'redirect' )
-  const wrapper = mount( <LoginContainer /> )
+  beforeEach( () => {
+    redirectSpy = sinon.spy( LoginContainer, 'redirect' )
+    wrapper = mount( <LoginContainer /> )
+  })
+
+  afterEach( () => {
+    wrapper.unmount()
+    redirectSpy.restore()
+  })
 
   it( 'should render a <Heading />', () =>
     expect( wrapper.find( 'Heading' ).length ).to.equal( 1 )
@@ -23,12 +30,9 @@ describe( '<LoginContainer />', () => {
   )
 
   it( 'should go to route /auth/google when button clicked', () => {
-
     wrapper.find( '.login-button' ).simulate( 'click' )
-
-    expect( spy.called ).to.equal( true )
-    expect( spy.calledWith( `${__HOST__}/auth/google` ) ).to.equal( true ) // eslint-disable-line
-    spy.restore()
+    expect( redirectSpy.called ).to.equal( true )
+    expect( redirectSpy.calledWith( `${__HOST__}/auth/google` ) ).to.equal( true ) // eslint-disable-line
   })
 
 })

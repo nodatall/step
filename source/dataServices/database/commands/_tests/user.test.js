@@ -1,7 +1,7 @@
 import { expect } from '../../../../../configuration/testSetup'
 import { newUser, editUser, deleteUser } from '../user'
 import { getUserById } from '../../queries'
-import { mockUserData } from '../../../../testUtilities/mockDatabaseTestData'
+import { mockUserData } from '../../../../testUtilities/mockDatabaseData'
 import { withThreeUsers } from '../../../../testUtilities/testsHelper'
 
 const data = mockUserData
@@ -33,8 +33,7 @@ describe( 'user commands', () => {
 
       it( 'should update a user with given attributes', () =>
         editUser( 99, data.fakeEdit )
-          .then( editedUser =>
-            expect( editedUser.display_name ).to.equal( 'Batman' ) )
+          .then( editedUser => expect( editedUser.display_name ).to.equal( 'Batman' ) )
       )
 
       it( 'should throw an error if given an invalid user id', () =>
@@ -54,7 +53,9 @@ describe( 'user commands', () => {
         deleteUser( 88 )
           .then( deleteCount => expect( deleteCount ).to.equal( 1 ) )
           .then( () => getUserById( 88 ) )
-          .catch( error => expect( error.back().includes( 'getRecordById:' ) ).to.equal( true ) )
+          .catch( error =>
+            expect( error.back().includes( 'getRecordById:' ) ).to.equal( true )
+          )
       )
 
       it( 'should throw an error if no user exists with given id', () =>

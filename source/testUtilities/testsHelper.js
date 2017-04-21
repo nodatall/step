@@ -1,5 +1,5 @@
 import { newCouldDo, newProject, newUser } from '../dataServices/database/commands'
-import { mockCouldDoData, mockProjectData, mockUserData } from './mockDatabaseTestData'
+import { mockCouldDoData, mockProjectData, mockUserData } from './mockDatabaseData'
 
 const withThreeCouldDos = callback => {
   context( 'when there are three couldDos in the database', () => {

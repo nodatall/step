@@ -1,3 +1,5 @@
+/* global __HOST__ */
+
 import React from 'react'
 import axios from 'axios'
 import globalState from '../utilities/globalState'
@@ -6,24 +8,28 @@ import Project from './Project'
 import componentErrorHandler from '../utilities/componentErrorHandler'
 
 export default class ProjectContainer extends GlobalStateComponent {
-  constructor() {
-    super()
-    this.projectId = this.state.currentProjectId
-  }
-
   componentDidMount() {
-    axios.get( `${__HOST__}/project/${this.projectId}/could-do` ) //eslint-disable-line
-      .then( response => {
-        globalState.set({ couldDos: { [this.projectId]: response.data } })
-      })
-      .catch( componentErrorHandler( 'ProjectContainer' ) )
+    const { currentProjectId, projects } = this.state
+    if ( !projects[currentProjectId].couldDos ) {
+      axios.get( `${__HOST__}/project/${currentProjectId}/could-do` )
+        .then( ({ data: couldDos }) => {
+          projects[currentProjectId].couldDos = couldDos.reduce( ( accumulator, { id, text }) =>
+            Object.assign( accumulator, { [id]: { id, text } })
+          , {})
+          globalState.set( projects )
+        })
+        .catch( componentErrorHandler( 'ProjectContainer' ) )
+    }
   }
 
   render() {
-    const couldDos = this.state.couldDos[this.projectId]
-    const project = this.state.projects.filter(
-      currentProject => currentProject.id === this.projectId
-    )
+    let couldDos = {}, project = {}
+    const { currentProjectId, projects } = this.state
+
+    if ( currentProjectId ) {
+      couldDos = projects[currentProjectId].couldDos
+      project = projects[currentProjectId]
+    }
 
     return <Project couldDos={ couldDos } project={ project } />
   }

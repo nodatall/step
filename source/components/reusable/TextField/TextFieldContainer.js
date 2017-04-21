@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import TextField from './TextField'
-import TextFieldInput from './TextFieldInput'
 import globalState from '../../utilities/globalState'
 import componentErrorHandler from '../../utilities/componentErrorHandler'
 
@@ -10,66 +9,50 @@ export default class TextFieldContainer extends Component {
     super( props )
     this.state = {
       editing: false,
-      inputValue: this.props.text,
-      globalState: globalState.get()
+      inputValue: this.props.text
     }
-    this.toggleEditable = this.toggleEditable.bind( this )
+
+    this.makeEditable = this.makeEditable.bind( this )
     this.editInput = this.editInput.bind( this )
     this.handleKeyPress = this.handleKeyPress.bind( this )
   }
 
-  toggleEditable() {
-    this.setState({ editing: !this.state.editing })
-  }
+  makeEditable() { this.setState({ editing: true }) }
 
-  editInput( event ) {
-    this.setState({ inputValue: event.target.value })
-  }
-
-  determineUpdateTarget() {
-    let { type } = this.props
-    let stateLocation = this.state.globalState[`${type}s`]
-
-    if ( type === 'couldDo' ) {
-      stateLocation = stateLocation[this.state.globalState.currentProjectId]
-      type = 'could-do'
-    }
-
-    return { stateLocation, type }
-  }
+  editInput( event ) { this.setState({ inputValue: event.target.value }) }
 
   handleKeyPress( event ) {
-    const { id } = this.props
-    const { stateLocation, type } = this.determineUpdateTarget()
-    if ( event.key === 'Enter' ) {
-      const updatedState = stateLocation.map( element => {
-        if ( element.id === id ) {
-          return Object.assign( element, { text: this.state.inputValue } ) //eslint-disable-line
-        }
-        return element
-      })
+    const { id, projectId, type } = this.props
+    const { inputValue: text } = this.state
 
-      axios.post( `${__HOST__}/${type}/edit/${id}`, { //eslint-disable-line
-        text: this.state.inputValue
-      })
-      .then( () => {
-        globalState.set({ [stateLocation]: updatedState })
-        this.setState({ editing: false })
-      })
-      .catch( componentErrorHandler( 'TextFieldContainer' ) )
+    if ( event.key === 'Enter' ) {
+      axios.post( `${__HOST__}/${type}/edit/${id}`, { text } ) //eslint-disable-line
+        .then( () => {
+          switch ( type ) {
+            case 'project':
+              globalState.updateProjectText( id, text )
+              break
+            case 'could-do':
+              globalState.updateCouldDoText( projectId, id, text )
+              break
+            default:
+          }
+          this.setState({ editing: false })
+        })
+        .catch( componentErrorHandler( 'TextFieldContainer' ) )
     }
   }
 
   render() {
-    const { text } = this.props
-    const TextFieldDisplay = this.state.editing ?
-      <TextFieldInput
-        value={ this.state.inputValue }
-        onChange={ this.editInput }
-        onKeyUp={ this.handleKeyPress }
-      /> :
-      <TextField text={ text } onClick={ this.toggleEditable } />
-
-    return <div>{ TextFieldDisplay }</div>
+    const { editing, inputValue } = this.state
+    return (
+      <div className='text-field-container' onClick={ this.makeEditable }>
+        <TextField
+          editing={ editing }
+          value={ inputValue }
+          onChange={ this.editInput }
+          onKeyUp={ this.handleKeyPress } />
+      </div>
+    )
   }
 }

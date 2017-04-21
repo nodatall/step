@@ -54,7 +54,7 @@
     "winston": "^2.3.1"
   },
   "scripts": {
-    "begin": "yarn run symlinks && yarn run server & yarn run build & yarn run sass",
+    "begin": "yarn run migrate && yarn run symlinks && yarn run server & yarn run build & yarn run sass",
     "server": "nodemon --exec babel-node source/server/server.js",
     "build": "webpack --colors --progress -w",
     "build:dev": "NODE_ENV=development yarn run build",
@@ -65,7 +65,7 @@
     "mochatest": "nyc --cache --reporter=lcov mocha --compilers js:babel-register $(find source -name '*test.js') --require jsdom-global/register --require babel-polyfill",
     "report": "nyc report",
     "symlinks": "babel-node scripts/createSymlinks.js",
-    "report:web": "open coverage/lcov-report/index.html",
+    "report:web": "yarn run report && open coverage/lcov-report/index.html",
     "migrate": "node ./node_modules/.bin/knex --knexfile source/dataServices/database/knexfile.js migrate:latest",
     "migrate:test": "NODE_ENV=test node ./node_modules/.bin/knex --knexfile source/dataServices/database/knexfile.js migrate:latest",
     "migrate:make": "node ./node_modules/.bin/knex --knexfile source/dataServices/database/knexfile.js migrate:make",
@@ -73,7 +73,8 @@
     "lint": "eslint source/**",
     "db:seed": "NODE_ENV=development node ./node_modules/.bin/knex --knexfile source/dataServices/database/knexfile.js seed:run",
     "db:setup": "source scripts/databaseSetup.sh",
-    "db:rebuild": "dropdb step_test && createdb step_test && dropdb step_development && createdb step_development && yarn migrate && yarn db:seed"
+    "db:rebuild": "dropdb step_test && createdb step_test && dropdb step_development && createdb step_development && yarn migrate && yarn db:seed",
+    "cows": "yarn run symlinks && yarn run migrate:test && yarn run mochatest"
   },
   "nyc": {
     "exclude": [

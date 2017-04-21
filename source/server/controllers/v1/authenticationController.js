@@ -5,7 +5,7 @@ const checkForAuthorization = ( request, response, next ) => {
     request.userId = request.session.passport.user
     next()
   } else if ( process.env.NODE_ENV === 'test' ) {
-    request.userId = 9000
+    request.userId = 1
     next()
   } else {
     response.redirect( '/' )
