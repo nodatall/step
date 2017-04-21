@@ -1,5 +1,5 @@
 import { expect, chai } from 'sym/configuration/testSetup'
-import { mockProjectData } from 'sym/source/testUtilities/mockDatabaseTestData'
+import { mockProjectData } from 'sym/source/testUtilities/mockDatabaseData'
 import server from '../../../server'
 import {
   withThreeCouldDos,
