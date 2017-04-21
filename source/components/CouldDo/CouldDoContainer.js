@@ -21,21 +21,21 @@ export default class CouldDoContainer extends GlobalStateComponent {
   }
 
   findPosition = ( index, length ) => {
-    if ( index === 0 ) {
-      return 'first'
-    } else if ( index === length - 1 ) {
-      return 'last'
-    } else {
-      return 'other'
+    switch ( index ) {
+      case 0:
+        return 'beginning'
+      case length - 1:
+        return 'end'
+      default:
+        return 'middle'
     }
   }
 
   render() {
-    const projectId = this.state.currentProjectId
-    const currentCouldDoIndex = this.state.currentCouldDoIndex
-
-    const position = this.findPosition( currentCouldDoIndex, this.state.couldDos[projectId].length )
-    const text = this.state.couldDos[projectId][currentCouldDoIndex].text
+    const { currentProjectId, currentCouldDoIndex, projects } = this.state
+    const couldDoKeys = Object.keys( projects[currentProjectId].couldDos )
+    const position = this.findPosition( currentCouldDoIndex, couldDoKeys.length )
+    const text = projects[currentProjectId].couldDos[couldDoKeys[currentCouldDoIndex]].text
 
     return <CouldDo
       text={ text }

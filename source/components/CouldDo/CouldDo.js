@@ -6,11 +6,11 @@ const CouldDo = ({ text, position, previousCouldDo, nextCouldDo }) => {
 
   const upDownButtons = []
 
-  if ( position !== 'first' ) {
+  if ( position !== 'beginning' ) {
     upDownButtons.push( <button className='previous-could-do' key='up' onClick={ previousCouldDo }><Icon type='up' /></button> )
   }
 
-  if ( position !== 'last' ) {
+  if ( position !== 'end' ) {
     upDownButtons.push( <button className='next-could-do' key='down' onClick={ nextCouldDo }><Icon type='down' /></button> )
   }
 
