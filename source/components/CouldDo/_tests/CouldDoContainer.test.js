@@ -1,7 +1,7 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import { mockGlobalState } from 'sym/source/testUtilities/mockComponentData'
-import { expect } from '../../../../configuration/testSetup'
+import { mockGlobalState } from 'sym/source/testUtilities'
+import { expect } from 'sym/configuration/testSetup'
 import CouldDoContainer from '../CouldDoContainer'
 import globalState from '../../utilities/globalState'
 

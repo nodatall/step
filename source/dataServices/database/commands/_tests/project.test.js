@@ -1,6 +1,5 @@
 import { expect } from 'sym/configuration/testSetup'
-import { mockProjectData } from 'sym/source/testUtilities/mockDatabaseData'
-import { withThreeProjects } from 'sym/source/testUtilities/testsHelper'
+import { mockProjectData, withThreeProjects } from 'sym/source/testUtilities'
 import { newProject, editProject, deleteProject } from '../project'
 import { getProjectById } from '../../queries'
 

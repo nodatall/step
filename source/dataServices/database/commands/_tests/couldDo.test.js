@@ -1,6 +1,5 @@
 import { expect } from 'sym/configuration/testSetup'
-import { mockCouldDoData } from 'sym/source/testUtilities/mockDatabaseData'
-import { withThreeCouldDos } from 'sym/source/testUtilities/testsHelper'
+import { mockCouldDoData, withThreeCouldDos } from 'sym/source/testUtilities'
 import { newCouldDo, editCouldDo, deleteCouldDo } from '../couldDo'
 import { getCouldDoById } from '../../queries'
 

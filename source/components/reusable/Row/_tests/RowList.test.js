@@ -1,7 +1,7 @@
 import React from 'react'
 import { mount } from 'enzyme'
 import { expect } from 'sym/configuration/testSetup'
-import { mockProjects } from 'sym/source/testUtilities/mockComponentData'
+import { mockProjects } from 'sym/source/testUtilities'
 import RowList from '../RowList'
 
 describe( '<RowList />', () => {

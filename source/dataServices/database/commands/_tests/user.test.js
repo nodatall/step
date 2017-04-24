@@ -1,8 +1,7 @@
-import { expect } from '../../../../../configuration/testSetup'
+import { expect } from 'sym/configuration/testSetup'
 import { newUser, editUser, deleteUser } from '../user'
 import { getUserById } from '../../queries'
-import { mockUserData } from '../../../../testUtilities/mockDatabaseData'
-import { withThreeUsers } from '../../../../testUtilities/testsHelper'
+import { mockUserData, withThreeUsers } from 'sym/source/testUtilities'
 
 const data = mockUserData
 

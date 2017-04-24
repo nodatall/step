@@ -3,7 +3,7 @@ import sinon from 'sinon'
 import moxios from 'moxios'
 import { mount } from 'enzyme'
 import { expect } from 'sym/configuration/testSetup'
-import { mockGlobalState, mockProjects } from 'sym/source/testUtilities/mockComponentData'
+import { mockGlobalState, mockProjects } from 'sym/source/testUtilities'
 import ProjectMenuContainer from '../ProjectMenuContainer'
 import globalState from '../../utilities/globalState'
 

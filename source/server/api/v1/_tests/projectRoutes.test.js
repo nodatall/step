@@ -1,10 +1,10 @@
 import { expect, chai } from 'sym/configuration/testSetup'
-import { mockProjectData } from 'sym/source/testUtilities/mockDatabaseData'
 import server from '../../../server'
 import {
   withThreeCouldDos,
-  withThreeProjects
-} from '../../../../testUtilities/testsHelper'
+  withThreeProjects,
+  mockProjectData
+} from 'sym/source/testUtilities'
 
 describe( 'project routes', () => {
 

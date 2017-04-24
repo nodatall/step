@@ -1,6 +1,6 @@
 import sinon from 'sinon'
 import { expect } from 'sym/configuration/testSetup'
-import { mockUserData } from 'sym/source/testUtilities/mockDatabaseData'
+import { mockUserData } from 'sym/source/testUtilities'
 import { handleResponse } from '../googleAuthentication'
 
 describe( 'google authentication handlers', () => {

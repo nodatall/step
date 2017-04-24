@@ -1,6 +1,6 @@
-import { expect } from '../../../../../configuration/testSetup'
+import { expect } from 'sym/configuration/testSetup'
 import { getUserById, getUserByOAuthID } from '../'
-import { withThreeUsers } from '../../../../testUtilities/testsHelper'
+import { withThreeUsers } from 'sym/source/testUtilities'
 
 describe( 'user queries', () => {
 

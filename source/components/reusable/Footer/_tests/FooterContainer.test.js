@@ -4,8 +4,7 @@ import moxios from 'moxios'
 import globalState from 'sym/source/components/utilities/globalState'
 import { shallow, mount } from 'enzyme'
 import { expect } from 'sym/configuration/testSetup'
-import { mockGlobalState } from 'sym/source/testUtilities/mockComponentData'
-import { mockProjectData, mockCouldDoData } from 'sym/source/testUtilities/mockDatabaseData'
+import { mockGlobalState, mockProjectData, mockCouldDoData } from 'sym/source/testUtilities'
 import FooterContainer from '../FooterContainer'
 
 describe( '<FooterContainer />', () => {
