@@ -1,3 +1,5 @@
+import QueueError from 'sym/source/errorHandling/QueueError'
+
 const checkforValidEnv = () => {
 
   const throwEnvError = envType => {
@@ -14,4 +16,6 @@ const checkforValidEnv = () => {
 
 }
 
-export default checkforValidEnv
+const generateAuthError = message => new QueueError( message )
+
+export { generateAuthError, checkforValidEnv }

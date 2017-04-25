@@ -2,7 +2,7 @@ import 'sym/configuration/environment'
 import GoogleStrategy from 'passport-google-oauth2'
 import { getUserByOAuthID } from '../../dataServices/database/queries'
 import { newUser } from '../../dataServices/database/commands'
-import checkforValidEnv from '../../errorHandling/authErrorHandlers'
+import { checkforValidEnv } from '../../errorHandling/authErrorHandlers'
 
 checkforValidEnv()
 

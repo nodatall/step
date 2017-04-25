@@ -1,3 +1,4 @@
+import { generateAuthError } from 'sym/source/errorHandling/authErrorHandlers'
 import passport from 'passport'
 
 const checkForAuthorization = ( request, response, next ) => {
@@ -33,7 +34,10 @@ const handleLogOut = ( request, response ) => {
 
 const handleGoogleAuthentication = passport.authenticate( 'google', { failureRedirect: '/' } ) // eslint-disable-line
 
-const handleGetSession = ( request, response ) => {
+const handleGetSession = ( request, response, next ) => {
+  if ( !request.userId ) {
+    next( generateAuthError( 'handleGetSession: no userId in request' ) )
+  }
   const userId = request.userId
   response.json({ userId })
 }

@@ -6,33 +6,23 @@ import { handleResponse } from '../googleAuthentication'
 describe( 'google authentication handlers', () => {
 
   context( 'handleResponse()', () => {
-    let addUserStub, noNewUserStub
+    let addUserSpy, noNewUserSpy
     const { googleResponse: { request, accessToken, refresh_token, profile } } = mockUserData
 
-    const doneStubber = {
-      addUser: () => null,
-      noNewUser: () => null
-    }
-
     const fakeDone = ( _, user ) => (
-      user.id === 1 ? doneStubber.addUser() : doneStubber.noNewUser()
-    )
+        user.oauth_ID !== '8' ? addUserSpy() : noNewUserSpy()
+      )
 
     beforeEach( () => {
-      addUserStub = sinon.stub( doneStubber, 'addUser' )
-      noNewUserStub = sinon.stub( doneStubber, 'noNewUser' )
-    })
-
-    afterEach( () => {
-      addUserStub.restore()
-      noNewUserStub.restore()
+      addUserSpy = sinon.spy()
+      noNewUserSpy = sinon.spy()
     })
 
     it( 'adds a new user if no user exists with profile', () =>
       handleResponse( request, accessToken, refresh_token, profile, fakeDone )
         .then( () => {
-          expect( addUserStub.calledOnce ).to.equal( true )
-          expect( noNewUserStub.calledOnce ).to.equal( false )
+          expect( addUserSpy.calledOnce ).to.equal( true )
+          expect( noNewUserSpy.calledOnce ).to.equal( false )
         })
     )
 
@@ -40,8 +30,8 @@ describe( 'google authentication handlers', () => {
       profile.id = 8
       return handleResponse( request, accessToken, refresh_token, profile, fakeDone )
         .then( () => {
-          expect( noNewUserStub.calledOnce ).to.equal( true )
-          expect( addUserStub.calledOnce ).to.equal( false )
+          expect( noNewUserSpy.calledOnce ).to.equal( true )
+          expect( addUserSpy.calledTwice ).to.equal( false )
         })
     })
 

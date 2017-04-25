@@ -80,7 +80,8 @@
     "exclude": [
       "source/dataServices/database/queries/index.js",
       "source/dataServices/database/commands/index.js",
-      "source/server/controllers/v1/index.js"
+      "source/server/controllers/v1/index.js",
+      "source/testUtilities/index.js"
     ]
   }
 }

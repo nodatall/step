@@ -1,6 +1,6 @@
 import { expect } from 'sym/configuration/testSetup'
 import sinon from 'sinon'
-import { checkForAuthorization } from '../authenticationController'
+import { checkForAuthorization, handleGetSession } from '../authenticationController'
 
 describe( 'authentication controller', () => {
 
@@ -68,5 +68,29 @@ describe( 'authentication controller', () => {
     })
 
   })
-  
+
+})
+
+describe( 'handleGetSession()', () => {
+  const jsonSpy = sinon.spy()
+  const fakeNext = sinon.spy()
+  const fakeRequest = {
+    userId: 1
+  }
+  const fakeResponse = {
+    json: jsonSpy
+  }
+
+  it( 'should pass userId from request to response.json()', () => {
+    handleGetSession( fakeRequest, fakeResponse, fakeNext )
+    expect( jsonSpy.firstCall.args[0].userId ).to.equal( 1 )
+  })
+
+  it( 'should throw an error if there is no userId in request', () => {
+    delete fakeRequest.userId
+    handleGetSession( fakeRequest, fakeResponse, fakeNext )
+    expect( fakeNext.firstCall.args[0].back().includes( 'handleGetSession:' ) ).to.equal( true )
+    fakeRequest.userId = 1
+  })
+
 })
