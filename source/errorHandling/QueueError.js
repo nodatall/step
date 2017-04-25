@@ -10,6 +10,10 @@ export default class QueueError extends Error {
   length = () => this.size
 
   enqueue = message => {
+    for ( let i = 0; i < this.errorQueue.length; i += 1 ) {
+      if ( this.errorQueue[i] === message ) return
+    }
+
     this.errorQueue[this.length()] = message
     this.size += 1
   }

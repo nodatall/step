@@ -78,6 +78,16 @@ describe( 'QueueError', () => {
       }
     })
 
+    it( 'should prevent duplicate messages from entering the array', () => {
+      try {
+        throw errorOfEternity
+      } catch ( error ) {
+        error.enqueue( originErrorMessage )
+        error.enqueue( originErrorMessage )
+        expect( error.length() ).to.equal( 1 )
+      }
+    })
+
   })
 
   context( 'createMessage()', () => {
