@@ -47,6 +47,7 @@ $ touch .env
 GOOGLE_CLIENT_ID=[user's client ID]
 CLIENT_SECRET=[user's client secret]
 SESSION_SECRET=[random string you make up]
+CALLBACK_URL=[redirect URI from above]
 ```
 
 ### Setup Database

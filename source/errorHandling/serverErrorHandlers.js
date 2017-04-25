@@ -19,6 +19,7 @@ const handleServerErrors = ( error, request, response, next ) => { //eslint-disa
   }
 }
 
+
 const handleDatabaseError = ( error, message ) => {
   if ( !error.enqueue ) {
     throw new QueueError( message )
