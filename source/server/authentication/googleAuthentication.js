@@ -23,7 +23,7 @@ const handleResponse = ( request, accessToken, refresh_token, profile, done ) =>
     .then( user => done( null, user ) )
     .catch( _ =>
       newUser( attributes )
-        .then( newAuthorizedUser => done( null, newAuthorizedUser ) )
+       .then( newAuthorizedUser => done( null, newAuthorizedUser ) )
     )
 }
 

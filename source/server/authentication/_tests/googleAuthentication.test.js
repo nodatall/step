@@ -38,7 +38,7 @@ describe( 'google authentication handlers', () => {
 
     it( 'uses existing supplied user', () => {
       profile.id = 8
-      handleResponse( request, accessToken, refresh_token, profile, fakeDone )
+      return handleResponse( request, accessToken, refresh_token, profile, fakeDone )
         .then( () => {
           expect( noNewUserStub.calledOnce ).to.equal( true )
           expect( addUserStub.calledOnce ).to.equal( false )
