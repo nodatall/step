@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import { expect } from '../../../../../configuration/testSetup'
+import { expect } from 'sym/configuration/testSetup'
 import Row from '../Row'
 
 describe( '<Row />', () => {

@@ -19,8 +19,8 @@ describe( '<RowList />', () => {
       expect( wrapper.find( `.${type}-rowlist-container` ).length ).to.equal( 1 )
     )
 
-    it( 'should render a <Row /> for each item', () =>
-      expect( wrapper.find( 'Row' ).length ).to.equal( Object.keys( mockProjects ).length )
+    it( 'should render a <RowContainer /> for each item', () =>
+      expect( wrapper.find( 'RowContainer' ).length ).to.equal( Object.keys( mockProjects ).length )
     )
 
   })

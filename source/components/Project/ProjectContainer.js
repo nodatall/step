@@ -10,6 +10,7 @@ import componentErrorHandler from '../utilities/componentErrorHandler'
 export default class ProjectContainer extends GlobalStateComponent {
   componentDidMount() {
     const { currentProjectId, projects } = this.state
+
     if ( !projects[currentProjectId].couldDos ) {
       axios.get( `${__HOST__}/project/${currentProjectId}/could-do` )
         .then( ({ data: couldDos }) => {

@@ -1,3 +1,5 @@
+/* global __HOST__ */
+
 import React, { Component } from 'react'
 import Login from './Login'
 
@@ -7,6 +9,6 @@ export default class LoginContainer extends Component {
   }
 
   render() {
-    return <Login redirect={ LoginContainer.redirect } path={ `${__HOST__}/auth/google` } /> // eslint-disable-line
+    return <Login redirect={ LoginContainer.redirect } path={ `${__HOST__}/auth/google` } />
   }
 }

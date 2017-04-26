@@ -9,9 +9,7 @@ const globalState = {
     this.passStateToSubscribers()
   },
 
-  get() {
-    return stateStorage
-  },
+  get() { return stateStorage },
 
   reset() {
     for ( const property in stateStorage ) {

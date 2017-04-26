@@ -1,5 +1,5 @@
 import React from 'react'
 
-const Icon = ({ type }) => <div>icon: { type }</div>
+const Icon = ({ type, onClick }) => <div onClick={ onClick }>icon: { type }</div>
 
 export default Icon
