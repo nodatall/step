@@ -3,11 +3,11 @@ import sinon from 'sinon'
 import globalState from 'sym/source/components/utilities/globalState'
 import { shallow, mount } from 'enzyme'
 import { expect } from 'sym/configuration/testSetup'
-import { browserHistory } from 'react-router'
+import { MemoryRouter } from 'react-router'
 import RowContainer from '../RowContainer'
 
 describe( '<RowContainer />', () => {
-  let wrapper, setCurrentProjectIdSpy, browserHistoryPushStub
+  let wrapper, setCurrentProjectIdSpy
   const wrapperProps = {
     fieldType: 'project',
     text: 'moo',
@@ -21,13 +21,17 @@ describe( '<RowContainer />', () => {
 
   beforeEach( () => {
     setCurrentProjectIdSpy = sinon.spy( globalState, 'setCurrentProjectId' )
-    browserHistoryPushStub = sinon.stub( browserHistory, 'push' )
-    wrapper = mount( <RowContainer { ...wrapperProps } /> )
+    wrapper = mount(
+      <MemoryRouter>
+        <RowContainer { ...wrapperProps } />
+      </MemoryRouter>
+    )
+    wrapper.find( 'RowContainer' ).nodes[0].context = { history: [] }
   })
+
 
   afterEach( () => {
     setCurrentProjectIdSpy.restore()
-    browserHistoryPushStub.restore()
     wrapper.unmount()
   })
 
@@ -39,18 +43,18 @@ describe( '<RowContainer />', () => {
   context( 'goToProject()', () => {
 
     it( 'should call globalState.setCurrentProjectId()', () => {
-      wrapper.instance().goToProject()
-      expect( setCurrentProjectIdSpy.calledOnce ).to.equal( true )
+      wrapper.find( 'RowContainer' ).nodes[0].goToProject()
+      expect( setCurrentProjectIdSpy.called ).to.equal( true )
     })
 
     it( 'setCurrentProjectId is called with id prop', () => {
-      wrapper.instance().goToProject()
+      wrapper.find( 'RowContainer' ).nodes[0].goToProject()
       expect( setCurrentProjectIdSpy.calledWith( wrapperProps.id ) ).to.equal( true )
     })
 
     it( 'calls browserHistory.push()', async () => {
-      await wrapper.instance().goToProject()
-      expect( browserHistoryPushStub.callCount ).to.equal( 1 )
+      await wrapper.find( 'RowContainer' ).nodes[0].goToProject()
+      expect( wrapper.find( 'RowContainer' ).nodes[0].context.history[0] ).to.equal( '/project' )
     })
 
   })

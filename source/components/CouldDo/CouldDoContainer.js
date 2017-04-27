@@ -32,6 +32,10 @@ export default class CouldDoContainer extends GlobalStateComponent {
   }
 
   render() {
+    if ( !Object.keys( this.state ).length ) {
+      return <div> Loading . . .</div>
+    }
+
     const { currentProjectId, currentCouldDoIndex, projects } = this.state
     const couldDoKeys = Object.keys( projects[currentProjectId].couldDos )
     const position = this.findPosition( currentCouldDoIndex, couldDoKeys.length )
