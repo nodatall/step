@@ -1,7 +1,7 @@
 import React from 'react'
 import sinon from 'sinon'
 import globalState from 'sym/source/components/utilities/globalState'
-import { shallow, mount } from 'enzyme'
+import { mount, shallow } from 'enzyme'
 import { expect } from 'sym/configuration/testSetup'
 import { MemoryRouter } from 'react-router'
 import RowContainer from '../RowContainer'
@@ -26,7 +26,6 @@ describe( '<RowContainer />', () => {
         <RowContainer { ...wrapperProps } />
       </MemoryRouter>
     )
-    wrapper.find( 'RowContainer' ).nodes[0].context = { history: [] }
   })
 
 
@@ -54,7 +53,8 @@ describe( '<RowContainer />', () => {
 
     it( 'calls browserHistory.push()', async () => {
       await wrapper.find( 'RowContainer' ).nodes[0].goToProject()
-      expect( wrapper.find( 'RowContainer' ).nodes[0].context.history[0] ).to.equal( '/project' )
+      expect( wrapper.find( 'RowContainer' ).nodes[0].context.router.history.entries[1].pathname )
+        .to.equal( '/project' )
     })
 
   })

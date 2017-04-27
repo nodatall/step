@@ -1,6 +1,7 @@
 import React from 'react'
 import sinon from 'sinon'
 import moxios from 'moxios'
+import { MemoryRouter } from 'react-router'
 import { shallow, mount } from 'enzyme'
 import { mockGlobalState, mockCouldDos } from 'sym/source/testUtilities'
 import { expect } from 'sym/configuration/testSetup'
@@ -23,7 +24,11 @@ describe( '<ProjectContainer />', () => {
       moxios.install()
       errorStub = sinon.stub( console, 'warn' ).callsFake( () => null )
       mountSpy = sinon.spy( ProjectContainer.prototype, 'componentDidMount' )
-      wrapper = mount( <ProjectContainer /> )
+      wrapper = mount(
+        <MemoryRouter>
+          <ProjectContainer />
+        </MemoryRouter>
+      )
     })
 
     afterEach( () => {
@@ -57,7 +62,7 @@ describe( '<ProjectContainer />', () => {
           status: 200,
           response: mockCouldDos
         }).then( () => {
-          expect( wrapper.state().projects[2].couldDos[mockCouldDos[0].id] ).to.eql( mockCouldDos[0] ) // eslint-disable-line
+          expect( wrapper.find( 'ProjectContainer' ).nodes[0].state.projects[2].couldDos[mockCouldDos[0].id] ).to.eql( mockCouldDos[0] ) // eslint-disable-line
           done()
         }).catch( done )
       })
@@ -71,7 +76,11 @@ describe( '<ProjectContainer />', () => {
     beforeEach( () => {
       globalState.set( mockGlobalState )
       moxios.install()
-      wrapper = mount( <ProjectContainer /> )
+      wrapper = mount(
+        <MemoryRouter>
+          <ProjectContainer />
+        </MemoryRouter>
+      )
     })
 
     afterEach( () => {

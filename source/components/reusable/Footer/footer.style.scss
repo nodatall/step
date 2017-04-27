@@ -1,11 +1,11 @@
 .footer-container {
-  border: $divider-border;
+  border-top: $divider-border;
   padding: 6px 0px;
   background-color: transparent;
   display: flex;
   justify-content: center;
   position: absolute;
-  bottom: 0;
+  bottom: -58px;
   left: 0;
   right: 0;
 }

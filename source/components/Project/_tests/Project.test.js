@@ -1,4 +1,5 @@
 import React from 'react'
+import { MemoryRouter } from 'react-router'
 import { mount, shallow } from 'enzyme'
 import { expect } from '../../../../configuration/testSetup'
 import Project from '../Project'
@@ -19,7 +20,11 @@ describe( '<Project />', () => {
     let wrapper
 
     beforeEach( () => {
-      wrapper = mount( <Project couldDos={ fakeCouldDos } project={ fakeProject } /> )
+      wrapper = mount(
+        <MemoryRouter>
+          <Project couldDos={ fakeCouldDos } project={ fakeProject } />
+        </MemoryRouter>
+      )
     })
 
     afterEach( () => wrapper.unmount() )
@@ -30,6 +35,10 @@ describe( '<Project />', () => {
 
     it( 'should render a <RowList />', () =>
       expect( wrapper.find( 'RowList' ).length ).to.equal( 1 )
+    )
+
+    it( 'should render a <Link />', () =>
+      expect( wrapper.find( 'Link' ).length ).to.equal( 1 )
     )
 
   })
