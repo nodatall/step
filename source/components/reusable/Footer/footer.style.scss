@@ -1,0 +1,35 @@
+.footer-container {
+  border: $divider-border;
+  padding: 6px 0px;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.plus-button {
+  opacity: 0.25;
+  background: transparent;
+  color: #f0f0f0;
+  border: none;
+}
+
+.footer-input-text {
+  max-width: 450px;
+  font-size: $default-font-size;
+  font-family: $content-font;
+  color: $white-text;
+  background-color: transparent;
+  text-align: center;
+  border: none;
+  letter-spacing: 1px;
+}
+
+.footer-input-text::placeholder {
+  letter-spacing: 0;
+  opacity: 0.66;
+  font-style: italic;
+}

@@ -9,8 +9,8 @@ const Footer = ({ type, onChange, value, onSubmit }) => {
 
   return (
     <div className='footer-container'>
-      <button onClick={ onSubmit }><Icon type='plus' /></button>
-      <input type='text' placeholder={ text } value={ value } onChange={ onChange } />
+      <button className='plus-button' onClick={ onSubmit }><Icon type='plus' /></button>
+      <input className='footer-input-text' type='text' placeholder={ text } value={ value } onChange={ onChange } maxLength='20' />
     </div>
   )
 }
