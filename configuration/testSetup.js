@@ -1,7 +1,10 @@
 import { jsdom } from 'jsdom'
 import chai, { expect } from 'chai'
 import chaiHttp from 'chai-http'
+import { handleUnhandledRejection } from 'sym/source/errorHandling/serverErrorHandlers'
 import globalState from '../source/components/utilities/globalState'
+
+handleUnhandledRejection()
 
 process.env.NODE_ENV = 'test'
 process.env.PORT = 7357

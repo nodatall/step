@@ -2,7 +2,17 @@ import chalk from 'chalk'
 import QueueError from './QueueError'
 import logger from '../server/logger'
 
-const handleServerErrors = ( error, request, response, next ) => { //eslint-disable-line
+const handleUnhandledRejection = () => {
+  process.on( 'unhandledRejection', ( reason, promise ) => {
+    console.error( chalk.yellow( '\n--:: Unhandled promise rejection ::--\n' ) ) // eslint-disable-line
+    console.error( chalk.yellow( 'Stack trace:' ), reason ) // eslint-disable-line
+    console.error( chalk.yellow( '\nUnhandled promise:' ), promise ) // eslint-disable-line
+  })
+}
+
+const handleServerErrors = ( error, request, response ) => {
+  if ( !process.env.NODE_ENV === 'test' ) handleUnhandledRejection()
+
   logger.error( chalk.yellow( error.createMessage() ) )
 
   response.status( error.status || 500 )
@@ -18,7 +28,6 @@ const handleServerErrors = ( error, request, response, next ) => { //eslint-disa
     })
   }
 }
-
 
 const handleDatabaseError = ( error, message ) => {
   if ( !error.enqueue ) {
@@ -47,5 +56,6 @@ export {
   handleServerErrors,
   handleDatabaseError,
   handleControllerError,
-  handleAuthenticationError
+  handleAuthenticationError,
+  handleUnhandledRejection
 }
