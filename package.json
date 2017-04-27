@@ -41,6 +41,7 @@
     "moxios": "^0.3.0",
     "node-sass": "^4.5.0",
     "nodemon": "^1.11.0",
+    "normalize.css": "^6.0.0",
     "nyc": "^10.2.0",
     "passport": "^0.3.2",
     "passport-google-oauth2": "^0.1.6",
