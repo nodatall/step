@@ -1,0 +1,22 @@
+
+.login-button {
+  background-color: $darkblue-background;
+  border: none;
+  color: $white-text;
+  cursor: pointer;
+  font-family: $header-font;
+  font-size: 48px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.login-button:hover {
+  color: darken($white-text, 25%);
+}
+
+.login-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,4 +1,6 @@
-@import "global";
+@import 'normalize.scss';
+@import "global.style.scss";
 @import "../components/reusable/Footer/footer.style.scss";
 @import "../components/ProjectMenu/projectMenu.style.scss";
 @import "../components/reusable/Heading/heading.style.scss";
+@import "../components/Login/login.style.scss";

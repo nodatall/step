@@ -1,6 +1,6 @@
+import { withThreeCouldDos } from 'sym/source/testUtilities'
 import { expect } from 'sym/configuration/testSetup'
 import { getCouldDoById, getCouldDosByProjectId } from '../couldDo'
-import { withThreeCouldDos } from 'sym/source/testUtilities'
 
 describe( 'couldDo queries', () => {
 

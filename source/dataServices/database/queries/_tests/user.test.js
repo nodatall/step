@@ -1,6 +1,6 @@
+import { withThreeUsers } from 'sym/source/testUtilities'
 import { expect } from 'sym/configuration/testSetup'
 import { getUserById, getUserByOAuthID } from '../'
-import { withThreeUsers } from 'sym/source/testUtilities'
 
 describe( 'user queries', () => {
 

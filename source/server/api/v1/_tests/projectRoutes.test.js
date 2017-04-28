@@ -1,10 +1,10 @@
-import { expect, chai } from 'sym/configuration/testSetup'
-import server from '../../../server'
 import {
   withThreeCouldDos,
   withThreeProjects,
   mockProjectData
 } from 'sym/source/testUtilities'
+import { expect, chai } from 'sym/configuration/testSetup'
+import server from '../../../server'
 
 describe( 'project routes', () => {
 

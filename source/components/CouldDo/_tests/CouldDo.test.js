@@ -25,7 +25,7 @@ describe( '<CouldDo />', () => {
     })
 
 
-    it( 'should render a CouldDo component with class \'could-do-container\'', () => 
+    it( 'should render a CouldDo component with class \'could-do-container\'', () =>
       expect( wrapper.find( '.could-do-container' ).length ).to.equal( 1 )
     )
 
@@ -56,7 +56,7 @@ describe( '<CouldDo />', () => {
       )
     })
 
-    it( 'should not render button with class \'previous-could-do\'', () => 
+    it( 'should not render button with class \'previous-could-do\'', () =>
       expect( wrapper.find( '.previous-could-do' ).length ).to.equal( 0 )
     )
 
@@ -91,11 +91,15 @@ describe( '<CouldDo />', () => {
     beforeEach( () => {
       wrapper = mount(
         <MemoryRouter>
-          <CouldDo text='learn to juggle' position='middle' previousCouldDo={ () => {
-            testString += 'previousCouldDo is called : '
-          } } nextCouldDo={ () => {
-            testString += 'nextCouldDo is called.'
-          } } />
+          <CouldDo
+            text='learn to juggle'
+            position='middle'
+            previousCouldDo={ () => {
+              testString += 'previousCouldDo is called : '
+            } }
+            nextCouldDo={ () => {
+              testString += 'nextCouldDo is called.'
+            } } />
         </MemoryRouter>
       )
 
@@ -104,11 +108,11 @@ describe( '<CouldDo />', () => {
     })
 
 
-    it( 'previous button clicks triggers functions', () => 
+    it( 'previous button clicks triggers functions', () =>
       expect( testString.includes( 'previousCouldDo is called : ' ) ).to.equal( true )
     )
 
-    it( 'next button clicks triggers functions', () => 
+    it( 'next button clicks triggers functions', () =>
       expect( testString.includes( 'nextCouldDo is called.' ) ).to.equal( true )
     )
 
