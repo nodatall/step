@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,400i');
+@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,400i|Muli:300,400');
 
 $content-font: 'PT Sans', sans-serif;
 $white-text: #f0f0f0;
 $default-font-size: 32px;
 $darkblue-background: #1f2f3e;
 $divider-border: solid 1px #35404b;
+$header-font: 'Muli', sans-serif;
 
 input:focus {
   outline: none;
@@ -13,4 +14,5 @@ input:focus {
 body {
   position: relative;
   background-color: $darkblue-background;
+  margin: 0px;
 }
