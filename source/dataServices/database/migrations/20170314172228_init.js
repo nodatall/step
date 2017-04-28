@@ -27,6 +27,7 @@ exports.up = ( knex, Promise ) =>
       table.integer( 'project_id' )
       table.unique( ['user_id', 'project_id'] )
     })
+
   ] )
 
 exports.down = ( knex, Promise ) =>

@@ -99,6 +99,11 @@ $ yarn
 $ yarn test
 $ git push -f origin HEAD
 ```
+###### Updating packages
+$ rm -rf node_modules
+$ rm yarn.lock
+$ yarn install
+When the prompt comes up, type "A"
 
 ### Architecture
 - Node
