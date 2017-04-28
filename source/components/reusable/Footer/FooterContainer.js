@@ -21,17 +21,17 @@ export default class FooterContainer extends Component {
     const { type } = this.props
     const newItem = this.generateNewItem()
     axios.post( `${__HOST__}/${type}/new`, newItem ) //eslint-disable-line
-    .then( response => {
-      switch ( type ) {
-        case 'could-do':
-          globalState.addCouldDo( response.data )
-          break
-        case 'project':
-          globalState.addProject( response.data )
-          break
-        default:
-      }
-    })
+      .then( response => {
+        switch ( type ) {
+          case 'could-do':
+            globalState.addCouldDo( response.data )
+            break
+          case 'project':
+            globalState.addProject( response.data )
+            break
+          default:
+        }
+      })
     .catch( error => FooterContainerError( error ) )
   }
 

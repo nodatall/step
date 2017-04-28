@@ -1,5 +1,4 @@
 /* global __HOST__ */
-
 import React from 'react'
 import axios from 'axios'
 import globalState from '../utilities/globalState'
@@ -32,7 +31,12 @@ export default class ProjectContainer extends GlobalStateComponent {
       project = projects[currentProjectId]
     }
 
-    return <Project couldDos={ couldDos } project={ project } />
+    return (
+      <Project
+        couldDos={ couldDos }
+        project={ project }
+        currentProjectId={ currentProjectId } />
+    )
   }
 
 }

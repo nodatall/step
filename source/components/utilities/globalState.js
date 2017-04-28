@@ -38,6 +38,16 @@ const globalState = {
     this.passStateToSubscribers()
   },
 
+  deleteProject( projectId ) {
+    delete stateStorage.projects[projectId]
+    this.passStateToSubscribers()
+  },
+
+  deleteCouldDo( couldDoId ) {
+    delete stateStorage.projects[stateStorage.currentProjectId].couldDos[couldDoId]
+    this.passStateToSubscribers()
+  },
+
   setCurrentProjectId( projectId ) {
     stateStorage.currentProjectId = projectId
     this.passStateToSubscribers()

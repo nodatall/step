@@ -1,7 +1,7 @@
 import React from 'react'
 import TextFieldContainer from '../TextField/TextFieldContainer'
 import Icon from '../Icon/Icon'
-import IconList from '../Icon/IconList'
+import IconListContainer from '../Icon/IconListContainer'
 
 const Row = ({ text, id, fieldType, goToProject }) => {
   const eyeIcon = fieldType === 'project' ?
@@ -11,7 +11,7 @@ const Row = ({ text, id, fieldType, goToProject }) => {
   return (
     <div className='row-container'>
       <TextFieldContainer text={ text } id={ id } type={ fieldType } />
-      <IconList type={ fieldType } />
+      <IconListContainer type={ fieldType } id={ id } />
       { eyeIcon }
     </div>
   )

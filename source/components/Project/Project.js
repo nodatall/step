@@ -5,12 +5,12 @@ import RowList from '../reusable/Row/RowList'
 import FooterContainer from '../reusable/Footer/FooterContainer'
 import Icon from '../reusable/Icon/Icon'
 
-const Project = ({ couldDos, project }) => (
+const Project = ({ couldDos, project, currentProjectId }) => (
   <div className='project-container' >
     <Heading type='project' text={ project.text } />
     <Link to='/'><Icon type='back' /></Link>
     <RowList type='could-do' items={ couldDos } />
-    <FooterContainer type='could-do' />
+    <FooterContainer type='could-do' currentProjectId={ currentProjectId } />
   </div>
 )
 
