@@ -3,7 +3,7 @@ import sinon from 'sinon'
 import moxios from 'moxios'
 import { MemoryRouter } from 'react-router'
 import { shallow, mount } from 'enzyme'
-import { mockGlobalState, mockCouldDos } from 'sym/source/testUtilities'
+import { mockGlobalState, mockCouldDos, createDeepClone } from 'sym/source/testUtilities'
 import { expect } from 'sym/configuration/testSetup'
 import ProjectContainer from '../ProjectContainer'
 import globalState from '../../utilities/globalState'
@@ -16,7 +16,8 @@ describe( '<ProjectContainer />', () => {
   })
 
   context( 'when there are no couldDos matching current project id', () => {
-    let wrapper, mountSpy, errorStub, globalStateWithoutCouldDo = JSON.parse( JSON.stringify( mockGlobalState ) ) //eslint-disable-line
+    let wrapper, mountSpy, errorStub, globalStateWithoutCouldDo = createDeepClone( mockGlobalState ) //eslint-disable-line
+
     delete globalStateWithoutCouldDo.projects[2].couldDos
 
     beforeEach( () => {
