@@ -58,13 +58,13 @@
     "winston": "^2.3.1"
   },
   "scripts": {
-    "begin": "yarn run migrate && yarn run symlinks && yarn run server & yarn run build & yarn run sass",
+    "begin": "yarn run migrate && yarn run symlinks && yarn run server & yarn run build & yarn run sass -- -w",
     "server": "nodemon --exec babel-node source/server/server.js",
     "build": "webpack --colors --progress -w",
     "build:dev": "NODE_ENV=development yarn run build",
     "build:production": "yarn run symlinks && NODE_ENV=production yarn run build",
     "build:test": "yarn run symlinks && NODE_ENV=test yarn run build",
-    "sass": "node-sass source/stylesheets/index.scss public/main.css -w",
+    "sass": "node-sass source/stylesheets/index.scss public/main.css",
     "test": "yarn run symlinks && yarn run migrate:test && yarn run mochatest",
     "mochatest": "nyc --cache --reporter=lcov mocha --compilers js:babel-register $(find source -name '*test.js') --require jsdom-global/register --require babel-polyfill",
     "report": "nyc report",
