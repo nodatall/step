@@ -7,7 +7,7 @@ const IconList = ({ type, deleteItems }) => {
 
   return (
     <div className='iconlist-container'>
-      <Icon type='dragAndDrop' />
+      <Icon type='dragHandle' />
       { makeIntoProject }
       <Icon type='delete' onClick={ deleteItems } />
     </div>

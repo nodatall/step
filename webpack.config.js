@@ -29,6 +29,23 @@ module.exports = {
           presets: ['env', 'react'],
           plugins: ['transform-class-properties']
         }
+      },
+      {
+        test: /\.svg$/,
+        loaders: [
+          {
+            loader: 'babel-loader',
+            query: {
+              presets: ['es2015']
+            }
+          },
+          {
+            loader: 'react-svg-loader',
+            query: {
+              jsx: true
+            }
+          }
+        ]
       }
     ]
   },
