@@ -8,6 +8,7 @@ export default class CouldDoContainer extends GlobalStateComponent {
     super( props )
     this.previousCouldDo = this.previousCouldDo.bind( this )
     this.nextCouldDo = this.nextCouldDo.bind( this )
+    globalState.set({ currentCouldDoIndex: 0 })
   }
 
   previousCouldDo = () => {
@@ -33,7 +34,7 @@ export default class CouldDoContainer extends GlobalStateComponent {
 
   render() {
     if ( !Object.keys( this.state ).length ) {
-      return <div> Loading . . .</div>
+      return <div className='loading'> Loading . . .</div>
     }
 
     const { currentProjectId, currentCouldDoIndex, projects } = this.state

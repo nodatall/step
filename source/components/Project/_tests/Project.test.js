@@ -38,7 +38,7 @@ describe( '<Project />', () => {
     )
 
     it( 'should render a <Link />', () =>
-      expect( wrapper.find( 'Link' ).length ).to.equal( 1 )
+      expect( wrapper.find( 'Link' ).length ).to.equal( 2 )
     )
 
   })

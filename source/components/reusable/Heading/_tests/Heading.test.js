@@ -1,6 +1,7 @@
 import React from 'react'
 import { shallow, mount } from 'enzyme'
-import { expect } from '../../../../../configuration/testSetup'
+import { MemoryRouter } from 'react-router'
+import { expect } from 'sym/configuration/testSetup'
 import Heading from '../Heading'
 
 describe( '<Heading>', () => {
@@ -24,7 +25,11 @@ describe( '<Heading>', () => {
   context( 'when type is \'couldDo\'', () => {
 
     before( () => {
-      wrapper = mount( <Heading type='couldDo' /> )
+      wrapper = mount(
+        <MemoryRouter>
+          <Heading type='couldDo' />
+        </MemoryRouter>
+      )
     })
 
     after( () => {
@@ -40,7 +45,11 @@ describe( '<Heading>', () => {
   context( 'when type is \'project\'', () => {
 
     before( () => {
-      wrapper = mount( <Heading type='project' /> )
+      wrapper = mount(
+        <MemoryRouter>
+          <Heading type='project' />
+        </MemoryRouter>
+      )
     })
 
     after( () => {
