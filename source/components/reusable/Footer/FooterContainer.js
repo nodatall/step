@@ -4,20 +4,19 @@ import Footer from './Footer'
 import globalState from '../../utilities/globalState'
 import componentErrorHandler from '../../utilities/componentErrorHandler'
 
-const FooterContainerError = componentErrorHandler( 'FooterContainer' )
-
 export default class FooterContainer extends Component {
   constructor( props ) {
     super( props )
     this.state = { inputValue: '' }
 
     this.onChange = this.onChange.bind( this )
-    this.onSubmit = this.onSubmit.bind( this )
+    this.addItem = this.addItem.bind( this )
+    this.handleKeyUp = this.handleKeyUp.bind( this )
   }
 
   onChange( event ) { this.setState({ inputValue: event.target.value }) }
 
-  onSubmit() {
+  addItem() {
     const { type } = this.props
     const newItem = this.generateNewItem()
     axios.post( `${__HOST__}/${type}/new`, newItem ) //eslint-disable-line
@@ -31,8 +30,9 @@ export default class FooterContainer extends Component {
             break
           default:
         }
+        this.setState({ inputValue: '' })
       })
-    .catch( error => FooterContainerError( error ) )
+    .catch( componentErrorHandler( 'FooterContainer' ) )
   }
 
   generateNewItem() {
@@ -46,13 +46,19 @@ export default class FooterContainer extends Component {
     return newItem
   }
 
+  handleKeyUp( event ) {
+    if ( event.key === 'Enter' ) {
+      this.addItem()
+    }
+  }
 
   render() {
     return <Footer
       type={ this.props.type }
-      onSubmit={ this.onSubmit }
+      addItem={ this.addItem }
       value={ this.state.inputValue }
       onChange={ this.onChange }
+      onKeyUp={ this.handleKeyUp }
     />
   }
 }
