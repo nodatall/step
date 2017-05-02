@@ -32,12 +32,12 @@ describe( '<FooterContainer />', () => {
   })
 
   context( 'when adding a new project', () => {
-    let input, button, onSubmitSpy, generateItemSpy, addProjectSpy
+    let input, button, addItemSpy, generateItemSpy, addProjectSpy
 
     beforeEach( () => {
       moxios.install()
       addProjectSpy = sinon.spy( globalState, 'addProject' )
-      onSubmitSpy = sinon.spy( FooterContainer.prototype, 'onSubmit' )
+      addItemSpy = sinon.spy( FooterContainer.prototype, 'addItem' )
       generateItemSpy = sinon.spy( FooterContainer.prototype, 'generateNewItem' )
       globalState.set( mockGlobalState )
       wrapper = mount( <FooterContainer type='project' /> )
@@ -47,7 +47,7 @@ describe( '<FooterContainer />', () => {
 
     afterEach( () => {
       moxios.uninstall()
-      onSubmitSpy.restore()
+      addItemSpy.restore()
       generateItemSpy.restore()
       addProjectSpy.restore()
     })
@@ -67,22 +67,22 @@ describe( '<FooterContainer />', () => {
       })
     })
 
-    it( 'calls onSubmit when button is clicked', () => {
+    it( 'calls addItem() when button is clicked', () => {
       button.simulate( 'click' )
-      expect( onSubmitSpy.calledOnce ).to.equal( true )
+      expect( addItemSpy.calledOnce ).to.equal( true )
     })
 
-    it( 'calls onSubmit when button is clicked', () => {
+    it( 'calls generateItem() when button is clicked', () => {
       button.simulate( 'click' )
       expect( generateItemSpy.calledOnce ).to.equal( true )
     })
 
-    it( 'generateNewItem method returns an object with correct properties ', () => {
+    it( 'generateNewItem() returns an object with correct properties ', () => {
       input.simulate( 'change', { target: { value: 'baby cows' } })
       expect( wrapper.instance().generateNewItem().text ).to.eql( 'baby cows' )
     })
 
-    it( 'calls addProject as part of onSubmit', done => {
+    it( 'calls globalState.addProject() as part of addItem()', done => {
       button.simulate( 'click' )
 
       moxios.wait( () => {
@@ -96,6 +96,39 @@ describe( '<FooterContainer />', () => {
         }).catch( done )
       })
     })
+
+    it( 'addItem() clears value of input after success', done => {
+      input.simulate( 'change', { target: { value: 'baby cows' } })
+      button.simulate( 'click' )
+
+      moxios.wait( () => {
+        const request = moxios.requests.mostRecent()
+        request.respondWith({
+          status: 200,
+          response: mockProjectData.fakeProject1
+        }).then( () => {
+          expect( input.props().value ).to.equal( '' )
+          done()
+        }).catch( done )
+      })
+    })
+
+    context( 'handleKeyUp()', () => {
+      const event = { key: 'Enter' }
+      const eventNotEnter = { key: '1' }
+
+      it( 'calls addItem() if key is \'enter\'', () => {
+        wrapper.instance().handleKeyUp( event )
+        expect( addItemSpy.calledOnce ).to.equal( true )
+      })
+
+      it( 'does not call addItem() if key is not \'enter\'', () => {
+        wrapper.instance().handleKeyUp( eventNotEnter )
+        expect( addItemSpy.calledOnce ).to.equal( false )
+      })
+
+    })
+
   })
 
   context( 'when adding a new could-do', () => {
@@ -133,7 +166,7 @@ describe( '<FooterContainer />', () => {
       expect( wrapper.instance().generateNewItem() ).to.eql({ text: 'baby cows', project_id: 1 })
     })
 
-    it( 'calls addCouldDos part of onSubmit', done => {
+    it( 'calls addCouldDos part of addItem', done => {
       button.simulate( 'click' )
 
       moxios.wait( () => {
