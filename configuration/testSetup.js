@@ -12,13 +12,15 @@ const knex = require( '../source/dataServices/database/knex' )
 
 chai.use( chaiHttp )
 
+global.__HOST__ = 'http://localhost:1337'
+global.__ENV__ = 'test'
+
 const testSetup = () => {
   global.document = jsdom( '' )
   global.window = document.defaultView
   global.navigator = {
     userAgent: 'node.js'
   }
-  global.__HOST__ = 'http://localhost:1337'
   return knex.truncateAllTables()
 }
 

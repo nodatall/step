@@ -52,7 +52,8 @@ module.exports = {
   plugins: [
     new WebpackErrorNotificationPlugin(),
     new webpack.DefinePlugin({
-      __HOST__: determineHost()
+      __HOST__: determineHost(),
+      __ENV__: `"${process.env.NODE_ENV}"`
     })
   ]
 }
