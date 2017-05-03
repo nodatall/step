@@ -19,7 +19,7 @@ const Icon = ({ type, onClick }) => {
 
   switch ( type ) {
     case 'eye':
-      icon = <EyeIcon className='icon' width={ 90 } height={ 90 } />
+      icon = <EyeIcon className='icon' width={ 115 } height={ 75 } />
       break
     case 'delete':
       icon = <DeleteIcon className='icon' width={ 30 } height={ 30 } />
@@ -35,7 +35,7 @@ const Icon = ({ type, onClick }) => {
   }
 
   return (
-    <div onClick={ onClick }>
+    <div className={ `${type}-icon-container` } onClick={ onClick }>
       { icon }
     </div>
   )

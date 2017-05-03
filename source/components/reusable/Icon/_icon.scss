@@ -1,0 +1,62 @@
+.iconlist-container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+  width: 10%;
+}
+
+.iconlist-container svg {
+  height: 24px;
+  width: 24px;
+  fill: lighten($light-grey, 10%);
+}
+
+.eye-icon-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 53px;
+}
+
+.eye-icon-container svg {
+  fill: darken($white-text, 25%);
+  stroke-width: 1;
+  stroke: darken($white-text, 25%);
+}
+
+.row-container .eye-icon-container svg:hover {
+  cursor:pointer;
+  fill: darken($white-text, 5%);
+  stroke: darken($white-text, 5%);
+}
+
+.row-container .eye-icon-container svg {
+  width: 75px;
+}
+
+.delete-icon-container {
+  cursor: pointer;
+  display: flex;
+}
+
+.dragHandle-icon-container {
+  cursor: pointer;
+  display: flex;
+}
+
+.delete-icon-container:hover {
+  opacity: 0.8;
+}
+
+.dragHandle-icon-container:hover {
+  opacity: 0.8;
+}
+
+.back-icon-container {
+  left:0;
+  position: absolute;
+  top:0;
+}

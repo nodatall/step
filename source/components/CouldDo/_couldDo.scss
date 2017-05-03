@@ -1,0 +1,18 @@
+.could-do-rowlist-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  .iconlist-container {
+    left: 10%;
+  }
+
+  .row-container {
+    padding-bottom: 20px;
+    padding-top: 20px;
+    background-image: linear-gradient($light-grey, $light-grey);
+    background-repeat: no-repeat;
+    background-size: 150px 1px;
+    background-position: center bottom, 4px 4px;
+  }
+}

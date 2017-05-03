@@ -1,0 +1,19 @@
+.project-rowlist-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin-top: 15px;
+  min-height: 300px;
+  min-width: 500px;
+}
+
+.project-container {
+  height: 100vh;
+  min-height: 300px;
+  min-width: 500px;
+
+  h1 {
+    margin-bottom: 10px;
+  }
+}

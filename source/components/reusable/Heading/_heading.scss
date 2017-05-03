@@ -1,18 +1,18 @@
 .heading-container {
-  border-bottom: $divider-border;
   background-color: transparent;
-  display: flex;
-  justify-content: center;
-  align-content: center;
+  border-bottom: $divider-border;
+  padding-bottom: 15px;
   width: 100%;
-  align-self: flex-start;
-  position: absolute;
 }
 
 h1 {
+  color: $white-text;
   font-family: $header-font;
   font-size: 48px;
   font-weight: 300;
-  color: #ffffff;
   letter-spacing: 2px;
+  margin-top: 13px;
+  margin-bottom: 0px;
+  text-align: center;
+  width: 100%;
 }

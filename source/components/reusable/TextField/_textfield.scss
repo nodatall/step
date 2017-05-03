@@ -1,0 +1,34 @@
+.text-field-container {
+  align-items: center;
+  color: $white-text;
+  display: flex;
+  font-family: $content-font;
+  font-size: $default-font-size;
+  justify-content: center;
+  left: 5%;
+  position: relative;
+  text-align: center;
+  width: 90%;
+}
+
+.text-field-container:hover {
+  color: darken($white-text, 2%);
+  cursor: text;
+}
+
+.text-field-input {
+  background-color: transparent;
+  border: none;
+  color: darken($white-text, 25%);
+  font-family: $content-font;
+  font-size: $default-font-size;
+  font-style: italic;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.text-field-input::placeholder {
+  font-style: italic;
+  letter-spacing: 0;
+  opacity: 0.66;
+}

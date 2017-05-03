@@ -1,28 +1,37 @@
 .footer-container {
+  background-color: $darkblue-background;
   border-top: $divider-border;
-  padding: 6px 0px;
-  background-color: transparent;
+  bottom: 0px;
   display: flex;
   justify-content: center;
-  position: absolute;
-  bottom: -58px;
   left: 0;
+  padding: 6px 0px;
+  position: fixed;
   right: 0;
+  width: 100%;
+}
+
+.plus-button {
+  background: transparent;
+  border: none;
+  color: #f0f0f0;
+  cursor: pointer;
+  opacity: 0.25;
 }
 
 .footer-input-text {
-  max-width: 450px;
-  font-size: $default-font-size;
-  font-family: $content-font;
-  color: $white-text;
   background-color: transparent;
-  text-align: center;
   border: none;
+  color: $white-text;
+  font-family: $content-font;
+  font-size: $default-font-size;
   letter-spacing: 1px;
+  max-width: 450px;
+  text-align: center;
 }
 
 .footer-input-text::placeholder {
+  font-style: italic;
   letter-spacing: 0;
   opacity: 0.66;
-  font-style: italic;
 }

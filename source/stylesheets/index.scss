@@ -1,6 +1,11 @@
 @import 'normalize';
 @import "global";
-@import "../components/reusable/Footer/footer";
-@import "../components/ProjectMenu/projectMenu";
-@import "../components/reusable/Heading/heading";
 @import "../components/Login/login";
+@import "../components/ProjectMenu/projectMenu";
+@import "../components/Project/project";
+@import "../components/CouldDo/couldDo";
+@import "../components/reusable/Footer/footer";
+@import "../components/reusable/Heading/heading";
+@import "../components/reusable/TextField/textfield";
+@import "../components/reusable/Icon/icon";
+@import "../components/reusable/Row/row";
