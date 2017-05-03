@@ -33,7 +33,7 @@ export default class CouldDoContainer extends GlobalStateComponent {
   }
 
   render() {
-    if ( !Object.keys( this.state ).length ) {
+    if ( !this.state.projects ) {
       return <div className='loading'> Loading . . .</div>
     }
 
