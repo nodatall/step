@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,400i|Muli:300,400');
+@import url('https://fonts.googleapis.com/css?family=Lato|Source+Sans+Pro:300');
 
-$content-font: 'PT Sans', sans-serif;
+$content-font: 'Source Sans Pro', sans-serif;
 $white-text: #e0e2e4;
 $default-font-size: 32px;
 $darkblue-background: #1c2a37;
 $light-grey: #35404b;
 $divider-border: solid 1px $light-grey;
-$header-font: 'Muli', sans-serif;
+$header-font: 'Lato', sans-serif;
 
 input:focus {
   outline: none;

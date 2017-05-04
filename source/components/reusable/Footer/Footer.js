@@ -5,7 +5,7 @@ const Footer = ({ type, onChange, value, addItem, onKeyUp }) => {
   let text = null
 
   if ( type === 'project' ) text = 'Create new project'
-  else if ( type === 'couldDo' ) text = 'Add a could do'
+  else if ( type === 'could-do' ) text = 'Add a could do'
 
   return (
     <div className='footer-container'>

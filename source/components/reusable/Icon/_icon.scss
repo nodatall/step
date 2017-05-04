@@ -25,10 +25,11 @@
   fill: darken($white-text, 25%);
   stroke-width: 1;
   stroke: darken($white-text, 25%);
+  width: 115px;
 }
 
-.row-container .eye-icon-container svg:hover {
-  cursor:pointer;
+.eye-icon-container svg:hover {
+  cursor: pointer;
   fill: darken($white-text, 5%);
   stroke: darken($white-text, 5%);
 }
@@ -37,21 +38,12 @@
   width: 75px;
 }
 
-.delete-icon-container {
-  cursor: pointer;
+.delete-icon-container, .dragHandle-icon-container {
   display: flex;
 }
 
-.dragHandle-icon-container {
+.delete-icon-container:hover, .dragHandle-icon-container:hover, .back-icon-container:hover, .plus-icon-container:hover {
   cursor: pointer;
-  display: flex;
-}
-
-.delete-icon-container:hover {
-  opacity: 0.8;
-}
-
-.dragHandle-icon-container:hover {
   opacity: 0.8;
 }
 
@@ -59,4 +51,17 @@
   left:0;
   position: absolute;
   top:0;
+  left:0;
+  bottom: 0;
+  display: flex;
+}
+
+.back-icon-container svg {
+  width: 60px;
+  fill: lighten($light-grey, 10%);
+}
+
+.plus-icon-container svg {
+  width: 50px;
+  fill: lighten($light-grey, 10%);
 }
