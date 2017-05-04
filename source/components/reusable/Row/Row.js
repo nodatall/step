@@ -11,7 +11,7 @@ const Row = ({ text, id, fieldType, goToProject }) => {
   return (
     <div className='row-container'>
       <TextFieldContainer text={ text } id={ id } type={ fieldType } />
-      <IconListContainer type={ fieldType } id={ id } />
+      <IconListContainer text={ text } type={ fieldType } id={ id } />
       { eyeIcon }
     </div>
   )

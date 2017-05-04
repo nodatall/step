@@ -34,6 +34,9 @@ const Icon = ({ type, onClick }) => {
     case 'back':
       icon = <ArrowIcon />
       break
+    case 'intoProject':
+      icon = <AddIcon className='icon' width={ 30 } height={ 30 } />
+      break
     default:
       icon = `icon: ${type}`
   }

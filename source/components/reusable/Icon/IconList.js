@@ -1,9 +1,9 @@
 import React from 'react'
 import Icon from './Icon'
 
-const IconList = ({ type, deleteItems }) => {
+const IconList = ({ type, deleteItems, turnIntoProject }) => {
   const makeIntoProject = type === 'could-do' ?
-    <Icon type='intoProject' /> : null
+    <Icon type='intoProject' onClick={ turnIntoProject } /> : null
 
   return (
     <div className='iconlist-container'>

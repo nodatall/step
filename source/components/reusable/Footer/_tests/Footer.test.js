@@ -14,7 +14,7 @@ describe( '<Footer>', () => {
   )
 
   context( 'when type is \'couldDo\'', () => {
-    const wrapper = mount( <Footer type='couldDo' /> )
+    const wrapper = mount( <Footer type='could-do' /> )
     const input = wrapper.find( 'input' )
 
     it( 'renders input with text, "Add a could do"', () => {

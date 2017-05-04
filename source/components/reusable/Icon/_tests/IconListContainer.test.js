@@ -12,7 +12,8 @@ describe( '<IconListContainer />', () => {
   let wrapper
 
   context( 'without icons in the globalState', () => {
-    let deleteSpy, errorStub, deleteProjectStub, envelope, deleteCouldDoStub
+    let turnIntoProjectSpy, deleteSpy, errorStub, envelope,
+      deleteProjectStub, deleteCouldDoStub, turnIntoProjectStub, setCurrentProjectIdStub
 
     beforeEach( () => {
       moxios.install()
@@ -20,6 +21,9 @@ describe( '<IconListContainer />', () => {
       deleteProjectStub = sinon.stub( globalState, 'deleteProject' )
       errorStub = sinon.stub( console, 'warn' ).callsFake( () => null )
       deleteCouldDoStub = sinon.stub( globalState, 'deleteCouldDo' )
+      turnIntoProjectSpy = sinon.spy( IconListContainer.prototype, 'turnIntoProject' )
+      turnIntoProjectStub = sinon.stub( globalState, 'addProject' )
+      setCurrentProjectIdStub = sinon.stub( globalState, 'setCurrentProjectId' )
       globalState.set( mockGlobalState )
       wrapper = mount( <IconListContainer type='project' id={ 1 } /> )
       envelope = mount( <IconListContainer type='could-do' id={ 1 } /> )
@@ -31,6 +35,9 @@ describe( '<IconListContainer />', () => {
       errorStub.restore()
       deleteProjectStub.restore()
       deleteCouldDoStub.restore()
+      turnIntoProjectSpy.restore()
+      turnIntoProjectStub.restore()
+      setCurrentProjectIdStub.restore()
       wrapper.unmount()
       envelope.unmount()
     })
@@ -87,5 +94,40 @@ describe( '<IconListContainer />', () => {
         })
       })
     })
+
+    context( 'turnIntoProject()', () => {
+      it( 'makes a POST to the project/new route when type is could-do', done => {
+        wrapper.instance().turnIntoProject()
+        expect( deleteSpy.calledOnce ).to.equal( true )
+        moxios.wait( () => {
+          const request = moxios.requests.mostRecent()
+          expect( request.url ).to.equal( `${__HOST__}/project/new` )
+          expect( request.config.method ).to.equal( 'post' )
+          request.respondWith({
+            status: 200,
+            response: 1
+          }).then( () => {
+            expect( turnIntoProjectStub.calledOnce ).to.equal( true )
+            expect( setCurrentProjectIdStub.calledOnce ).to.equal( true )
+            done()
+          }).catch( done )
+        })
+      })
+
+      it( 'throws an error when response is an error', done => {
+        wrapper.instance().turnIntoProject()
+        moxios.wait( () => {
+          const request = moxios.requests.mostRecent()
+          return request.respondWith({
+            status: 400,
+            response: 'fakeError'
+          }).then( () => {
+            expect( errorStub.calledTwice ).to.equal( true )
+            done()
+          }).catch( done )
+        })
+      })
+    })
+
   })
 })

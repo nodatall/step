@@ -8,8 +8,8 @@ export default class RowContainer extends Component {
     router: PropTypes.object
   }
 
-  constructor() {
-    super()
+  constructor( props ) {
+    super( props )
     this.goToProject = this.goToProject.bind( this )
   }
 
