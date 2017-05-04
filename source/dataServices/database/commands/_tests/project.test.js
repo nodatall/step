@@ -9,15 +9,16 @@ describe( 'project commands', () => {
 
   context( 'newProject()', () => {
 
-    it( 'creates a project with the given id and name', () =>
-      newProject( data.fakeProject1 )
+    it( 'creates a project with the given id and name', () => {
+      delete data.fakeProject1.couldDos
+      return newProject( data.fakeProject1 )
         .then( project => {
           expect( project.text ).to.equal( 'eating' )
           return project.id
         })
         .then( getProjectById )
         .then( project => expect( project.text ).to.equal( 'eating' ) )
-    )
+    })
 
     it( 'throws an error if given invalid attributes', () =>
       newProject( data.invalidProject )

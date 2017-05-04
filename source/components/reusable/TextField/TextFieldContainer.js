@@ -22,7 +22,7 @@ export default class TextFieldContainer extends Component {
   editInput( event ) { this.setState({ inputValue: event.target.value }) }
 
   handleKeyPress( event ) {
-    const { id, projectId, type } = this.props
+    const { id, type } = this.props
     const { inputValue: text } = this.state
 
     if ( event.key === 'Enter' ) {
@@ -33,7 +33,7 @@ export default class TextFieldContainer extends Component {
               globalState.updateProjectText( id, text )
               break
             case 'could-do':
-              globalState.updateCouldDoText( projectId, id, text )
+              globalState.updateCouldDoText( id, text )
               break
             default:
           }
