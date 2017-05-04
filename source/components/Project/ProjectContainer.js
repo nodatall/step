@@ -16,7 +16,7 @@ export default class ProjectContainer extends GlobalStateComponent {
           projects[currentProjectId].couldDos = couldDos.reduce( ( accumulator, { id, text }) =>
             Object.assign( accumulator, { [id]: { id, text } })
           , {})
-          globalState.set( projects )
+          globalState.set({ projects })
         })
         .catch( componentErrorHandler( 'ProjectContainer' ) )
     }

@@ -1,4 +1,4 @@
-/* eslint-disable */ 
+/* eslint-disable */
 
 const globalStateHelpers = stateStorage => ({
 
@@ -7,12 +7,13 @@ const globalStateHelpers = stateStorage => ({
     this.passStateToSubscribers()
   },
 
-  updateCouldDoText( projectId, couldDoId, text ) {
-    stateStorage.projects[projectId].couldDos[couldDoId].text = text
+  updateCouldDoText( couldDoId, text ) {
+    stateStorage.projects[stateStorage.currentProjectId].couldDos[couldDoId].text = text
     this.passStateToSubscribers()
   },
 
   addProject( newProject ) {
+    newProject.couldDos = []
     stateStorage.projects[newProject.id] = newProject
     this.passStateToSubscribers()
   },
