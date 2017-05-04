@@ -1,13 +1,14 @@
 /* global __ENV__ */
 import React from 'react'
 
-let EyeIcon, DeleteIcon, DragHandleIcon, AddIcon
+let EyeIcon, DeleteIcon, DragHandleIcon, AddIcon, ArrowIcon
 
 if ( __ENV__ !== 'test' ) {
   EyeIcon = require( './iconSVG/eyeIcon.svg' ).default // eslint-disable-line
   DeleteIcon = require( './iconSVG/deleteIcon.svg' ).default // eslint-disable-line
   DragHandleIcon = require( './iconSVG/dragHandleIcon.svg' ).default // eslint-disable-line
   AddIcon = require( './iconSVG/addIcon.svg' ).default // eslint-disable-line
+  ArrowIcon = require( './iconSVG/arrowIcon.svg' ).default // eslint-disable-line
 }
 
 const Icon = ({ type, onClick }) => {
@@ -19,16 +20,19 @@ const Icon = ({ type, onClick }) => {
 
   switch ( type ) {
     case 'eye':
-      icon = <EyeIcon className='icon' width={ 115 } height={ 75 } />
+      icon = <EyeIcon />
       break
     case 'delete':
-      icon = <DeleteIcon className='icon' width={ 30 } height={ 30 } />
+      icon = <DeleteIcon />
       break
     case 'dragHandle':
-      icon = <DragHandleIcon className='icon' width={ 30 } height={ 30 } />
+      icon = <DragHandleIcon />
       break
     case 'plus':
-      icon = <AddIcon className='icon' width={ 30 } height={ 30 } />
+      icon = <AddIcon />
+      break
+    case 'back':
+      icon = <ArrowIcon />
       break
     default:
       icon = `icon: ${type}`
