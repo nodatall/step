@@ -72,4 +72,28 @@ describe( 'couldDo routes', () => {
 
   })
 
+  context( '/could-do/order', () => {
+    const couldDosWithNewOrder = []
+    Object.keys( mockCouldDoData ).forEach( ( key, index ) => {
+      if ( index < 2 ) {
+        mockCouldDoData[key].order = index + 35
+        couldDosWithNewOrder.push( mockCouldDoData[key] )
+      }
+    })
+
+    withThreeCouldDos( () => {
+
+      it( 'should update order of couldDos', () =>
+        chai.request( server )
+          .post( '/could-do/order' )
+          .send( couldDosWithNewOrder )
+          .then( ({ body: { rowCount } }) => {
+            expect( rowCount ).to.equal( 2 )
+          })
+      )
+
+    })
+
+  })
+
 })

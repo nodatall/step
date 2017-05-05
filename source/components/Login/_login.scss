@@ -7,7 +7,11 @@
   font-family: $header-font;
   font-size: 48px;
   font-weight: 400;
-  text-align: center;
+  height: 100%;
+}
+
+button:focus {
+  outline: 0;
 }
 
 .login-button:hover {
@@ -17,9 +21,6 @@
 .login-container {
   align-items: center;
   display: flex;
-  flex-wrap: wrap;
-  height: 100vh;
-  justify-content: center;
   min-height: 300px;
   min-width: 500px;
   resize: both;

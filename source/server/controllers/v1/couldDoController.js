@@ -2,7 +2,8 @@ import { handleControllerError } from 'sym/source/errorHandling/serverErrorHandl
 import {
   newCouldDo,
   editCouldDo,
-  deleteCouldDo
+  deleteCouldDo,
+  orderCouldDos
 } from '../../../dataServices/database/commands'
 
 const handleNewCouldDo = ( request, response, next ) => {
@@ -24,6 +25,16 @@ const handleEditCouldDo = ( request, response, next ) => {
     )
 }
 
+const handleOrderCouldDo = ( request, response, next ) => {
+  const { body: attributes, userId: user_id } = request
+
+  return orderCouldDos( user_id, attributes )
+    .then( result => response.json( result ) )
+    .catch( error =>
+      next( handleControllerError( error, `orderCouldDo: problem updating /could-do/order with ${JSON.stringify( attributes )}` ) )
+    )
+}
+
 const handleDeleteCouldDo = ( request, response, next ) =>
   deleteCouldDo( request.params.id, request.userId )
     .then( result => response.json( result ) )
@@ -34,5 +45,6 @@ const handleDeleteCouldDo = ( request, response, next ) =>
 export {
   handleNewCouldDo,
   handleEditCouldDo,
+  handleOrderCouldDo,
   handleDeleteCouldDo
 }

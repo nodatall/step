@@ -22,7 +22,8 @@ const mockCouldDoData = {
     how_dark: 'burnt'
   },
   fakeEdit: {
-    text: 'eat lunch'
+    text: 'eat lunch',
+    order: 2
   }
 }
 

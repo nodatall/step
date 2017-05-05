@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { PropTypes } from 'prop-types'
+import { SortableElement } from 'react-sortable-hoc'
 import Row from './Row'
 import globalState from '../../utilities/globalState'
 
@@ -20,6 +21,10 @@ export default class RowContainer extends Component {
   }
 
   render() {
-    return <Row goToProject={ this.goToProject } { ...this.props } />
+    const { order } = this.props
+    const SortableRow = SortableElement( ( ) =>
+      <li><Row goToProject={ this.goToProject } { ...this.props } /></li>
+    )
+    return <SortableRow key={ `item-${order}` } index={ order } />
   }
 }

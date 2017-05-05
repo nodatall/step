@@ -120,5 +120,31 @@ describe( 'project routes', () => {
       )
 
     })
+
   })
+
+  context( '/project/order', () => {
+    const projectsWithNewOrder = []
+    Object.keys( mockProjectData ).forEach( ( key, index ) => {
+      if ( index < 2 ) {
+        mockProjectData[key].order = index + 35
+        projectsWithNewOrder.push( mockProjectData[key] )
+      }
+    })
+
+    withThreeProjects( () => {
+
+      it( 'should update order of projects', () =>
+        chai.request( server )
+          .post( '/project/order' )
+          .send( projectsWithNewOrder )
+          .then( ({ body: { rowCount } }) => {
+            expect( rowCount ).to.equal( 2 )
+          })
+      )
+
+    })
+
+  })
+
 })

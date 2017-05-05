@@ -31,7 +31,7 @@
 .eye-icon-container svg:hover {
   cursor: pointer;
   fill: darken($white-text, 5%);
-  stroke: darken($white-text, 5%);
+  stroke: #6e9c5f;
 }
 
 .row-container .eye-icon-container svg {
@@ -44,11 +44,17 @@
 
 .delete-icon-container:hover, .dragHandle-icon-container:hover, .back-icon-container:hover, .plus-icon-container:hover {
   cursor: pointer;
+}
+
+.delete-icon-container:hover {
+  opacity: 0.8;
+}
+
+.dragHandle-icon-container:hover {
   opacity: 0.8;
 }
 
 .back-icon-container {
-  left:0;
   position: absolute;
   top:0;
   left:0;

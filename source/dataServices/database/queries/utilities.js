@@ -25,6 +25,7 @@ const findAllWhere = ( table, column, data, user_id ) => {
   return knex
     .table( table )
     .where({ [column]: data, user_id })
+    .orderBy( 'order' )
     .returning( '*' )
     .then( records => {
       if ( !records.length ) {

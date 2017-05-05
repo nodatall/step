@@ -1,7 +1,7 @@
 import { expect } from 'sym/configuration/testSetup'
-import { mockProjectData, withThreeProjects } from 'sym/source/testUtilities'
-import { newProject, editProject, deleteProject } from '../project'
-import { getProjectById } from '../../queries'
+import { mockProjectData, withThreeProjects, createDeepClone } from 'sym/source/testUtilities'
+import { newProject, editProject, orderProjects, deleteProject } from '../project'
+import { getProjectById, getProjectsByUserId } from '../../queries'
 
 const data = mockProjectData
 
@@ -67,6 +67,42 @@ describe( 'project commands', () => {
           .catch( error =>
             expect( error.back().includes( 'deleteRecordWithUserID' ) ).to.equal( true )
           )
+      )
+
+    })
+
+  })
+
+  context( 'orderProjects()', () => {
+
+    withThreeProjects( () => {
+      const projectsToOrder = createDeepClone( mockProjectData )
+      const orderedProjects = []
+      Object.keys( projectsToOrder ).forEach( ( key, index ) => {
+        projectsToOrder[key].order = index + 5
+        if ( index < 2 ) {
+          delete projectsToOrder[key].text
+          orderedProjects.push( projectsToOrder[key] )
+        }
+      })
+
+      it( 'should update the order of all projects', () =>
+        orderProjects( 1, orderedProjects )
+          .then( updatedProjects => {
+            expect( updatedProjects.rowCount ).to.equal( 2 )
+            return getProjectsByUserId( 1 )
+          })
+          .then( projects => {
+            expect( projects[0].order ).to.equal( 5 )
+            expect( projects[1].order ).to.equal( 6 )
+          })
+      )
+
+      it( 'throw an error if given invalid project data', () =>
+        orderProjects( 1, data.invalidProject )
+        .catch( error =>
+          expect( error.back().includes( 'updateOrderWithUserId:' ) ).to.equal( true )
+        )
       )
 
     })

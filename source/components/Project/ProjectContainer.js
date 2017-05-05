@@ -13,10 +13,11 @@ export default class ProjectContainer extends GlobalStateComponent {
     if ( !projects[currentProjectId].couldDos ) {
       axios.get( `${__HOST__}/project/${currentProjectId}/could-do` )
         .then( ({ data: couldDos }) => {
-          projects[currentProjectId].couldDos = couldDos.reduce( ( accumulator, { id, text }) =>
-            Object.assign( accumulator, { [id]: { id, text } })
-          , {})
-          globalState.set({ projects })
+          projects[currentProjectId].couldDos = couldDos.reduce(
+            ( accumulator, { id, text, order }) =>
+              Object.assign( accumulator, { [id]: { id, text, order } })
+            , {})
+          globalState.set( projects )
         })
         .catch( componentErrorHandler( 'ProjectContainer' ) )
     }

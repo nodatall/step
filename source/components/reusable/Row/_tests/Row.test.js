@@ -13,9 +13,9 @@ describe( '<Row />', () => {
     expect( shallow( <Row /> ).find( 'TextFieldContainer' ).length ).to.equal( 1 )
   )
 
-  it( 'renders an <IconListContainer />', () =>
-    expect( shallow( <Row /> ).find( 'IconListContainer' ).length ).to.equal( 1 )
-  )
+  // it( 'renders a <DragHandle />', () =>
+  //   expect( shallow( <Row /> ).find( 'DragHandle' ).length ).to.equal( 1 )
+  // )
 
   context( 'fieldType prop is not project', () =>
     it( 'renders an <Icon />', () =>

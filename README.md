@@ -96,7 +96,7 @@ $ git push -fu origin HEAD
 $ git fetch upstream
 $ git rebase upstream/master
 $ yarn
-$ yarn test
+$ yarn cows # previously known as yarn test
 $ git push -f origin HEAD
 ```
 ###### Updating packages

@@ -16,7 +16,6 @@ export default class IconListContainer extends Component {
     this.turnIntoProject = this.turnIntoProject.bind( this )
   }
 
-
   deleteItems() {
     const { type, id } = this.props
 

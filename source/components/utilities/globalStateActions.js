@@ -12,6 +12,22 @@ const globalStateHelpers = stateStorage => ({
     this.passStateToSubscribers()
   },
 
+  updateProjects( projects ) {
+    for ( let projectKey in stateStorage.projects ) {
+      const newOrder = projects.filter( project => project.id === projectKey )[0].order
+      stateStorage.projects[projectKey].order = newOrder
+    }
+    this.passStateToSubscribers()
+  },
+
+  updateCouldDos( couldDos ) {
+    for ( let couldDoKey in stateStorage.projects[stateStorage.currentProjectId].couldDos ) {
+      const newOrder = couldDos.filter( couldDo => couldDo.id === couldDoKey )[0].order
+      stateStorage.projects[stateStorage.currentProjectId].couldDos[couldDoKey].order = newOrder
+    }
+    this.passStateToSubscribers()
+  },
+
   addProject( newProject ) {
     newProject.couldDos = []
     stateStorage.projects[newProject.id] = newProject

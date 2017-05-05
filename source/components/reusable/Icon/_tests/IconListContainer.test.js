@@ -43,7 +43,7 @@ describe( '<IconListContainer />', () => {
     })
 
     it( 'renders <IconList />', () =>
-      expect( wrapper.find( 'IconList' ).length ).to.equal( 1 )
+      expect( wrapper.find( '.iconlist-container' ).length ).to.equal( 1 )
     )
 
     context( 'deleteItems()', () => {

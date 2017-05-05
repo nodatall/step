@@ -1,6 +1,7 @@
 export {
   handleNewCouldDo,
   handleEditCouldDo,
+  handleOrderCouldDo,
   handleDeleteCouldDo
 }
 from './couldDoController'
@@ -9,6 +10,7 @@ export {
   handleGetCouldDosByProjectId,
   handleNewProject,
   handleEditProject,
+  handleOrderProject,
   handleDeleteProject,
   handleGetProjectsByUserId
 }

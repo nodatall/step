@@ -3,4 +3,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  background-image: linear-gradient($light-grey, $light-grey);
+  background-repeat: no-repeat;
+  background-size: 150px 1px;
+  background-position: center bottom, 4px 4px;
 }

@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import knex from '../knex'
 import QueueError from '../../../errorHandling/QueueError'
 import { handleDatabaseError } from '../../../errorHandling/serverErrorHandlers'
@@ -32,6 +33,22 @@ const updateRecordWithUserID = ( table, id, user_id, attributes ) =>
       const errorMessage = `updateRecordWithUserID: unable to updateRecordWithUserID with id ${id} and user_id ${user_id} in table ${table} with ${JSON.stringify( attributes )}`
       return handleDatabaseError( error, errorMessage )
     })
+
+const updateOrderWithUserId = ( table, user_id, attributes ) => {
+  const updateQuery = [
+    `INSERT INTO ${table} AS t (id, "order") VALUES`,
+    _.map( attributes, ( record ) => `(${record.id}, ${record.order})` ).join( ', ' ),
+    'ON CONFLICT (id) DO UPDATE SET',
+    '"order" = EXCLUDED.order',
+    `WHERE t.user_id = ${user_id}`
+  ].join( ' ' )
+
+  return knex.raw( updateQuery )
+    .catch( error => {
+      const errorMessage = `updateOrderWithUserId: unable to updateOrderWithUserId with user_id ${user_id} in table ${table} with ${JSON.stringify( attributes )}`
+      return handleDatabaseError( error, errorMessage )
+    })
+}
 
 const updateRecord = ( table, id, attributes ) =>
   knex
@@ -76,4 +93,11 @@ const deleteRecord = ( table, id ) => {
     })
     .catch( error => handleDatabaseError( error, errorMessage ) )
 }
-export { createRecord, updateRecordWithUserID, updateRecord, deleteRecordWithUserID, deleteRecord }
+export {
+  createRecord,
+  updateRecordWithUserID,
+  updateOrderWithUserId,
+  updateRecord,
+  deleteRecordWithUserID,
+  deleteRecord
+}

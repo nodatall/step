@@ -1,3 +1,4 @@
+/* global __HOST__ */
 import React, { Component } from 'react'
 import axios from 'axios'
 import Footer from './Footer'
@@ -19,7 +20,7 @@ export default class FooterContainer extends Component {
   addItem() {
     const { type } = this.props
     const newItem = this.generateNewItem()
-    axios.post( `${__HOST__}/${type}/new`, newItem ) //eslint-disable-line
+    axios.post( `${__HOST__}/${type}/new`, newItem )
       .then( response => {
         switch ( type ) {
           case 'could-do':
