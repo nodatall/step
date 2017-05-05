@@ -29,10 +29,11 @@ const handleSuccessfulAuthentication = ( request, response ) =>
 
 const handleLogOut = ( request, response ) => {
   request.logout()
+  request.session.destroy()
   response.redirect( '/' )
 }
 
-const handleGoogleAuthentication = passport.authenticate( 'google', { failureRedirect: '/' } ) // eslint-disable-line
+const handleGoogleAuthentication = passport.authenticate( 'google', {failureRedirect: '/' } ) // eslint-disable-line
 
 const handleGetSession = ( request, response, next ) => {
   if ( !request.userId ) {

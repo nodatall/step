@@ -29,7 +29,7 @@ router.post( '/project/edit/:id', checkForAuthorization, handleEditProject )
 router.post( '/project/delete/:id', checkForAuthorization, handleDeleteProject )
 
 router.get( '/user/:id/projects', checkForAuthorization, handleGetProjectsByUserId )
-router.get( '/user/:id/logout', checkForAuthorization, handleLogOut )
+router.get( '/logout', checkForAuthorization, handleLogOut )
 
 router.get( '/auth/google', getGoogleOAuthPermissionCode )
 router.get( '/google/auth/callback', handleGoogleAuthentication, handleSuccessfulAuthentication )
