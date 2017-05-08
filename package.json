@@ -65,7 +65,7 @@
     "server": "nodemon --exec babel-node source/server/server.js",
     "build": "webpack --colors --progress -w",
     "build:dev": "NODE_ENV=development yarn run build",
-    "build:production": "yarn run symlinks && NODE_ENV=production yarn run build",
+    "build:production": "yarn run symlinks && NODE_ENV=production yarn run webpack:prod",
     "build:test": "yarn run symlinks && NODE_ENV=test yarn run build",
     "sass": "node-sass source/stylesheets/index.scss public/main.css",
     "test": "yarn run symlinks && yarn run migrate:test && yarn run mochatest",

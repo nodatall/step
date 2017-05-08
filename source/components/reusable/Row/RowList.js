@@ -16,7 +16,7 @@ const RowList = ({ items, type }) => {
       itemList.push( items[key] )
     }
     itemsInOrder = _.sortBy( itemList, 'order' ).map( ( item, order ) => (
-      <RowContainer key={ item.id } fieldType={ type } { ...item } order={ order } />
+      <RowContainer useDragHandle key={ item.id } fieldType={ type } { ...item } order={ order } />
     ) )
   } else {
     itemsInOrder = <div className='loading'> Loading . . . </div>

@@ -2,15 +2,19 @@
   align-items: center;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   position: relative;
   width: 10%;
 }
 
-.iconlist-container svg {
+.iconlist-container svg, .dragHandle-icon-container svg {
   height: 24px;
   width: 24px;
   fill: lighten($light-grey, 10%);
+}
+
+.dragHandle-icon-container {
+  z-index: 99;
 }
 
 .eye-icon-container {
@@ -42,15 +46,8 @@
   display: flex;
 }
 
-.delete-icon-container:hover, .dragHandle-icon-container:hover, .back-icon-container:hover, .plus-icon-container:hover {
+.delete-icon-container:hover, .dragHandle-icon-container:hover, .back-icon-container:hover, .plus-icon-container:hover, .intoProject-icon-container:hover {
   cursor: pointer;
-}
-
-.delete-icon-container:hover {
-  opacity: 0.8;
-}
-
-.dragHandle-icon-container:hover {
   opacity: 0.8;
 }
 

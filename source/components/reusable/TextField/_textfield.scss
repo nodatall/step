@@ -1,14 +1,11 @@
 .text-field-container {
   align-items: center;
   color: $white-text;
-  display: flex;
   font-family: $content-font;
   font-size: $default-font-size;
-  justify-content: center;
-  left: 5%;
-  position: relative;
-  text-align: center;
-  width: 90%;
+  margin-left: 60px;
+  margin-right: 10px;
+  max-width: 85%;
 }
 
 .text-field-container:hover {
@@ -25,6 +22,7 @@
   font-style: italic;
   letter-spacing: 1px;
   text-align: center;
+  height: 36px;
 }
 
 .text-field-input::placeholder {
