@@ -9,16 +9,13 @@ const Row = ({ text, id, fieldType, goToProject }) => {
     <Icon type='eye' onClick={ goToProject } /> :
     null
 
-  const DragHandle = SortableHandle( () =>
-    (
-      <IconListContainer text={ text } type={ fieldType } id={ id } />
-    )
-  )
+  const DragHandle = SortableHandle( () => <Icon type='dragHandle' /> )
 
   return (
     <div className='row-container'>
       <TextFieldContainer text={ text } id={ id } type={ fieldType } />
       <DragHandle />
+      <IconListContainer text={ text } type={ fieldType } id={ id } />
       { eyeIcon }
     </div>
   )

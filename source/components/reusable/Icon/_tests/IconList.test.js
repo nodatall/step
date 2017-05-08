@@ -40,13 +40,6 @@ describe( '<IconList />', () => {
   })
 
   context( 'when type is either could-do or project', () => {
-    it( 'should render a dragHandle Icon', () => {
-      const couldDoWrapperHasIcon = couldDoWrapper.find( '.iconlist-container' ).children().nodes.find( icon => icon.props.type === 'dragHandle' ) !== undefined
-      const projectWrapperHasIcon = projectWrapper.find( '.iconlist-container' ).children().nodes.find( icon => icon.props.type === 'dragHandle' ) !== undefined
-      expect( couldDoWrapperHasIcon ).to.equal( true )
-      expect( projectWrapperHasIcon ).to.equal( true )
-    })
-
     it( 'should render a delete Icon', () => {
       const couldDoWrapperHasIcon = couldDoWrapper.find( '.iconlist-container' ).children().nodes.find( icon => icon.props.type === 'delete' ) !== undefined
       const projectWrapperHasIcon = projectWrapper.find( '.iconlist-container' ).children().nodes.find( icon => icon.props.type === 'delete' ) !== undefined

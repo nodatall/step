@@ -56,18 +56,18 @@ describe( '<ProjectContainer />', () => {
       })
     )
 
-    // it( 'sets state using data from HTTP response', done => {
-    //   moxios.wait( () => {
-    //     const request = moxios.requests.mostRecent()
-    //     request.respondWith({
-    //       status: 200,
-    //       response: mockCouldDos
-    //     }).then( () => {
-    //       expect( wrapper.find( 'ProjectContainer' ).nodes[0].state.projects[2].couldDos[mockCouldDos[0].id] ).to.eql( mockCouldDos[0] ) // eslint-disable-line
-    //       done()
-    //     }).catch( done )
-    //   })
-    // })
+    it( 'sets state using data from HTTP response', done => {
+      moxios.wait( () => {
+        const request = moxios.requests.mostRecent()
+        request.respondWith({
+          status: 200,
+          response: mockCouldDos
+        }).then( () => {
+          expect( wrapper.find( 'ProjectContainer' ).nodes[0].state.projects[2].couldDos[mockCouldDos[0].id].text ).to.eql( 'give unsolicited advice to people' ) // eslint-disable-line
+          done()
+        }).catch( done )
+      })
+    })
 
   })
 

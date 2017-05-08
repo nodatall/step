@@ -1,5 +1,6 @@
 /* global __HOST__ */
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import { PropTypes } from 'prop-types'
 import axios from 'axios'
 import componentErrorHandler from '../../utilities/componentErrorHandler'
 import globalState from '../../utilities/globalState'

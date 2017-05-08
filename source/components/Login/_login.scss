@@ -8,6 +8,8 @@
   font-size: 48px;
   font-weight: 400;
   height: 100%;
+  margin: auto;
+  padding-bottom: 150px;
 }
 
 button:focus {
@@ -16,12 +18,11 @@ button:focus {
 
 .login-button:hover {
   color: darken($white-text, 25%);
+  cursor: pointer;
 }
 
 .login-container {
-  align-items: center;
   display: flex;
-  min-height: 300px;
-  min-width: 500px;
-  resize: both;
+  flex-wrap: wrap;
+  height: 100vh;
 }
