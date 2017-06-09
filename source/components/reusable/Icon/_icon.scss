@@ -35,7 +35,7 @@
 .eye-icon-container svg:hover {
   cursor: pointer;
   fill: darken($white-text, 5%);
-  stroke: #6e9c5f;
+  stroke: $green;
 }
 
 .row-container .eye-icon-container svg {
