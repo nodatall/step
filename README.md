@@ -1,7 +1,7 @@
 ## Contributing
 
 1. Fork this repository
-2. Claim an issue on our [Asana project](https://app.asana.com/0/298435091634227/board)
+2. Claim an issue
 3. Cut a topic branch
 4. Finish issue
 6. Run the linter
@@ -58,9 +58,14 @@ $ yarn db:setup
 
 ### Scripts
 
+###### Run server
+```sh
+$ yarn begin
+```
+
 ###### Run tests
 ```sh
-$ yarn test
+$ yarn cows
 ```
 
 ###### Run the linter
@@ -123,7 +128,6 @@ When the prompt comes up, type "A"
 
 ###### Testing
 - Find love for TDD in your heart and write tests before writing code
-- Aim for 100% test coverage of everything
 
 ###### Creating Components
 - Component sets (presentation and container) should have their own folder
