@@ -7,7 +7,7 @@ import RowContainer from '../Row/RowContainer'
 import globalState from '../../utilities/globalState'
 import componentErrorHandler from '../../utilities/componentErrorHandler'
 
-const RowList = ({ items, type }) => {
+const RowList = ({ items, type, updateLocalItemOrder }) => {
   const itemList = []
   let itemsInOrder = []
 
@@ -35,19 +35,21 @@ const RowList = ({ items, type }) => {
       id,
       order: index
     }) )
+
+    updateLocalItemOrder( afterSort, type )
+
+    switch ( type ) {
+      case 'project':
+        globalState.updateProjects( afterSort )
+        break
+      case 'could-do':
+        globalState.updateCouldDos( afterSort )
+        break
+      default:
+    }
+
     axios.post( `${__HOST__}/${type}/order`, afterSort )
-      .then( _response => {
-        switch ( type ) {
-          case 'project':
-            globalState.updateProjects( afterSort )
-            break
-          case 'could-do':
-            globalState.updateCouldDos( afterSort )
-            break
-          default:
-        }
-      })
-    .catch( componentErrorHandler( 'RowList' ) )
+      .catch( componentErrorHandler( 'RowList' ) )
   }
 
   return (

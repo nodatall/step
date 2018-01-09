@@ -22,7 +22,7 @@ export default class RowContainer extends Component {
 
   render() {
     const { order } = this.props
-    const SortableRow = SortableElement( ( ) =>
+    const SortableRow = SortableElement( () =>
       <li><Row goToProject={ this.goToProject } { ...this.props } /></li>
     )
     return <SortableRow key={ `item-${order}` } index={ order } />
