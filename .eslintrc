@@ -12,6 +12,7 @@
     "exceptions": ["{}"]
   }],
   "padded-blocks": "off",
+  "no-trailing-spaces": "off",
   "semi": ["error", "never"],
   "arrow-parens": "off",
   "comma-dangle": "off",
