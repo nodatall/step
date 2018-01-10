@@ -20,7 +20,7 @@ const getRecordById = ( table, column, data ) => {
 }
 
 const findAllWhere = ( table, column, data, user_id ) => {
-  const errorMessage = `findAllWhere: no records in table ${table} with ${column} matching ${data}`
+  const errorMessage = `findAllWhere: error getting records in table ${table} with ${column} matching ${data}`
 
   return knex
     .table( table )
@@ -29,7 +29,7 @@ const findAllWhere = ( table, column, data, user_id ) => {
     .returning( '*' )
     .then( records => {
       if ( !records.length ) {
-        throw new QueueError( errorMessage )
+        return []
       } else {
         return records
       }

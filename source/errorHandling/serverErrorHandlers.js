@@ -10,13 +10,13 @@ const handleUnhandledRejection = () => {
   })
 }
 
-const handleServerErrors = ( error, request, response ) => {
+const handleServerErrors = ( error, request, response, next ) => { // eslint-disable-line
   if ( !process.env.NODE_ENV === 'test' ) handleUnhandledRejection()
-
-  logger.error( chalk.yellow( error.createMessage() ) )
-
+  
+  logger.error( `\n${chalk.yellow( error.createMessage() )}` )
+  
   response.status( error.status || 500 )
-
+  
   if ( process.env.NODE_ENV === 'development' ) {
     response.json({
       message: error.createMessage(),
