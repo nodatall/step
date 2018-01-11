@@ -15,6 +15,22 @@ export default class TextFieldContainer extends Component {
     this.makeEditable = this.makeEditable.bind( this )
     this.editInput = this.editInput.bind( this )
     this.handleKeyPress = this.handleKeyPress.bind( this )
+    this.onDocumentClick = this.onDocumentClick.bind( this )
+  }
+  
+  componentDidMount() {
+    window.addEventListener( 'mouseup', this.onDocumentClick )
+  }
+  
+  componentWillUnmount() {
+    window.removeEventListener( 'mouseup', this.onDocumentClick )
+  }
+
+  onDocumentClick( event ) {
+    const targetClass = event.target.className
+    if ( targetClass !== 'text-field-input' ) {
+      this.setState({ editing: false })
+    }
   }
 
   makeEditable() { this.setState({ editing: true }) }
