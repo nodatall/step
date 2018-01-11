@@ -37,7 +37,7 @@ export default class TextFieldContainer extends Component {
     const { inputValue: text } = this.state
 
     if ( event.key === 'Enter' ) {
-      axios.post( `${__HOST__}/${type}/edit/${id}`, { text } ) //eslint-disable-line
+      axios.post( `/${type}/edit/${id}`, { text } ) //eslint-disable-line
         .then( () => {
           switch ( type ) {
             case 'project':

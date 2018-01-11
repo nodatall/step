@@ -1,5 +1,3 @@
-/* global __HOST__ */
-
 import React, { Component } from 'react'
 import axios from 'axios'
 import ProjectMenuContainer from '../ProjectMenu/ProjectMenuContainer'
@@ -13,7 +11,7 @@ export default class Landing extends Component {
   }
 
   componentDidMount() {
-    axios.get( `${__HOST__}/session` )
+    axios.get( '/session' )
       .then( ({ data: { userId } }) => {
         if ( userId ) { this.setState({ userId }) }
       })

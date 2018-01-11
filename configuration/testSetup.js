@@ -7,13 +7,12 @@ import globalState from '../source/components/utilities/globalState'
 handleUnhandledRejection()
 
 process.env.NODE_ENV = 'test'
-process.env.PORT = 7357
+global.__ENV__ = 'test'
+
 const knex = require( '../source/dataServices/database/knex' )
 
 chai.use( chaiHttp )
 
-global.__HOST__ = 'http://localhost:1337'
-global.__ENV__ = 'test'
 
 const testSetup = () => {
   global.document = jsdom( '' )

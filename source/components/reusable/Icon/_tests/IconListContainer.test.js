@@ -1,4 +1,3 @@
-/* global __HOST__ */
 import React from 'react'
 import sinon from 'sinon'
 import moxios from 'moxios'
@@ -52,7 +51,7 @@ describe( '<IconListContainer />', () => {
         wrapper.instance().deleteItems()
         moxios.wait( () => {
           const request = moxios.requests.mostRecent()
-          expect( request.url ).to.equal( `${__HOST__}/project/delete/1` )
+          expect( request.url ).to.equal( '/project/delete/1' )
           expect( request.config.method ).to.equal( 'post' )
           request.respondWith({
             status: 200,
@@ -68,7 +67,7 @@ describe( '<IconListContainer />', () => {
         envelope.instance().deleteItems()
         moxios.wait( () => {
           const request = moxios.requests.mostRecent()
-          expect( request.url ).to.equal( `${__HOST__}/could-do/delete/1` )
+          expect( request.url ).to.equal( '/could-do/delete/1' )
           expect( request.config.method ).to.equal( 'post' )
           request.respondWith({
             status: 200,
@@ -101,7 +100,7 @@ describe( '<IconListContainer />', () => {
         expect( deleteSpy.calledOnce ).to.equal( true )
         moxios.wait( () => {
           const request = moxios.requests.mostRecent()
-          expect( request.url ).to.equal( `${__HOST__}/project/new` )
+          expect( request.url ).to.equal( '/project/new' )
           expect( request.config.method ).to.equal( 'post' )
           request.respondWith({
             status: 200,

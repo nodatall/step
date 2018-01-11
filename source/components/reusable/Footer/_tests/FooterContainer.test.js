@@ -61,7 +61,7 @@ describe( '<FooterContainer />', () => {
         const request = moxios.requests.mostRecent()
         const data = JSON.parse( request.config.data )
 
-        expect( request.url ).to.equal( `${__HOST__}/project/new` ) //eslint-disable-line
+        expect( request.url ).to.equal( '/project/new' ) //eslint-disable-line
         expect( data.text ).to.equal( 'make garden' )
         done()
       })
@@ -155,7 +155,7 @@ describe( '<FooterContainer />', () => {
         const request = moxios.requests.mostRecent()
         const data = JSON.parse( request.config.data )
 
-        expect( request.url ).to.equal( `${__HOST__}/could-do/new` ) // eslint-disable-line
+        expect( request.url ).to.equal( '/could-do/new' ) // eslint-disable-line
         expect( data.text ).to.equal( 'plant rose in garden' )
         done()
       })

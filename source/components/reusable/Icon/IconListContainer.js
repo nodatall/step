@@ -1,4 +1,3 @@
-/* global __HOST__ */
 import React, { Component } from 'react'
 import { PropTypes } from 'prop-types'
 import axios from 'axios'
@@ -20,7 +19,7 @@ export default class IconListContainer extends Component {
   deleteItems() {
     const { type, id } = this.props
 
-    axios.post( `${__HOST__}/${type}/delete/${id}` )
+    axios.post( `/${type}/delete/${id}` )
       .then( () => {
         switch ( type ) {
           case 'project':
@@ -39,7 +38,7 @@ export default class IconListContainer extends Component {
     const newProjectName = this.props.text
 
     this.deleteItems()
-    axios.post( `${__HOST__}/project/new`, { text: newProjectName })
+    axios.post( '/project/new', { text: newProjectName })
       .then( ({ data: { id } }) => {
         globalState.addProject({ id, text: newProjectName })
         globalState.setCurrentProjectId( id )

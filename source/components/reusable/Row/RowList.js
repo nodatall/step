@@ -1,4 +1,3 @@
-/* global __HOST__ */
 import React from 'react'
 import { SortableContainer, arrayMove } from 'react-sortable-hoc'
 import _ from 'lodash'
@@ -48,7 +47,7 @@ const RowList = ({ items, type, updateLocalItemOrder }) => {
       default:
     }
 
-    axios.post( `${__HOST__}/${type}/order`, afterSort )
+    axios.post( `/${type}/order`, afterSort )
       .catch( componentErrorHandler( 'RowList' ) )
   }
 

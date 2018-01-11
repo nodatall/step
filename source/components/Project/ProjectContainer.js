@@ -1,4 +1,3 @@
-/* global __HOST__ */
 import React from 'react'
 import axios from 'axios'
 import globalState from '../utilities/globalState'
@@ -11,7 +10,7 @@ export default class ProjectContainer extends GlobalStateComponent {
     const { currentProjectId, projects } = this.state
 
     if ( !projects[currentProjectId].couldDos ) {
-      axios.get( `${__HOST__}/project/${currentProjectId}/could-do` )
+      axios.get( `/project/${currentProjectId}/could-do` )
         .then( ({ data: couldDos }) => {
           projects[currentProjectId].couldDos = couldDos.reduce(
             ( accumulator, { id, text, order }) =>
