@@ -17,23 +17,18 @@ export default class TextFieldContainer extends Component {
     this.handleKeyPress = this.handleKeyPress.bind( this )
     this.onDocumentClick = this.onDocumentClick.bind( this )
   }
-  
-  componentDidMount() {
-    window.addEventListener( 'mouseup', this.onDocumentClick )
-  }
-  
-  componentWillUnmount() {
-    window.removeEventListener( 'mouseup', this.onDocumentClick )
-  }
 
   onDocumentClick( event ) {
-    const targetClass = event.target.className
-    if ( targetClass !== 'text-field-input' ) {
+    if ( event.target.className !== 'text-field-input' ) {
       this.setState({ editing: false })
+      window.removeEventListener( 'mouseup', this.onDocumentClick )
     }
   }
 
-  makeEditable() { this.setState({ editing: true }) }
+  makeEditable() {
+    window.addEventListener( 'mouseup', this.onDocumentClick )
+    this.setState({ editing: true }) 
+  }
 
   editInput( event ) { this.setState({ inputValue: event.target.value }) }
 
