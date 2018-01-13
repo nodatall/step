@@ -13,7 +13,6 @@ const knex = require( '../source/dataServices/database/knex' )
 
 chai.use( chaiHttp )
 
-
 const testSetup = () => {
   global.document = jsdom( '' )
   global.window = document.defaultView

@@ -21,29 +21,29 @@ const Icon = ({ type, onClick }) => {
 
   switch ( type ) {
     case 'eye':
-      icon = <EyeIcon />
+      icon = <EyeIcon onClick={ onClick } />
       break
     case 'delete':
-      icon = <DeleteIcon />
+      icon = <DeleteIcon onClick={ onClick } />
       break
     case 'dragHandle':
-      icon = <DragHandleIcon />
+      icon = <DragHandleIcon onClick={ onClick } />
       break
     case 'plus':
-      icon = <AddIcon />
+      icon = <AddIcon onClick={ onClick } />
       break
     case 'back':
-      icon = <ArrowIcon />
+      icon = <ArrowIcon onClick={ onClick } />
       break
     case 'intoProject':
-      icon = <IntoProjectIcon />
+      icon = <IntoProjectIcon onClick={ onClick } />
       break
     default:
       icon = `icon: ${type}`
   }
 
   return (
-    <div className={ `${type}-icon-container` } onClick={ onClick }>
+    <div className={ `${type}-icon-container` } >
       { icon }
     </div>
   )
