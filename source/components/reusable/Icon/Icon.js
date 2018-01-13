@@ -1,7 +1,7 @@
 /* global __ENV__ */
 import React from 'react'
 
-let EyeIcon, DeleteIcon, DragHandleIcon, AddIcon, ArrowIcon, IntoProjectIcon
+let EyeIcon, DeleteIcon, DragHandleIcon, AddIcon, ArrowIcon, IntoProjectIcon, LogoutIcon
 
 if ( __ENV__ !== 'test' ) {
   EyeIcon = require( './iconSVG/eyeIcon.svg' ).default // eslint-disable-line
@@ -10,6 +10,7 @@ if ( __ENV__ !== 'test' ) {
   AddIcon = require( './iconSVG/addIcon.svg' ).default // eslint-disable-line
   ArrowIcon = require( './iconSVG/arrowIcon.svg' ).default // eslint-disable-line
   IntoProjectIcon = require( './iconSVG/recycleIcon.svg' ).default // eslint-disable-line
+  LogoutIcon = require( './iconSVG/logoutIcon.svg' ).default // eslint-disable-line
 }
 
 const Icon = ({ type, onClick }) => {
@@ -37,6 +38,9 @@ const Icon = ({ type, onClick }) => {
       break
     case 'intoProject':
       icon = <IntoProjectIcon onClick={ onClick } />
+      break
+    case 'logout':
+      icon = <LogoutIcon onClick={ onClick } />
       break
     default:
       icon = `icon: ${type}`

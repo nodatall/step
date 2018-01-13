@@ -69,3 +69,16 @@
   width: 50px;
   fill: lighten($light-grey, 10%);
 }
+
+.logout-icon-container svg {
+  width: 35px;
+  fill: lighten($light-grey, 10%);
+  position: absolute;
+  right: 10px;
+  top: 20px;
+}
+
+.logout-icon-container svg:hover {
+  cursor: pointer;
+  fill: darken($white-text, 5%);
+}

@@ -3,7 +3,7 @@ import Heading from '../reusable/Heading/Heading'
 
 const Login = ({ redirect, path }) => (
   <div className='login-container'>
-    <Heading text='Step' />
+    <Heading text='Step' loggedOut />
     <button className='login-button' onClick={ () => redirect( path ) }>Login with Google</button>
   </div>
 )

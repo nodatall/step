@@ -1,8 +1,9 @@
 import React from 'react'
+import Icon from '../reusable/Icon/Icon'
 
 const Logout = ({ redirect, path }) => (
   <div className='logout-container'>
-    <button className='logout-button' onClick={ () => redirect( path ) }>Logout</button>
+    <Icon className='logout-button' type='logout' onClick={ () => redirect( path ) } />
   </div>
 )
 
