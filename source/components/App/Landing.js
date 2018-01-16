@@ -7,13 +7,15 @@ import componentErrorHandler from '../utilities/componentErrorHandler'
 export default class Landing extends Component {
   constructor() {
     super()
-    this.state = {}
+    this.state = { isLoading: true }
   }
 
-  componentDidMount() {
+  componentWillMount() {
     axios.get( '/session' )
       .then( ({ data: { userId } }) => {
-        if ( userId ) { this.setState({ userId }) }
+        if ( userId ) { 
+          this.setState({ userId, isLoading: false }) 
+        }
       })
       .catch( componentErrorHandler( 'App' ) )
   }
@@ -23,7 +25,8 @@ export default class Landing extends Component {
     const loginOrProjectMenu = userId ?
       <ProjectMenuContainer userId={ userId } /> :
       <LoginContainer />
+    
 
-    return loginOrProjectMenu
+    return this.state.isLoading ? <div>Loading...</div> : loginOrProjectMenu
   }
 }
