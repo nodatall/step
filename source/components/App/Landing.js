@@ -25,7 +25,6 @@ export default class Landing extends Component {
     const loginOrProjectMenu = userId ?
       <ProjectMenuContainer userId={ userId } /> :
       <LoginContainer />
-    
 
     return this.state.isLoading ? <div>Loading...</div> : loginOrProjectMenu
   }

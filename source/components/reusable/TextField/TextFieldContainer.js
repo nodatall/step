@@ -57,13 +57,12 @@ export default class TextFieldContainer extends Component {
   render() {
     const { editing, inputValue } = this.state
     return (
-      <div className='text-field-container' onClick={ this.makeEditable }>
-        <TextField
-          editing={ editing }
-          value={ inputValue }
-          onChange={ this.editInput }
-          onKeyUp={ this.handleKeyPress } />
-      </div>
+      <TextField
+        editing={ editing }
+        value={ inputValue }
+        onChange={ this.editInput }
+        onKeyUp={ this.handleKeyPress }
+        onClick={ this.makeEditable } />
     )
   }
 }

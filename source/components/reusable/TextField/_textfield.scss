@@ -13,16 +13,23 @@
   cursor: text;
 }
 
-.text-field-input {
+.text-field-input input {
   background-color: transparent;
   border: none;
-  color: darken($white-text, 25%);
+  color: $white-text;
   font-family: $content-font;
   font-size: $default-font-size;
-  font-style: italic;
+  font-style: normal;
   letter-spacing: 1px;
   text-align: center;
   height: 36px;
+  margin-right: 6px;
+  margin-left: 50px;
+}
+
+.text-field-input.editing input {
+  color: darken($white-text, 25%);
+  font-style: italic;
 }
 
 .text-field-input::placeholder {

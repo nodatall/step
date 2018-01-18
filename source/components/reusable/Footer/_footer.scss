@@ -18,18 +18,19 @@
   cursor: pointer;
 }
 
-.footer-input-text {
+.footer-input-text input{
   background-color: transparent;
   border: none;
   color: $white-text;
   font-family: $content-font;
   font-size: $default-font-size;
   letter-spacing: 1px;
-  max-width: 450px;
   text-align: center;
+  margin-top: 4px;
+  min-width: 192px;
 }
 
-.footer-input-text::placeholder {
+.footer-input-text input::placeholder {
   font-style: italic;
   letter-spacing: 0;
   opacity: 0.66;
