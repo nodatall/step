@@ -82,3 +82,9 @@
   cursor: pointer;
   fill: darken($white-text, 5%);
 }
+
+.tooltip {
+  font-size: 16px !important;
+  font-family: $content-font;
+  letter-spacing: 1px;
+}
