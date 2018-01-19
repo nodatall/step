@@ -52,7 +52,7 @@ const RowList = ({ items, type, updateLocalItemOrder }) => {
   }
 
   return (
-    <SortableList onSortEnd={ onSortEnd } useDragHandle />
+    <SortableList onSortEnd={ onSortEnd } distance={ 1 } useDragHandle />
   )
 }
 

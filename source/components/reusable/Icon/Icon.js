@@ -17,38 +17,43 @@ if ( __ENV__ !== 'test' ) {
 const Icon = ({ type, onClick }) => {
   let icon
   
+  const onClickWithDismiss = () => {
+    ReactTooltip.hide()
+    if ( onClick ) { onClick() }
+  }
+  
   if ( `${__ENV__}` === 'test' ) {
     type = 'default' // eslint-disable-line
   }
 
   switch ( type ) {
     case 'eye':
-      icon = <EyeIcon onClick={ onClick } data-tip='Focus in' />
+      icon = <EyeIcon data-tip='Focus in' />
       break
     case 'delete':
-      icon = <DeleteIcon onClick={ onClick } data-tip='Delete' />
+      icon = <DeleteIcon data-tip='Delete' />
       break
     case 'dragHandle':
-      icon = <DragHandleIcon onClick={ onClick } data-tip='Drag to reorder' />
+      icon = <DragHandleIcon data-tip='Drag to reorder' />
       break
     case 'plus':
-      icon = <AddIcon onClick={ onClick } data-tip='Add new' />
+      icon = <AddIcon data-tip='Add new' />
       break
     case 'back':
-      icon = <ArrowIcon onClick={ onClick } data-tip='Go back' />
+      icon = <ArrowIcon data-tip='Go back' />
       break
     case 'intoProject':
-      icon = <IntoProjectIcon onClick={ onClick } data-tip='Turn into project' />
+      icon = <IntoProjectIcon data-tip='Turn into project' />
       break
     case 'logout':
-      icon = <LogoutIcon onClick={ onClick } data-tip='Logout' />
+      icon = <LogoutIcon data-tip='Logout' />
       break
     default:
       icon = `icon: ${type}`
   }
 
   return (
-    <div className={ `${type}-icon-container` } >
+    <div className={ `${type}-icon-container` } onMouseDown={ onClickWithDismiss }>
       { icon }
       <ReactTooltip delayShow={ 350 } className='tooltip' />
     </div>
