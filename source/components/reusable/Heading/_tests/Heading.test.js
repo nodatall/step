@@ -36,8 +36,8 @@ describe( '<Heading>', () => {
       wrapper.unmount()
     })
 
-    it( 'renders no Icon', () =>
-      expect( wrapper.find( 'Icon' ).length ).to.equal( 0 )
+    it( 'renders no eye Icon', () =>
+      expect( wrapper.find( 'Icon' ).length ).to.equal( 1 )
     )
 
   })
@@ -56,8 +56,8 @@ describe( '<Heading>', () => {
       wrapper.unmount()
     })
 
-    it( 'renders an Icon when passed type \'project\'', () =>
-      expect( wrapper.find( 'Icon' ).length ).to.equal( 1 )
+    it( 'renders two Icons when passed type \'project\'', () =>
+      expect( wrapper.find( 'Icon' ).length ).to.equal( 2 )
     )
 
   })

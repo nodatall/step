@@ -18,8 +18,8 @@ describe( '<LogoutContainer />', () => {
     expect( wrapper.find( '.logout-container' ).length ).to.equal( 1 )
   )
 
-  it( 'should render button with class \'logout-button\'', () =>
-    expect( wrapper.find( '.logout-button' ).length ).to.equal( 1 )
+  it( 'should render an icon', () =>
+    expect( wrapper.find( 'Icon' ).length ).to.equal( 1 )
   )
 
 })

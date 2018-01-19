@@ -13,7 +13,7 @@ describe( '<Landing />', () => {
 
     beforeEach( () => {
       moxios.install()
-      mountSpy = sinon.spy( Landing.prototype, 'componentDidMount' )
+      mountSpy = sinon.spy( Landing.prototype, 'componentWillMount' )
       wrapper = mount( <Landing /> )
     })
 
@@ -24,7 +24,7 @@ describe( '<Landing />', () => {
     })
 
     it( 'calls componentDidMount ', () => {
-      expect( Landing.prototype.componentDidMount.calledOnce ).to.equal( true )
+      expect( Landing.prototype.componentWillMount.calledOnce ).to.equal( true )
     })
 
     it( 'sets intial state using data from HTTP response', done =>
@@ -90,7 +90,7 @@ describe( '<Landing />', () => {
           status: 400,
           response: 'fakeError'
         }).then( () => {
-          expect( wrapper.find( 'LoginContainer' ).length ).to.equal( 1 )
+          expect( wrapper.find( 'div' ).length ).to.equal( 1 )
           done()
         }).catch( done )
       })

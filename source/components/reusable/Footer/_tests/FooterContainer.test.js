@@ -83,6 +83,7 @@ describe( '<FooterContainer />', () => {
     })
 
     it( 'calls globalState.addProject() as part of addItem()', done => {
+      input.simulate( 'change', { target: { value: 'inconsequential' } })
       button.simulate( 'click' )
 
       moxios.wait( () => {
@@ -167,6 +168,7 @@ describe( '<FooterContainer />', () => {
     })
 
     it( 'calls addCouldDos part of addItem', done => {
+      input.simulate( 'change', { target: { value: 'nothing' } })
       button.simulate( 'click' )
 
       moxios.wait( () => {
@@ -184,13 +186,14 @@ describe( '<FooterContainer />', () => {
   })
 
   context( 'handles errors when database isn\'t updated', () => {
-    let errorStub, button
+    let errorStub, button, input
 
     before( () => {
       moxios.install()
       errorStub = sinon.stub( console, 'warn' ).callsFake( () => null )
       wrapper = mount( <FooterContainer type='could-do' /> )
       button = wrapper.find( 'button' )
+      input = wrapper.find( 'input' )
     })
 
     after( () => {
@@ -199,6 +202,7 @@ describe( '<FooterContainer />', () => {
     })
 
     it( 'catches and responds with an error', done => {
+      input.simulate( 'change', { target: { value: 'emptiness' } })
       button.simulate( 'click' )
       moxios.wait( () => {
         const request = moxios.requests.mostRecent()

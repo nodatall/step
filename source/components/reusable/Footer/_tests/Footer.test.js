@@ -17,9 +17,9 @@ describe( '<Footer>', () => {
     const wrapper = mount( <Footer type='could-do' /> )
     const input = wrapper.find( 'input' )
 
-    it( 'renders input with text, "Add a could do"', () => {
+    it( 'renders input with text, "New could do"', () => {
       expect( input.length ).to.equal( 1 )
-      expect( input.props().placeholder ).to.contain( 'Add a could do' )
+      expect( input.props().placeholder ).to.contain( 'New could do' )
 
       wrapper.unmount()
     })
@@ -30,9 +30,9 @@ describe( '<Footer>', () => {
     const wrapper = mount( <Footer type='project' /> )
     const input = wrapper.find( 'input' )
 
-    it( 'renders input with text, "Create new project"', () => {
+    it( 'renders input with text, "New project"', () => {
       expect( input.length ).to.equal( 1 )
-      expect( input.props().placeholder ).to.contain( 'Create new project' )
+      expect( input.props().placeholder ).to.contain( 'New project' )
 
       wrapper.unmount()
     })

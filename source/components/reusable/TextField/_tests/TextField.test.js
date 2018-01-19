@@ -26,9 +26,8 @@ describe( '<TextField />', () => {
   context( 'when editing is true', () => {
 
     it( 'render a .text-field-input', () => {
-      wrapper.find( 'TextField' ).simulate( 'click' )
-      expect( wrapper.find( '.text-field-input' ).length ).to.equal( 1 )
-      expect( wrapper.find( '.text-field-text' ).length ).to.equal( 0 )
+      wrapper.find( 'input' ).simulate( 'click' )
+      expect( wrapper.find( '.text-field-input.editing' ).length ).to.equal( 1 )
     })
 
   })
@@ -36,8 +35,7 @@ describe( '<TextField />', () => {
   context( 'when editing is false', () => {
 
     it( 'render a .text-field-text', () => {
-      expect( wrapper.find( '.text-field-input' ).length ).to.equal( 0 )
-      expect( wrapper.find( '.text-field-text' ).length ).to.equal( 1 )
+      expect( wrapper.find( '.text-field-input' ).length ).to.equal( 1 )
     })
 
   })

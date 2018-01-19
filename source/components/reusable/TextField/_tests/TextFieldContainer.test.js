@@ -30,12 +30,12 @@ describe( '<TextFieldContainer />', () => {
     moxios.uninstall()
   })
 
-  it( 'renders .text-field-container', () =>
-    expect( wrapper.find( '.text-field-container' ).length ).to.equal( 1 )
+  it( 'renders .text-field-input', () =>
+    expect( wrapper.find( '.text-field-input' ).length ).to.equal( 1 )
   )
 
   it( 'calls makeEditable on click', () => {
-    wrapper.find( '.text-field-container' ).simulate( 'click' )
+    wrapper.find( '.text-field-input input' ).simulate( 'click' )
     expect( makeEditableSpy.calledOnce ).to.equal( true )
   })
 
