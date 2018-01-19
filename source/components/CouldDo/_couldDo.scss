@@ -4,13 +4,12 @@
   flex-direction: column;
 
   .iconlist-container {
-    left: 10%;
+    margin-left: 4px;
   }
 
   .row-container {
     background-image: linear-gradient($light-grey, $light-grey);
     background-repeat: no-repeat;
-    background-size: 150px 1px;
     background-position: center bottom, 4px 4px;
   }
 }
