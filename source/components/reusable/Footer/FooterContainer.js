@@ -19,6 +19,9 @@ export default class FooterContainer extends Component {
   addItem() {
     const { type } = this.props
     const newItem = this.generateNewItem()
+    
+    if ( newItem.text === '' ) return 
+    
     axios.post( `/${type}/new`, newItem )
       .then( response => {
         switch ( type ) {
