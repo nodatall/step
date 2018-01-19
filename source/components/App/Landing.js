@@ -13,9 +13,7 @@ export default class Landing extends Component {
   componentWillMount() {
     axios.get( '/session' )
       .then( ({ data: { userId } }) => {
-        if ( userId ) { 
-          this.setState({ userId, isLoading: false }) 
-        }
+        this.setState({ userId, isLoading: false }) 
       })
       .catch( componentErrorHandler( 'App' ) )
   }
