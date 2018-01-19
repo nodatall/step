@@ -9,7 +9,7 @@ import Icon from '../reusable/Icon/Icon'
 const Project = ({ couldDos, project, currentProjectId }) => {
   const couldDoList = couldDos && Object.keys( couldDos ).length ? 
     <RowListContainer type='could-do' items={ couldDos } /> :
-    <PageInstruction text='Add a could do below' />
+    <PageInstruction text='Add your fist could do below' />
     
   return (
     <div className='project-container' >

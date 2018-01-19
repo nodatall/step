@@ -1,7 +1,7 @@
 import React from 'react'
 
 const PageInstruction = ({ text }) => (
-  <div>
+  <div className='page-instruction'>
     { text }
   </div>
 )

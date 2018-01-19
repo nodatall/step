@@ -7,7 +7,7 @@ import RowListContainer from '../reusable/Row/RowListContainer'
 const ProjectMenu = ({ projects = {}, currentProjectId }) => {
   const projectList = Object.keys( projects ).length ?
     <RowListContainer items={ projects } type='project' /> :
-    <PageInstruction text='Add a project below' />
+    <PageInstruction text='Add your first project below' />
 
   return (
     <div className='project-menu-container'>
