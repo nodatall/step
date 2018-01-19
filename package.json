@@ -71,7 +71,7 @@
     "build:test": "yarn run symlinks && NODE_ENV=test yarn run build",
     "sass": "node-sass source/stylesheets/index.scss public/main.css",
     "test": "yarn run symlinks && yarn run migrate:test && yarn run mochatest",
-    "mochatest": "nyc --cache --reporter=lcov mocha --compilers js:babel-register $(find source -name '*test.js') --require jsdom-global/register --require babel-polyfill",
+    "mochatest": "NODE_ENV=test nyc --cache --reporter=lcov mocha --compilers js:babel-register $(find source -name '*test.js') --require jsdom-global/register --require babel-polyfill",
     "report": "nyc report",
     "symlinks": "babel-node scripts/createSymlinks.js",
     "report:web": "yarn run report && open coverage/lcov-report/index.html",

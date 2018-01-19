@@ -6,8 +6,8 @@ import globalState from '../source/components/utilities/globalState'
 
 handleUnhandledRejection()
 
-process.env.NODE_ENV = 'test'
 global.__ENV__ = 'test'
+process.env.PORT = 7357
 
 const knex = require( '../source/dataServices/database/knex' )
 
