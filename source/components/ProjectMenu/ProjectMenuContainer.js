@@ -14,14 +14,18 @@ export default class ProjectMenuContainer extends GlobalStateComponent {
         Object.assign( accumulator, { [id]: { id, text, order } })
         , {})
         globalState.set({ projects: projectsObject })
+        this.setState({ loaded: true })
       })
       .catch( componentErrorHandler( 'ProjectMenuContainer' ) )
+    } else {
+      this.setState({ loaded: true })
     }
   }
 
   render() {
     return <ProjectMenu
       projects={ this.state.projects }
-      currentProjectId={ this.state.currentProjectId } />
+      currentProjectId={ this.state.currentProjectId } 
+      loaded={ this.state.loaded } />
   }
 }

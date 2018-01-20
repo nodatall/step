@@ -83,19 +83,6 @@ describe( '<Landing />', () => {
       })
     )
 
-    it( 'renders <LoginContainer />', done =>
-      moxios.wait( () => {
-        const request = moxios.requests.mostRecent()
-        request.respondWith({
-          status: 400,
-          response: 'fakeError'
-        }).then( () => {
-          expect( wrapper.find( 'div' ).length ).to.equal( 1 )
-          done()
-        }).catch( done )
-      })
-    )
-
   })
 
 })

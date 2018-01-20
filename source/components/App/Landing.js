@@ -3,6 +3,7 @@ import axios from 'axios'
 import ProjectMenuContainer from '../ProjectMenu/ProjectMenuContainer'
 import LoginContainer from '../Login/LoginContainer'
 import componentErrorHandler from '../utilities/componentErrorHandler'
+import Loader from '../reusable/Loader/Loader'
 
 export default class Landing extends Component {
   constructor() {
@@ -24,6 +25,6 @@ export default class Landing extends Component {
       <ProjectMenuContainer userId={ userId } /> :
       <LoginContainer />
 
-    return this.state.isLoading ? <div>Loading...</div> : loginOrProjectMenu
+    return this.state.isLoading ? <Loader /> : loginOrProjectMenu
   }
 }

@@ -18,8 +18,8 @@ describe( '<ProjectMenu />', () => {
       expect( wrapper.find( '.project-menu-container' ).length ).to.equal( 1 )
     )
 
-    it( 'renders <RowList />', () =>
-      expect( wrapper.find( 'RowList' ).length ).to.equal( 1 )
+    it( 'renders <Loader />', () =>
+      expect( wrapper.find( 'Loader' ).length ).to.equal( 2 )
     )
 
     it( 'renders <PageInstruction />', () =>
@@ -41,8 +41,8 @@ describe( '<ProjectMenu />', () => {
       wrapper = mount( <ProjectMenu /> )
     })
 
-    it( 'renders <PageInstruction />', () =>
-      expect( wrapper.find( 'PageInstruction' ).length ).to.equal( 1 )
+    it( 'renders <Loader />', () =>
+      expect( wrapper.find( 'Loader' ).length ).to.equal( 2 )
     )
 
     it( 'renders <RowList />', () =>

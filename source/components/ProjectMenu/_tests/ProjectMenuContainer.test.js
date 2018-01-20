@@ -73,8 +73,8 @@ describe( '<ProjectMenuContainer />', () => {
       mountStub.restore()
     })
 
-    it( 'should render <RowList />', () =>
-      expect( wrapper.find( 'RowList' ).length ).to.equal( 1 )
+    it( 'should render <Loader />', () =>
+      expect( wrapper.find( 'Loader' ).length ).to.equal( 2 )
     )
 
   })
