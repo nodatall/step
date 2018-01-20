@@ -7,13 +7,14 @@ import PageInstruction from '../reusable/Instructions/PageInstruction'
 import Icon from '../reusable/Icon/Icon'
 
 const Project = ({ couldDos, project, currentProjectId }) => {
-  const couldDoList = couldDos && Object.keys( couldDos ).length ? 
+  const hasCouldDos = couldDos && Object.keys( couldDos ).length
+  const couldDoList = hasCouldDos ? 
     <RowListContainer type='could-do' items={ couldDos } /> :
     <PageInstruction text='Add your fist could do below' />
     
   return (
     <div className='project-container' >
-      <Heading type='project' text={ project.text } />
+      <Heading type='project' text={ project.text } hasCouldDos={ hasCouldDos } />
       <Link to='/'><Icon type='back' /></Link>
       { couldDoList }
       <FooterContainer type='could-do' currentProjectId={ currentProjectId } />

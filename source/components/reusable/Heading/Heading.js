@@ -3,9 +3,12 @@ import { Link } from 'react-router-dom'
 import Icon from '../Icon/Icon'
 import LogoutContainer from '../../Logout/LogoutContainer'
 
-const Heading = ({ type, text, loggedOut }) => {
+const Heading = ({ type, text, loggedOut, hasCouldDos }) => {
   const eyeIcon = type === 'project' ?
-    <Link to='/could-do'><Icon type='eye' /></Link> :
+    <Link to='/could-do' 
+      onClick={ event => hasCouldDos ? null : event.preventDefault() } >
+      <Icon type='eye' />
+    </Link> :
     null
   const logoutContainer = !loggedOut ? <LogoutContainer /> : null
 
