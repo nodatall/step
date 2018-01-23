@@ -14,14 +14,7 @@ const checkForAuthorization = ( request, response, next ) => {
 }
 
 const getGoogleOAuthPermissionCode = passport.authenticate(
-  'google',
-  { scope: [
-    'https://www.googleapis.com/auth/plus.login',
-    'https://www.googleapis.com/auth/plus.profile.emails.read'
-  ],
-    accessType: 'offline',
-    prompt: 'consent'
-  }
+  'google', { scope: [ 'profile', 'email' ] }
 )
 
 const handleSuccessfulAuthentication = ( request, response ) =>
@@ -29,7 +22,6 @@ const handleSuccessfulAuthentication = ( request, response ) =>
 
 const handleLogOut = ( request, response ) => {
   request.logout()
-  request.session.destroy()
   response.redirect( '/' )
 }
 
