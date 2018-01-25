@@ -30,8 +30,8 @@ describe( '<RowList />', () => {
       wrapper = mount( <RowList type={ type } items={ undefined } /> )
     })
 
-    it( 'should render a div with class \'loading\'', () =>
-      expect( wrapper.find( '.loading' ).length ).to.equal( 1 )
+    it( 'should render <Loader />', () =>
+      expect( wrapper.find( 'Loader' ).length ).to.equal( 2 )
     )
 
   })

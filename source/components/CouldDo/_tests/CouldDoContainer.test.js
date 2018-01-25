@@ -64,8 +64,8 @@ describe( ' <CouldDoContainer />', () => {
 
     afterEach( () => wrapper.unmount() )
 
-    it( 'should render loading div', () => {
-      expect( wrapper.find( '.loading' ).length ).to.eql( 1 )
+    it( 'should render <Loader />', () => {
+      expect( wrapper.find( 'Loader' ).length ).to.eql( 2 )
     })
   })
 

@@ -2,6 +2,7 @@ import React from 'react'
 import globalState from '../utilities/globalState'
 import GlobalStateComponent from '../reusable/ParentClasses/GlobalStateComponent'
 import CouldDo from './CouldDo'
+import Loader from '../reusable/Loader/Loader'
 
 export default class CouldDoContainer extends GlobalStateComponent {
   constructor( props ) {
@@ -34,8 +35,8 @@ export default class CouldDoContainer extends GlobalStateComponent {
 
   render() {
     if ( !this.state.projects ) {
-      return <div className='loading'> Loading . . .</div>
-    }
+      return <Loader />
+    } 
 
     const { currentProjectId, currentCouldDoIndex, projects } = this.state,
       couldDoKeys = Object.keys( projects[currentProjectId].couldDos ),

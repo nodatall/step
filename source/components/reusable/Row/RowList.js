@@ -3,6 +3,7 @@ import { SortableContainer, arrayMove } from 'react-sortable-hoc'
 import _ from 'lodash'
 import axios from 'axios'
 import RowContainer from '../Row/RowContainer'
+import Loader from '../Loader/Loader'
 import globalState from '../../utilities/globalState'
 import componentErrorHandler from '../../utilities/componentErrorHandler'
 
@@ -18,7 +19,7 @@ const RowList = ({ items, type, updateLocalItemOrder }) => {
       <RowContainer useDragHandle key={ item.id } fieldType={ type } { ...item } order={ order } />
     ) )
   } else {
-    itemsInOrder = <div className='loading'> Loading . . . </div>
+    itemsInOrder = <Loader />
   }
 
   const SortableList = SortableContainer( () => (

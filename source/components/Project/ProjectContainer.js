@@ -17,8 +17,11 @@ export default class ProjectContainer extends GlobalStateComponent {
               Object.assign( accumulator, { [id]: { id, text, order } })
             , {})
           globalState.set( projects )
+          this.setState({ loaded: true })
         })
         .catch( componentErrorHandler( 'ProjectContainer' ) )
+    } else {
+      this.setState({ loaded: true })
     }
   }
 
@@ -35,7 +38,8 @@ export default class ProjectContainer extends GlobalStateComponent {
       <Project
         couldDos={ couldDos }
         project={ project }
-        currentProjectId={ currentProjectId } />
+        currentProjectId={ currentProjectId }
+        loaded={ this.state.loaded } />
     )
   }
 

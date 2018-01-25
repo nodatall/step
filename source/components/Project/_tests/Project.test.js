@@ -33,8 +33,8 @@ describe( '<Project />', () => {
       expect( wrapper.find( 'Heading' ).length ).to.equal( 1 )
     )
 
-    it( 'should render a <RowList />', () =>
-      expect( wrapper.find( 'RowList' ).length ).to.equal( 1 )
+    it( 'should render <Loader />', () =>
+      expect( wrapper.find( 'Loader' ).length ).to.equal( 2 )
     )
 
     it( 'should render a <Link />', () =>

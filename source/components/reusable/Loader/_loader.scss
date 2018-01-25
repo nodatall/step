@@ -1,9 +1,17 @@
 .loader-container {
-  height: 100%;
+  position: absolute;
+  right: 50%;
+  height: 100vh;
   display: flex;
-  justify-content: center;
   align-items: center;
-  animation: fadein 2s;
+  animation: fadein 2.5s;
+}
+
+.project-container .loader-container,
+.project-menu-container .loader-container {
+  height: inherit;
+  top: 50%;
+  display: block;
 }
 
 @keyframes fadein {
