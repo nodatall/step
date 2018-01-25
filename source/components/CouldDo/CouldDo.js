@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Icon from '../reusable/Icon/Icon'
 
-const CouldDo = ({ text, position, previousCouldDo, nextCouldDo }) => {
+const CouldDo = ({ text, position, previousCouldDo, nextCouldDo, numCouldDos }) => {
 
   const upDownButtons = []
 
@@ -10,7 +10,7 @@ const CouldDo = ({ text, position, previousCouldDo, nextCouldDo }) => {
     upDownButtons.push( <button className='previous-could-do' key='up' onClick={ previousCouldDo }><Icon type='previous' /></button> )
   }
 
-  if ( position !== 'end' ) {
+  if ( position !== 'end' && numCouldDos > 1 ) {
     upDownButtons.push( <button className='next-could-do' key='down' onClick={ nextCouldDo }><Icon type='next' /></button> )
   }
 

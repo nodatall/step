@@ -37,16 +37,18 @@ export default class CouldDoContainer extends GlobalStateComponent {
       return <div className='loading'> Loading . . .</div>
     }
 
-    const { currentProjectId, currentCouldDoIndex, projects } = this.state
-    const couldDoKeys = Object.keys( projects[currentProjectId].couldDos )
-    const position = this.findPosition( currentCouldDoIndex, couldDoKeys.length )
-    const text = projects[currentProjectId].couldDos[couldDoKeys[currentCouldDoIndex]].text
+    const { currentProjectId, currentCouldDoIndex, projects } = this.state,
+      couldDoKeys = Object.keys( projects[currentProjectId].couldDos ),
+      position = this.findPosition( currentCouldDoIndex, couldDoKeys.length ),
+      text = projects[currentProjectId].couldDos[couldDoKeys[currentCouldDoIndex]].text,
+      numCouldDos = couldDoKeys.length
 
     return <CouldDo
       text={ text }
       position={ position }
       previousCouldDo={ this.previousCouldDo }
       nextCouldDo={ this.nextCouldDo }
+      numCouldDos={ numCouldDos }
     />
   }
 
