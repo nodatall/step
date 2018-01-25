@@ -14,7 +14,7 @@ const handleServerErrors = ( error, request, response, next ) => { // eslint-dis
   if ( !process.env.NODE_ENV === 'test' ) handleUnhandledRejection()
   
   if ( typeof error.createMessage === 'undefined' ) {
-    console.log('error', error)
+    logger.error( error )
   } else {
     logger.error( `\n${chalk.yellow( error.createMessage() )}` )
     

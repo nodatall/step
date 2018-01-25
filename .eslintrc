@@ -30,6 +30,8 @@
   "no-else-return": "off",
   "space-before-function-paren": "off",
   "guard-for-in": "off",
+  "react/no-did-mount-set-state": "off",
+  "eol-last": "off",
   "one-var": "off",
     "valid-jsdoc": ["error", {
       "requireReturn": true,

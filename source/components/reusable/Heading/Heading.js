@@ -5,8 +5,9 @@ import LogoutContainer from '../../Logout/LogoutContainer'
 
 const Heading = ({ type, text, loggedOut, hasCouldDos }) => {
   const eyeIcon = type === 'project' ?
-    <Link to='/could-do' 
-      onClick={ event => hasCouldDos ? null : event.preventDefault() } >
+    <Link 
+      to='/could-do' 
+      onClick={ event => ( hasCouldDos ? null : event.preventDefault() ) } >
       <Icon type='eye' />
     </Link> :
     null

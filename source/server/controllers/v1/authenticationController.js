@@ -14,7 +14,7 @@ const checkForAuthorization = ( request, response, next ) => {
 }
 
 const getGoogleOAuthPermissionCode = passport.authenticate(
-  'google', { scope: [ 'profile', 'email' ] }
+  'google', { scope: ['profile', 'email'] }
 )
 
 const handleSuccessfulAuthentication = ( request, response ) =>
