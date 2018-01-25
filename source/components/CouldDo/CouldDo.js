@@ -11,7 +11,7 @@ const CouldDo = ({ text, position, previousCouldDo, nextCouldDo }) => {
   }
 
   if ( position !== 'end' ) {
-    upDownButtons.push( <button className='next-could-do' key='down' onClick={ nextCouldDo }><Icon type='down' /></button> )
+    upDownButtons.push( <button className='next-could-do' key='down' onClick={ nextCouldDo }><Icon type='next' /></button> )
   }
 
   return (
@@ -19,7 +19,7 @@ const CouldDo = ({ text, position, previousCouldDo, nextCouldDo }) => {
       <button className='add-could-do' key='add'><Icon type='plus' /></button>
       { upDownButtons }
       <Link to='/project'><Icon type='back' /></Link>
-      <p>{ text }</p>
+      <p className='could-do'>{ text }</p>
     </div>
   )
 }

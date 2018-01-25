@@ -48,6 +48,9 @@ const Icon = ({ type, onClick }) => {
     case 'logout':
       icon = <LogoutIcon data-tip='Logout' />
       break
+    case 'next':
+      icon = <ArrowIcon data-tip='Next' />
+      break
     default:
       icon = `icon: ${type}`
   }

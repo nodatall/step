@@ -13,3 +13,28 @@
     background-position: center bottom, 4px 4px;
   }
 }
+
+.could-do-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1e1e1e;
+}
+
+.add-could-do {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+
+.next-could-do {
+  position: absolute;
+  bottom: 0px;
+}
+
+.could-do {
+  font-size: 48px;
+  font-family: $content-font;
+  color: $white-text;
+}

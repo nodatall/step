@@ -4,10 +4,12 @@ $content-font: 'Open Sans', sans-serif;
 $white-text: #e0e2e4;
 $default-font-size: 28px;
 $darkblue-background: #1c2a37;
-$light-grey: #35404b;
+$light-grey: #424242;
 $divider-border: solid 1px $light-grey;
 $header-font: 'PT Serif', serif;
 $green: #6e9c5f;
+$icon: lighten($light-grey, 10%);
+$iconHover: darken($white-text, 5%);
 
 input:focus {
   outline: none;
