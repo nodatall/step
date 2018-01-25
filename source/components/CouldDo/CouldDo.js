@@ -7,7 +7,7 @@ const CouldDo = ({ text, position, previousCouldDo, nextCouldDo }) => {
   const upDownButtons = []
 
   if ( position !== 'beginning' ) {
-    upDownButtons.push( <button className='previous-could-do' key='up' onClick={ previousCouldDo }><Icon type='up' /></button> )
+    upDownButtons.push( <button className='previous-could-do' key='up' onClick={ previousCouldDo }><Icon type='previous' /></button> )
   }
 
   if ( position !== 'end' ) {

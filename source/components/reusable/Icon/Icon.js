@@ -51,6 +51,9 @@ const Icon = ({ type, onClick }) => {
     case 'next':
       icon = <ArrowIcon data-tip='Next' />
       break
+    case 'previous':
+      icon = <ArrowIcon data-tip='Previous' />
+      break
     default:
       icon = `icon: ${type}`
   }

@@ -52,7 +52,8 @@
 .back-icon-container:hover, 
 .plus-icon-container:hover, 
 .intoProject-icon-container:hover,
-.next-icon-container:hover {
+.next-icon-container:hover,
+.previous-icon-container:hover {
   cursor: pointer;
   opacity: 0.8;
 }
@@ -86,6 +87,12 @@
 .next-icon-container svg {
   width: 60px;
   transform: rotate(-90deg);
+  fill: $icon;
+}
+
+.previous-icon-container svg {
+  width: 60px;
+  transform: rotate(90deg);
   fill: $icon;
 }
 
