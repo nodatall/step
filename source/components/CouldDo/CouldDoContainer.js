@@ -45,6 +45,8 @@ export default class CouldDoContainer extends GlobalStateComponent {
         globalState.completeCouldDo( currentCouldDoId )
         if ( couldDoKeys.length === 1 ) {
           this.props.history.goBack()
+        } else if ( currentCouldDoIndex === couldDoKeys.length - 1 ) {
+          this.previousCouldDo()
         }
       })
       .catch( componentErrorHandler( 'CouldDoContainer' ) )
