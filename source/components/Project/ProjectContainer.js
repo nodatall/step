@@ -13,9 +13,13 @@ export default class ProjectContainer extends GlobalStateComponent {
       axios.get( `/project/${currentProjectId}/could-do` )
         .then( ({ data: couldDos }) => {
           projects[currentProjectId].couldDos = couldDos.reduce(
-            ( accumulator, { id, text, order }) =>
-              Object.assign( accumulator, { [id]: { id, text, order } })
-            , {})
+            ( accumulator, { id, text, order, is_completed }) => {
+              if ( !is_completed ) {
+                return Object.assign( accumulator, { [id]: { id, text, order } })
+              } else {
+                return accumulator
+              }
+            }, {})
           globalState.set( projects )
           this.setState({ loaded: true })
         })

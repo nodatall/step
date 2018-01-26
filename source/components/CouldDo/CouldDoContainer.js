@@ -1,4 +1,6 @@
 import React from 'react'
+import axios from 'axios'
+import componentErrorHandler from '../utilities/componentErrorHandler'
 import globalState from '../utilities/globalState'
 import GlobalStateComponent from '../reusable/ParentClasses/GlobalStateComponent'
 import CouldDo from './CouldDo'
@@ -32,6 +34,21 @@ export default class CouldDoContainer extends GlobalStateComponent {
         return 'middle'
     }
   }
+  
+  completeCouldDo = () => {
+    const { projects, currentProjectId, currentCouldDoIndex } = this.state,
+      couldDoKeys = Object.keys( projects[currentProjectId].couldDos ),
+      currentCouldDoId = projects[currentProjectId].couldDos[couldDoKeys[currentCouldDoIndex]].id
+    
+    axios.post( `/could-do/edit/${currentCouldDoId}`, { is_completed: true } ) // eslint-disable-line
+      .then( () => {
+        globalState.completeCouldDo( currentCouldDoId )
+        if ( couldDoKeys.length === 1 ) {
+          this.props.history.goBack()
+        }
+      })
+      .catch( componentErrorHandler( 'CouldDoContainer' ) )
+  }
 
   render() {
     if ( !this.state.projects ) {
@@ -50,6 +67,7 @@ export default class CouldDoContainer extends GlobalStateComponent {
       previousCouldDo={ this.previousCouldDo }
       nextCouldDo={ this.nextCouldDo }
       numCouldDos={ numCouldDos }
+      completeCouldDo={ this.completeCouldDo }
     />
   }
 

@@ -11,6 +11,11 @@ const globalStateHelpers = stateStorage => ({
     stateStorage.projects[stateStorage.currentProjectId].couldDos[couldDoId].text = text
     this.passStateToSubscribers()
   },
+  
+  completeCouldDo( couldDoId ) {
+    delete stateStorage.projects[stateStorage.currentProjectId].couldDos[couldDoId]
+    this.passStateToSubscribers()
+  },
 
   updateProjects( projects ) {
     for ( let projectKey in stateStorage.projects ) {

@@ -1,8 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import ReactTooltip from 'react-tooltip'
 import Icon from '../reusable/Icon/Icon'
 
-const CouldDo = ({ text, position, previousCouldDo, nextCouldDo, numCouldDos }) => {
+const CouldDo = ({ text, position, previousCouldDo, nextCouldDo, numCouldDos, completeCouldDo }) => { // eslint-disable-line
 
   const upDownButtons = []
 
@@ -19,7 +20,8 @@ const CouldDo = ({ text, position, previousCouldDo, nextCouldDo, numCouldDos }) 
       <button className='add-could-do' key='add'><Icon type='plus' /></button>
       { upDownButtons }
       <Link to='/project'><Icon type='back' /></Link>
-      <p className='could-do'>{ text }</p>
+      <p className='could-do' onClick={ completeCouldDo } data-tip='Click to complete'>{ text }</p>
+      <ReactTooltip delayShow={ 350 } className='tooltip' />
     </div>
   )
 }
