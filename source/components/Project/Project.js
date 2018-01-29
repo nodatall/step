@@ -11,7 +11,7 @@ const Project = ({ couldDos, project, currentProjectId, loaded }) => {
   const hasCouldDos = couldDos && Object.keys( couldDos ).length
   const couldDoList = hasCouldDos ? 
     <RowListContainer type='could-do' items={ couldDos } /> :
-    <PageInstruction text='Add your fist could do below' />,
+    <PageInstruction text='Add your first could do below' />,
     content = loaded ? couldDoList : <Loader />
     
   return (

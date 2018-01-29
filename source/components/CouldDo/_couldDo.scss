@@ -40,10 +40,17 @@
 
 .could-do {
   font-size: 48px;
+  opacity: 1;
   font-family: $content-font;
   color: $white-text;
 }
 
 .could-do:hover {
   cursor: pointer;
+}
+
+.could-do-fading {
+  font-size: 48px;
+  opacity: 0;
+  transition: 500ms;
 }

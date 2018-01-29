@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import ReactTooltip from 'react-tooltip'
 import Icon from '../reusable/Icon/Icon'
 
-const CouldDo = ({ text, position, previousCouldDo, nextCouldDo, numCouldDos, completeCouldDo }) => { // eslint-disable-line
+const CouldDo = ({ text, position, previousCouldDo, nextCouldDo, numCouldDos, completeCouldDo, fading }) => { // eslint-disable-line
 
   const upDownButtons = []
 
@@ -20,7 +20,7 @@ const CouldDo = ({ text, position, previousCouldDo, nextCouldDo, numCouldDos, co
       <button className='add-could-do' key='add'><Icon type='plus' /></button>
       { upDownButtons }
       <Link to='/project'><Icon type='back' /></Link>
-      <p className='could-do' onClick={ completeCouldDo } data-tip='Click to complete'>{ text }</p>
+      <p className={ fading ? 'could-do-fading' : 'could-do' } onClick={ completeCouldDo } data-tip='Click to complete'>{ text }</p>
       <ReactTooltip delayShow={ 350 } className='tooltip' />
     </div>
   )

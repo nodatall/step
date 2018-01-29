@@ -35,21 +35,26 @@ export default class CouldDoContainer extends GlobalStateComponent {
     }
   }
   
-  completeCouldDo = () => {
+  completeCouldDo = async () => {
     const { projects, currentProjectId, currentCouldDoIndex } = this.state,
       couldDoKeys = Object.keys( projects[currentProjectId].couldDos ),
       currentCouldDoId = projects[currentProjectId].couldDos[couldDoKeys[currentCouldDoIndex]].id
     
-    axios.post( `/could-do/edit/${currentCouldDoId}`, { is_completed: true } ) // eslint-disable-line
-      .then( () => {
-        globalState.completeCouldDo( currentCouldDoId )
-        if ( couldDoKeys.length === 1 ) {
-          this.props.history.goBack()
-        } else if ( currentCouldDoIndex === couldDoKeys.length - 1 ) {
-          this.previousCouldDo()
-        }
-      })
-      .catch( componentErrorHandler( 'CouldDoContainer' ) )
+    this.setState({ fading: true })
+    
+    setTimeout( () => {
+      axios.post( `/could-do/edit/${currentCouldDoId}`, { is_completed: true } ) // eslint-disable-line
+        .then( () => {
+          globalState.completeCouldDo( currentCouldDoId )
+          if ( couldDoKeys.length === 1 ) {
+            this.props.history.replace( '/project' )
+          } else if ( currentCouldDoIndex === couldDoKeys.length - 1 ) {
+            this.previousCouldDo()
+          }
+          this.setState({ fading: false })
+        })  
+        .catch( componentErrorHandler( 'CouldDoContainer' ) )
+    }, 500 )
   }
 
   render() {
@@ -70,6 +75,7 @@ export default class CouldDoContainer extends GlobalStateComponent {
       nextCouldDo={ this.nextCouldDo }
       numCouldDos={ numCouldDos }
       completeCouldDo={ this.completeCouldDo }
+      fading={ this.state.fading }
     />
   }
 
