@@ -1,9 +1,23 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import ReactTooltip from 'react-tooltip'
+import AutosizeInput from 'react-input-autosize'
 import Icon from '../reusable/Icon/Icon'
 
-const CouldDo = ({ text, position, previousCouldDo, nextCouldDo, numCouldDos, completeCouldDo, fading }) => { // eslint-disable-line
+const CouldDo = ({
+  text, 
+  position, 
+  previousCouldDo,
+  nextCouldDo, 
+  numCouldDos, 
+  completeCouldDo, 
+  fading,
+  value,
+  onChange,
+  onKeyUp,
+  addingNew,
+  switchToAdding
+}) => {
 
   const upDownButtons = []
 
@@ -15,12 +29,25 @@ const CouldDo = ({ text, position, previousCouldDo, nextCouldDo, numCouldDos, co
     upDownButtons.push( <button className='next-could-do' key='down' onClick={ nextCouldDo }><Icon type='next' /></button> )
   }
 
+  const couldDo = <p className={ fading ? 'could-do-fading' : 'could-do' } onClick={ completeCouldDo } data-tip='Click to complete'>{ text }</p>,
+    newCouldDoField = <AutosizeInput
+      className='could-do-adding'
+      type='text'
+      placeholder={ 'New could do' }
+      value={ value }
+      onChange={ onChange }
+      onKeyUp={ onKeyUp }
+      maxLength='25'
+      autoFocus
+    />,
+    mainContent = addingNew ? newCouldDoField : couldDo
+
   return (
     <div className='could-do-container'>
-      <button className='add-could-do' key='add'><Icon type='plus' /></button>
+      <button className='add-could-do' onClick={ switchToAdding } key='add'><Icon type='plus' /></button>
       { upDownButtons }
       <Link to='/project'><Icon type='back' /></Link>
-      <p className={ fading ? 'could-do-fading' : 'could-do' } onClick={ completeCouldDo } data-tip='Click to complete'>{ text }</p>
+      { mainContent }
       <ReactTooltip delayShow={ 350 } className='tooltip' />
     </div>
   )

@@ -54,3 +54,25 @@
   opacity: 0;
   transition: 500ms;
 }
+
+.could-do-adding input {
+  background-color: transparent;
+  border: none;
+  color: $white-text;
+  font-family: $content-font;
+  font-size: 46px;
+  font-style: normal;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.could-do-adding.editing input {
+  color: darken($white-text, 25%);
+  font-style: italic;
+}
+
+.could-do-adding::placeholder {
+  font-style: italic;
+  letter-spacing: 0;
+  opacity: 0.66;
+}

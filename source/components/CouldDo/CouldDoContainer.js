@@ -9,8 +9,13 @@ import Loader from '../reusable/Loader/Loader'
 export default class CouldDoContainer extends GlobalStateComponent {
   constructor( props ) {
     super( props )
+    this.state = { addingNew: false, newCouldDoValue: '' }
+    
     this.previousCouldDo = this.previousCouldDo.bind( this )
     this.nextCouldDo = this.nextCouldDo.bind( this )
+    this.onChange = this.onChange.bind( this )
+    this.handleKeyUp = this.handleKeyUp.bind( this )
+    this.switchToAdding = this.switchToAdding.bind( this )
     globalState.set({ currentCouldDoIndex: 0 })
   }
 
@@ -57,15 +62,45 @@ export default class CouldDoContainer extends GlobalStateComponent {
     }, 500 )
   }
 
+  addCouldDo = () => {
+    const { currentProjectId: project_id, newCouldDoValue: text } = this.state,
+      newItem = { text, project_id }
+    
+    if ( newItem.text === '' ) return 
+    
+    axios.post( '/could-do/new', newItem )
+      .then( response => {
+        globalState.addCouldDo( response.data )
+        this.setState({ newCouldDoValue: '', addingNew: false })
+      })
+    .catch( componentErrorHandler( 'couldDoContainer' ) )
+  }
+  
+  onChange( event ) { this.setState({ newCouldDoValue: event.target.value }) }
+  
+  handleKeyUp( event ) {
+    if ( event.key === 'Enter' ) {
+      this.addCouldDo()
+    }
+  }
+
+  switchToAdding() {
+    this.setState({ addingNew: !this.state.addingNew })
+  }
+  
   render() {
     if ( !this.state.projects ) {
       return <Loader />
     } 
 
     const { currentProjectId, currentCouldDoIndex, projects } = this.state,
-      couldDoKeys = Object.keys( projects[currentProjectId].couldDos ),
+      currentProject = projects[currentProjectId],
+      couldDoKeys = Object.keys( currentProject.couldDos ),
+      couldDos = couldDoKeys
+        .map( ( curIndex ) => currentProject.couldDos[curIndex] )
+        .sort( ( a, b ) => a.order > b.order ),
       position = this.findPosition( currentCouldDoIndex, couldDoKeys.length ),
-      text = projects[currentProjectId].couldDos[couldDoKeys[currentCouldDoIndex]].text,
+      text = couldDos[currentCouldDoIndex].text,
       numCouldDos = couldDoKeys.length
 
     return <CouldDo
@@ -76,6 +111,11 @@ export default class CouldDoContainer extends GlobalStateComponent {
       numCouldDos={ numCouldDos }
       completeCouldDo={ this.completeCouldDo }
       fading={ this.state.fading }
+      addingNew={ this.state.addingNew }
+      value={ this.state.newCouldDoValue }
+      onChange={ this.onChange }
+      switchToAdding={ this.switchToAdding }
+      onKeyUp={ this.handleKeyUp }
     />
   }
 

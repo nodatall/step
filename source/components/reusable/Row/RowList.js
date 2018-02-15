@@ -36,7 +36,7 @@ const RowList = ({ items, type, updateLocalItemOrder }) => {
       order: index
     }) )
 
-    updateLocalItemOrder( afterSort, type )
+    updateLocalItemOrder( afterSort )
 
     switch ( type ) {
       case 'project':

@@ -32,24 +32,7 @@ describe( ' <CouldDoContainer />', () => {
       expect( wrapper.find( 'CouldDoContainer' ).nodes[0].findPosition( 4, 5 ) ).to.equal( 'end' )
       expect( wrapper.find( 'CouldDoContainer' ).nodes[0].findPosition( 3, 5 ) ).to.equal( 'middle' )
     })
-
-    it( 'renders CouldDo component', () => {
-      expect( wrapper.find( 'CouldDo' ).length ).to.eql( 1 )
-    })
-
-    it( 'calling nextCouldDo should increase currentCouldDoIndex by 1', () => {
-      expect( wrapper.find( 'CouldDoContainer' ).nodes[0].state.currentCouldDoIndex ).to.eql( 0 )
-      wrapper.find( 'CouldDoContainer' ).nodes[0].nextCouldDo()
-      expect( globalStateSetSpy.calledTwice ).to.equal( true )
-      expect( wrapper.find( 'CouldDoContainer' ).nodes[0].state.currentCouldDoIndex ).to.eql( 1 )
-    })
-
-    it( 'calling previousCouldDo should decrease currentCouldDoIndex by 1', () => {
-      expect( wrapper.find( 'CouldDoContainer' ).nodes[0].state.currentCouldDoIndex ).to.eql( 0 )
-      wrapper.find( 'CouldDoContainer' ).nodes[0].previousCouldDo()
-      expect( globalStateSetSpy.calledTwice ).to.equal( true )
-      expect( wrapper.find( 'CouldDoContainer' ).nodes[0].state.currentCouldDoIndex ).to.eql( -1 )
-    })
+    
   })
 
   context( 'when there is not a global state', () => {
