@@ -65,7 +65,7 @@
     "winston": "^2.3.1"
   },
   "scripts": {
-    "begin": "yarn run sass && yarn run migrate && yarn run symlinks && yarn run server & yarn run build & yarn run sass -- -w",
+    "start": "yarn run sass && yarn run migrate && yarn run symlinks && yarn run server & yarn run build & yarn run sass -- -w",
     "server": "nodemon --exec babel-node source/server/server.js",
     "build": "webpack --colors --progress -w",
     "build:dev": "NODE_ENV=development yarn run build",
