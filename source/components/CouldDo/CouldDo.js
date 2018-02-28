@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import ReactTooltip from 'react-tooltip'
 import AutosizeInput from 'react-input-autosize'
 import Icon from '../reusable/Icon/Icon'
+import { MAXLENGTH } from '../utilities/constants'
 
 const CouldDo = ({
   text, 
@@ -37,7 +38,7 @@ const CouldDo = ({
       value={ value }
       onChange={ onChange }
       onKeyUp={ onKeyUp }
-      maxLength='25'
+      maxLength={ MAXLENGTH }
       autoFocus
     />,
     mainContent = addingNew ? newCouldDoField : couldDo

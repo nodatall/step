@@ -1,0 +1,1 @@
+export const MAXLENGTH = 45

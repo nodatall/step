@@ -1,6 +1,7 @@
 import React from 'react'
 import AutosizeInput from 'react-input-autosize'
 import Icon from '../Icon/Icon'
+import { MAXLENGTH } from '../../utilities/constants'
 
 const Footer = ({ type, onChange, value, addItem, onKeyUp }) => {
   let text = null
@@ -18,7 +19,7 @@ const Footer = ({ type, onChange, value, addItem, onKeyUp }) => {
         value={ value }
         onChange={ onChange }
         onKeyUp={ onKeyUp }
-        maxLength='25'
+        maxLength={ MAXLENGTH }
       />
     </div>
   )
